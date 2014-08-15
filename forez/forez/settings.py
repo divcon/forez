@@ -50,7 +50,26 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.OAuth2Authentication',
     ),
+    'DEFAULT_PARSER_CLASSES': (
+            'rest_framework.parsers.FormParser',
+            'rest_framework.parsers.JSONParser',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.JSONParser',
+    ),
 }
+
+TEMPLATE_DIRS = (
+    #'E:/Django/Projects/solutoire/templates'
+    '/home/sungjin/webp/forez/forez/web_content/templates'
+)
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    '/home/sungjin/webp/forez/forez/web_content/resource',
+)
+# STATIC_ROOT = "/home/sungjin/webp/forez/forez/web_content/resource"
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

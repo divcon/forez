@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 
 from rest_framework.authentication import SessionAuthentication, BaseAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import viewsets, mixins, status, generics
 from django.contrib.auth.models import User
 from serializers import *
-from rest_framework.renderers import UnicodeJSONRenderer, BrowsableAPIRenderer
+from rest_framework.renderers import UnicodeJSONRenderer, BrowsableAPIRenderer, JSONRenderer
 
 
 class UserViewSet(viewsets.ModelViewSet):
     model = User
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    renderer_classes = (UnicodeJSONRenderer, )
+    renderer_classes = (UnicodeJSONRenderer, JSONRenderer)
 
     def retrieve(self, request, *args, **kwargs):
         serializer = UserSerializer()
@@ -26,11 +26,13 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-class UserCreateViewSet(viewsets.ModelViewSet):
+class UserCreateViewSet(viewsets.GenericViewSet,
+                        mixins.CreateModelMixin):
+    permission_classes = (AllowAny, )
     model = User
     queryset = User.objects.all()
-    serializer_class = UserSerializer
-    renderer_classes = (UnicodeJSONRenderer, )
+    serializer_class = UserCreateSerializer
+    renderer_classes = (UnicodeJSONRenderer, JSONRenderer,)
 
     def initial(self, request, *args, **kwargs):
         super(UserCreateViewSet, self).initial(request, *args, **kwargs)
@@ -49,6 +51,7 @@ class UserCreateViewSet(viewsets.ModelViewSet):
                 password=serializer.data['password'],
                 email=serializer.data['email'],
             )
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         else:
