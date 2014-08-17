@@ -6,13 +6,15 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import viewsets, mixins, status, generics
 from django.contrib.auth.models import User
+from .models import GardenUser
 from serializers import *
 from rest_framework.renderers import UnicodeJSONRenderer, BrowsableAPIRenderer, JSONRenderer
+from users import models
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    model = User
-    queryset = User.objects.all()
+    model = GardenUser
+    queryset = GardenUser.objects.all()
     serializer_class = UserSerializer
     renderer_classes = (UnicodeJSONRenderer, JSONRenderer)
 
@@ -29,8 +31,10 @@ class UserViewSet(viewsets.ModelViewSet):
 class UserCreateViewSet(viewsets.GenericViewSet,
                         mixins.CreateModelMixin):
     permission_classes = (AllowAny, )
-    model = User
-    queryset = User.objects.all()
+    # model = User
+    # queryset = User.objects.all()
+    model = GardenUser
+    queryset = GardenUser.objects.all()
     serializer_class = UserCreateSerializer
     renderer_classes = (UnicodeJSONRenderer, JSONRenderer,)
 
@@ -45,13 +49,13 @@ class UserCreateViewSet(viewsets.GenericViewSet,
     def create(self, request, *args, **kwargs):
         #When 'context deprecated' error occurs, add context parameter.
         serializer = UserCreateSerializer(data=request.DATA, context={'request': request})
+        print request
         if serializer.is_valid():
-            User.objects.create_user(
+            GardenUser.objects.create_user(
                 username=serializer.data['username'],
                 password=serializer.data['password'],
                 email=serializer.data['email'],
-            )
-
+                phone=serializer.data['phone'],)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         else:

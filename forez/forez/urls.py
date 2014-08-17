@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from django.conf.urls import patterns, include, url
-from users import views as users_views
-from redirects import views as pages_views 
 from django.contrib import admin
 admin.autodiscover()
 
