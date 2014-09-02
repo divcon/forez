@@ -10,6 +10,7 @@ from .models import GardenUser
 from serializers import *
 from rest_framework.renderers import UnicodeJSONRenderer, BrowsableAPIRenderer, JSONRenderer
 from users import models
+from rest_framework.authentication import TokenAuthentication
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,6 +18,8 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = GardenUser.objects.all()
     serializer_class = UserSerializer
     renderer_classes = (UnicodeJSONRenderer, JSONRenderer)
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
     def retrieve(self, request, *args, **kwargs):
         serializer = UserSerializer()

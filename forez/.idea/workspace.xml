@@ -4,17 +4,18 @@
     <list default="true" id="3ddac7de-4420-4a55-a421-03cd157bf3f8" name="Default" comment="" />
     <ignored path="forez.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/views.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1408296062104" ignored="false" />
+    <file path="/views.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1408425118218" ignored="false" />
     <file path="/settings.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1408283036473" ignored="false" />
     <file path="/*.regexp" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1404080995088" ignored="false" />
     <file path="/models.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1408293527641" ignored="false" />
-    <file path="/urls.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1406056506829" ignored="false" />
+    <file path="/urls.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1408347111792" ignored="false" />
     <file path="/tests.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1406056407227" ignored="false" />
     <file path="/serializers.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1408283415024" ignored="false" />
     <file path="/request_form.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1406056368196" ignored="false" />
     <file path="/auth.html" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1406059129194" ignored="false" />
     <file path="/admin.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1408296196959" ignored="false" />
     <file path="/forms.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1408280224309" ignored="false" />
+    <file path="/test.py" changelist="3ddac7de-4420-4a55-a421-03cd157bf3f8" time="1408435038934" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,24 +35,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="serializers.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/serializers.py">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="18" selection-start="438" selection-end="438" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#24#67#0" expanded="true" />
-              </folding>
+            <state line="62" column="0" selection-start="2475" selection-end="2475" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/models.py">
+      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oauth_manager/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="24" selection-start="1399" selection-end="1399" vertical-scroll-proportion="-9.568627">
-              <folding>
-                <element signature="e#24#52#0" expanded="true" />
-              </folding>
+            <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,32 +56,44 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forez/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="474" selection-end="474" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#25#76#0" expanded="true" />
-              </folding>
+            <state line="0" column="0" selection-start="0" selection-end="23" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/urls.py">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oauth_manager/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#24#58#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/users/admin.py">
+      <file leaf-file-name="serializers.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oauth_manager/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="42" selection-start="1233" selection-end="1233" vertical-scroll-proportion="0.5811808">
-              <folding>
-                <element signature="e#24#48#0" expanded="true" />
-              </folding>
+            <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/oauth_manager/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="44" selection-start="69" selection-end="69" vertical-scroll-proportion="0.056074765">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oauth_manager/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="0" selection-start="25" selection-end="69" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,19 +101,8 @@
       <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forez/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="33" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
+            <state line="43" column="1" selection-start="1193" selection-end="1193" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="53" selection-start="2142" selection-end="2142" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#25#108#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -119,27 +117,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/users/tests.py" />
-        <option value="$PROJECT_DIR$/utils/tests.py" />
-        <option value="$PROJECT_DIR$/utils/request_form.py" />
-        <option value="$PROJECT_DIR$/redirects/urls.py" />
-        <option value="$PROJECT_DIR$/web_content/templates/auth.html" />
-        <option value="$PROJECT_DIR$/users/forms.py" />
         <option value="$PROJECT_DIR$/users/models.py" />
         <option value="$PROJECT_DIR$/users/serializers.py" />
-        <option value="$PROJECT_DIR$/users/views.py" />
-        <option value="$PROJECT_DIR$/forez/settings.py" />
-        <option value="$PROJECT_DIR$/forez/urls.py" />
-        <option value="$PROJECT_DIR$/users/urls.py" />
         <option value="$PROJECT_DIR$/users/admin.py" />
+        <option value="$PROJECT_DIR$/users/views.py" />
+        <option value="$PROJECT_DIR$/users/urls.py" />
+        <option value="$PROJECT_DIR$/forez/urls.py" />
+        <option value="$PROJECT_DIR$/forez/settings.py" />
+        <option value="$PROJECT_DIR$/tokens/views.py" />
+        <option value="$PROJECT_DIR$/tokens/test.py" />
+        <option value="$PROJECT_DIR$/OauthManager/models.py" />
+        <option value="$PROJECT_DIR$/OauthManager/serializers.py" />
+        <option value="$PROJECT_DIR$/OauthManager/urls.py" />
+        <option value="$PROJECT_DIR$/OauthManager/views.py" />
+        <option value="$PROJECT_DIR$/OauthManager/test.py" />
+        <option value="$PROJECT_DIR$/oauth_manager/test.py" />
+        <option value="$PROJECT_DIR$/oauth_manager/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="-4" />
-    <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="x" value="96" />
+    <option name="y" value="52" />
+    <option name="width" value="1845" />
+    <option name="height" value="998" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -167,6 +168,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -209,13 +211,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tokens" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forez" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forez" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="oauth_manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forez" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forez" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="forez" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -453,26 +482,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="96" y="52" width="1845" height="998" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.116639026" sideWeight="0.660619" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.118850194" sideWeight="0.660619" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991462" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.339381" sideWeight="0.5002764" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.339381" sideWeight="0.4997236" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36177474" sideWeight="0.4997236" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991462" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -536,127 +565,113 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/users/tests.py">
+    <entry file="file://$PROJECT_DIR$/users/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="-0.0">
+        <state line="74" column="0" selection-start="2474" selection-end="2474" vertical-scroll-proportion="0.84822935">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="224" selection-end="224" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/request_form.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="30" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_content/templates/auth.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="332" selection-end="332" vertical-scroll-proportion="-5.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../ez_env/local/lib/python2.7/site-packages/django/conf/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="23" selection-start="4402" selection-end="4402" vertical-scroll-proportion="0.33275864">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redirects/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../ez_env/local/lib/python2.7/site-packages/django/forms/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="299" column="17" selection-start="12410" selection-end="12410" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../ez_env/local/lib/python2.7/site-packages/django/contrib/admin/sites.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="251" column="8" selection-start="10074" selection-end="10074" vertical-scroll-proportion="-3.1288013">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../ez_env/local/lib/python2.7/site-packages/django/contrib/auth/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="455" column="36" selection-start="16615" selection-end="16630" vertical-scroll-proportion="0.61045533">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="18" selection-start="438" selection-end="438" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#24#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="53" selection-start="2142" selection-end="2142" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#25#108#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="24" selection-start="1399" selection-end="1399" vertical-scroll-proportion="-9.568627">
-          <folding>
-            <element signature="e#24#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forez/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="474" selection-end="474" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#25#76#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/users/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+        <state line="6" column="44" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../ez_env/local/lib/python2.7/site-packages/django/contrib/auth/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="4" selection-start="1302" selection-end="1302" vertical-scroll-proportion="0.25223613" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../ez_env/local/lib/python2.7/site-packages/rest_framework/authtoken/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="26" selection-start="447" selection-end="447" vertical-scroll-proportion="0.3146853" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../ez_env/local/lib/python2.7/site-packages/rest_framework/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="497" column="32" selection-start="16861" selection-end="16861" vertical-scroll-proportion="0.3864043">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tokens/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tokens/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="49" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#24#58#0" expanded="true" />
+            <element signature="e#25#72#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tokens/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="0" selection-start="2475" selection-end="2475" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/forez/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="33" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
+        <state line="43" column="1" selection-start="1193" selection-end="1193" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/admin.py">
+    <entry file="file://$PROJECT_DIR$/forez/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="42" selection-start="1233" selection-end="1233" vertical-scroll-proportion="0.5811808">
-          <folding>
-            <element signature="e#24#48#0" expanded="true" />
-          </folding>
+        <state line="0" column="0" selection-start="0" selection-end="23" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth_manager/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth_manager/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth_manager/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth_manager/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="25" selection-end="69" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth_manager/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="44" selection-start="69" selection-end="69" vertical-scroll-proportion="0.056074765">
+          <folding />
         </state>
       </provider>
     </entry>

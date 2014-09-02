@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 from rest_framework import routers
-from views import UserViewSet, UserCreateViewSet
+from views import TokensViewSet
 
 router = routers.SimpleRouter(trailing_slash=False)
 
-router.register(r'users', UserCreateViewSet)
-router.register(r'users', UserViewSet)
-
+router.register(r'tokens', TokensViewSet)
 urlpatterns = router.urls

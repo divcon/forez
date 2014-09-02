@@ -44,26 +44,6 @@ class GardenUserChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
-# class GardenUserChangeForm(UserChangeForm):
-#
-#     class Meta:
-#         model = get_user_model()
-#
-#
-# class GardenUserCreationForm(UserCreationForm):
-#
-#     class Meta:
-#         model = get_user_model()
-#
-#     def clean_username(self):
-#         username = self.cleaned_data["username"]
-#         try:
-#             get_user_model().objects.get(username=username)
-#         except get_user_model().DoesNotExist:
-#             return username
-#         raise forms.ValidationError(self.error_messages['duplicate_username'])
-
-
 class GardenUserAdmin(UserAdmin):
     add_form = GardenUserCreationForm
     form = GardenUserChangeForm
@@ -92,25 +72,3 @@ class GardenUserAdmin(UserAdmin):
     )
 
 admin.site.register(GardenUser, GardenUserAdmin)
-
-
-
-# from django.contrib import admin
-# from django.contrib.auth.admin import UserAdmin
-# from django.contrib.auth.models import User
-#
-# from users.models import GardenUser
-#
-#
-# class GardenUserInline(admin.StackedInline):
-#     model = GardenUser
-#     can_delete = False
-#     verbose_name_plural = 'GardenUser'
-#
-#
-# class UserAdmin(UserAdmin):
-#     inlines = (GardenUserInline, )
-#
-#
-# admin.site.unregister(User)
-# admin.site.register(User, UserAdmin)

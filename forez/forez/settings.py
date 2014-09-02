@@ -48,9 +48,9 @@ REST_FRAMEWORK = {
     #     'rest_framework.authentication.BasicAuthentication',
     #     'rest_framework.authentication.SessionAuthentication',
     # )
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.OAuth2Authentication',
-    ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework.authentication.OAuth2Authentication',
+    # ),
     'DEFAULT_PARSER_CLASSES': (
             'rest_framework.parsers.FormParser',
             'rest_framework.parsers.JSONParser',
