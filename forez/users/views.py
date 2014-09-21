@@ -13,6 +13,7 @@ from users import models
 from rest_framework.authentication import TokenAuthentication
 
 
+#retrieve another user's info
 class UserViewSet(viewsets.ModelViewSet):
     model = GardenUser
     queryset = GardenUser.objects.all()
@@ -29,6 +30,29 @@ class UserViewSet(viewsets.ModelViewSet):
         serializer = UserSerializer(self.queryset, many=True, context={'request': request})
 
         return Response(serializer.data)
+
+
+#retrieve my info
+class MyInfoViewSet(viewsets.GenericViewSet,
+                    mixins.RetrieveModelMixin):
+    model = GardenUser
+    serializer_class = UserSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    renderer_classes = (UnicodeJSONRenderer, )
+    lookup_field = 'username'
+    
+    def initial(self, request, *args, **kwargs):
+        super(UsersViewSet, self).initial(request, *args, **kwargs)
+
+        if isinstance(request.DATA, dict):
+            for key in request.DATA.keys():
+                if type(request.DATA[key]) is list:
+                    request.DATA[key] = request.DATA[key][0]
+
+    def retrieve(self, request, *args, **kwargs):
+        return super(UsersViewSet, self).retrieve(request, *args, **kwargs)
+
 
 
 class UserCreateViewSet(viewsets.GenericViewSet,

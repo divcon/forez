@@ -41,6 +41,9 @@ INSTALLED_APPS = (
     'provider',
     'provider.oauth2',
     'users',
+    'utils',
+    'oauth_manager',
+
 )
 
 REST_FRAMEWORK = {
@@ -51,6 +54,9 @@ REST_FRAMEWORK = {
     # 'DEFAULT_AUTHENTICATION_CLASSES': (
     #     'rest_framework.authentication.OAuth2Authentication',
     # ),
+    'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.AllowAny',
+    ),
     'DEFAULT_PARSER_CLASSES': (
             'rest_framework.parsers.FormParser',
             'rest_framework.parsers.JSONParser',
