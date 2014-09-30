@@ -5,9 +5,14 @@ import json
 
 class api_request(object):
     _headers = None
+    _host = None
     body = None
     url = None
-    host = "http://211.189.127.73:8000"
+    #host = "http://211.189.127.73:8000"
+    test = None
+
+    def __init__(self, test):
+        self.test=test
 
     def http_request(self, url, method="GET", headers=None, body=None):
         h = httplib2.Http()
@@ -17,6 +22,7 @@ class api_request(object):
         request_header.update(self.headers)
         if not headers is None:
             request_header.update(headers)
+            print request_header
         if not body is None:
             request_body = json.dumps(body)
             print str(type(body))
@@ -37,3 +43,10 @@ class api_request(object):
         }
         return self._headers
  
+    @property
+    def host(self):
+        if self.test == True:
+            self._host = "http://localhost:8000"
+        else:
+            self._host = "http://211.189.127.73:8000"
+        return self._host
