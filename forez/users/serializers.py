@@ -8,12 +8,14 @@ class UserCreateSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = GardenUser
-        fields = ('username', 'password', 'email', 'phone')
+        fields = ('username', 'password', 'email',
+                  'phone', 'real_name', 'class_num', 'gender')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = GardenUser
-        fields = ('username', 'email', 'phone')
+        fields = ('username', 'email', 'phone', 'real_name',
+                  'class_num', 'gender', 'profile_pic')
         lookup_field = 'username'
