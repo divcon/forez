@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('tokens.urls')),
     url(r'^', include('users.urls')),
+    url(r'^', include('oauth_manager.urls')),
     url(r'^oauth2/', include('provider.oauth2.urls', namespace='oauth2')),
     url(r'^', include('redirects.urls')),
 )

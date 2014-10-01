@@ -81,7 +81,6 @@ class UserCreateViewSet(viewsets.GenericViewSet,
     def create(self, request, *args, **kwargs):
         #When 'context deprecated' error occurs, add context parameter.
         serializer = UserCreateSerializer(data=request.DATA, context={'request': request})
-        print request
         if serializer.is_valid():
             GardenUser.objects.create_user(
                 username=serializer.data['username'],

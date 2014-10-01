@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 from rest_framework import routers
-from .views import
-#from views import MyInfoViewSet
+from .views import ClientViewSet, ClientCreateViewSet
 
 router = routers.SimpleRouter(trailing_slash=False)
 
-router.register(r'users', UserCreateViewSet)
-router.register(r'users', UserViewSet)
-# router.register(r'users/me', MyInfoViewSet)
+router.register(r'clients', ClientCreateViewSet)
+router.register(r'clients', ClientViewSet)
 
 urlpatterns = router.urls
