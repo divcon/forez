@@ -82,11 +82,19 @@ class UserCreateViewSet(viewsets.GenericViewSet,
         #When 'context deprecated' error occurs, add context parameter.
         serializer = UserCreateSerializer(data=request.DATA, context={'request': request})
         if serializer.is_valid():
-            GardenUser.objects.create_user(
-                username=serializer.data['username'],
-                password=serializer.data['password'],
-                email=serializer.data['email'],
-                phone=serializer.data['phone'],)
+            join_form = {
+                'email': serializer.data['email'],
+                'username': serializer.data['username'],
+                'real_name': serializer.data['real_name'],
+                'phone': serializer.data['phone'],
+                'class_num': serializer.data['class_num'],
+                'gender': serializer.data['gender'],
+                'password': serializer.data['password'],
+            }
+            # if serializer.data['birth'] is not None:
+            #     join_form.update('birth', serializer.data['birth'])
+            GardenUser.objects.create_user(join_form)
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         else:
@@ -96,6 +104,9 @@ class UserCreateViewSet(viewsets.GenericViewSet,
                 username_error = serializer.errors.get('username', None)
                 if username_error == [u'User with this Username already exists.']:
                     return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
+            elif 'email' in serializer.errors:
+                email_error = serializer.errors.get('email', None)
+                return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
             return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
 

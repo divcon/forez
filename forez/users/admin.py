@@ -15,7 +15,8 @@ class GardenUserCreationForm(forms.ModelForm):
 
     class Meta:
         model = GardenUser
-        fields = ("email", "username", "phone")
+        fields = ("email", "username", "phone", 'real_name',
+                  'class_num', 'gender')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -38,7 +39,8 @@ class GardenUserChangeForm(forms.ModelForm):
 
     class Meta:
         model = GardenUser
-        fields = ('email', 'username', 'phone', 'is_activate', 'is_admin')
+        fields = ('email', 'username', 'phone', 'is_activate',
+                  'is_admin', 'real_name', 'class_num', 'gender', 'profile_pic')
 
     def clean_password(self):
         return self.initial["password"]
@@ -49,14 +51,16 @@ class GardenUserAdmin(UserAdmin):
     form = GardenUserChangeForm
 
     #can see query
-    list_display = ("username", "email", "is_staff", "phone",)
+    list_display = ("username", "email", "is_staff", "phone",
+                    'real_name', 'class_num', 'gender', 'profile_pic')
     list_filter = ("is_staff", "is_superuser", "is_activate", "groups")
     search_fields = ("username",)
     ordering = ("username",)
     filter_horizontal = ("groups", "user_permissions")
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        ("Personal info", {"fields": ("email", "phone")}),
+        ("Personal info", {"fields": ("email", "phone", 'real_name', 'class_num',
+                                      'gender', 'profile_pic')}),
         ("Permissions", {"fields": ("is_activate",
                                     "is_staff",
                                     "is_superuser",
@@ -67,7 +71,8 @@ class GardenUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             "classes": ("wide",),
-            "fields": ("username", "phone", "email", "password1", "password2")
+            "fields": ("username", "phone", "email", "real_name", "class_num",
+                       "gender", 'profile_pic', "password1", "password2")
         }),
     )
 
