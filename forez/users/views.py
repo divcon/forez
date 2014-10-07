@@ -13,8 +13,12 @@ from users import models
 from rest_framework.authentication import TokenAuthentication
 
 
+#combine all class later....(refactoring)
 #retrieve another user's info
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.GenericViewSet,
+                  mixins.RetrieveModelMixin,
+                  mixins.DestroyModelMixin,
+                  mixins.UpdateModelMixin):
     model = GardenUser
     serializer_class = UserSerializer
     authentication_classes = (TokenAuthentication,)
@@ -35,29 +39,15 @@ class UserViewSet(viewsets.ModelViewSet):
 
         return super(UserViewSet, self).retrieve(request, *args, **kwargs)
 
+    def update(self, request, *args, **kwargs):
+        if request.user != self.get_object():
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        return super(UserViewSet, self).update(request, *args, **kwargs)
 
-#retrieve my info
-# class MyInfoViewSet(viewsets.GenericViewSet,
-#                     mixins.RetrieveModelMixin):
-#     model = GardenUser
-#     serializer_class = UserSerializer
-#     authentication_classes = (TokenAuthentication,)
-#     permission_classes = (IsAuthenticated,)
-#     renderer_classes = (UnicodeJSONRenderer, )
-#     lookup_field = 'username'
-#
-#     def initial(self, request, *args, **kwargs):
-#         super(MyInfoViewSet, self).initial(request, *args, **kwargs)
-#         if isinstance(request.DATA, dict):
-#             for key in request.DATA.keys():
-#                 if type(request.DATA[key]) is list:
-#                     request.DATA[key] = request.DATA[key][0]
-#
-#     def retrieve(self, request, *args, **kwargs):
-#         if request.user != self.get_object():
-#             return Response(status=status.HTTP_403_FORBIDDEN)
-#
-#         return super(MyInfoViewSet, self).retrieve(request, *args, **kwargs)
+    def destroy(self, request, *args, **kwargs):
+        if request.user != self.get_object():
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        return super(UserViewSet, self).destroy(request, *args, **kwargs)
 
 
 class UserCreateViewSet(viewsets.GenericViewSet,

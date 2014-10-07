@@ -13,5 +13,6 @@ urlpatterns = patterns('',
     url(r'^', include('users.urls')),
     url(r'^', include('oauth_manager.urls')),
     url(r'^oauth2/', include('provider.oauth2.urls', namespace='oauth2')),
+    url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^', include('redirects.urls')),
 )

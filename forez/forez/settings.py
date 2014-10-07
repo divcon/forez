@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_swagger',
     'provider',
     'provider.oauth2',
     'users',
@@ -61,6 +62,15 @@ REST_FRAMEWORK = {
             'rest_framework.parsers.FormParser',
             'rest_framework.parsers.JSONParser',
     ),
+}
+
+SWAGGER_SETTINGS = {
+    "enabled_methods": [  # Specify which methods to enable in Swagger UI
+        'get',
+        'post',
+        'put',
+        'delete'
+    ],
 }
 
 TEMPLATE_DIRS = (

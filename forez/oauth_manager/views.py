@@ -9,18 +9,22 @@ from rest_framework.authentication import TokenAuthentication
 from users.models import GardenUser
 
 
-class ClientCreateViewSet(viewsets.GenericViewSet,
+#update is in clients/{appname}/settings
+class ClientViewSet(viewsets.GenericViewSet,
                     mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin):
+                    mixins.ListModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.DestroyModelMixin):
     model = Client
     serializer_class = ClientSerializer
     queryset = Client.objects.all()
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
     renderer_classes = (UnicodeJSONRenderer, )
+    lookup_field = 'name'
 
     def initial(self, request, *args, **kwargs):
-        super(ClientCreateViewSet, self).initial(request, *args, **kwargs)
+        super(ClientViewSet, self).initial(request, *args, **kwargs)
         if isinstance(request.DATA, dict):
             for key in request.DATA.keys():
                 if type(request.DATA[key]) is list:
@@ -34,10 +38,6 @@ class ClientCreateViewSet(viewsets.GenericViewSet,
     def create(self, request, *args, **kwargs):
         serializer = ClientSerializer(data=request.DATA, context={'request': request})
         if serializer.is_valid():
-            if self.queryset.filter(user=request.user, name=serializer.data['name']):
-                data = {"duplicated": "client name is duplicated"}
-                return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
-
             # create should be in serializers.py
             created_client = Client.objects.create(
                 user=request.user,
@@ -54,25 +54,37 @@ class ClientCreateViewSet(viewsets.GenericViewSet,
         else:
             return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-class ClientViewSet(viewsets.GenericViewSet,
-                    mixins.RetrieveModelMixin):
-    model = Client
-    serializer_class = ClientSerializer
-    queryset = Client.objects.all()
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-    renderer_classes = (UnicodeJSONRenderer, )
-    lookup_field = 'user'
-
-    def initial(self, request, *args, **kwargs):
-        super(ClientViewSet, self).initial(request, *args, **kwargs)
-        if isinstance(request.DATA, dict):
-            for key in request.DATA.keys():
-                if type(request.DATA[key]) is list:
-                    request.DATA[key] = request.DATA[key][0]
+    def list(self, request, *args, **kwargs):
+        return super(ClientViewSet, self).list(request, *args, **kwargs)
 
     def retrieve(self, request, *args, **kwargs):
-        # if request.user != self.get_object():
-        #     return Response(status=status.HTTP_403_FORBIDDEN)
+        if request.user != self.get_object().user:
+            return Response(status=status.HTTP_403_FORBIDDEN)
         return super(ClientViewSet, self).retrieve(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        if request.user != self.get_object().user:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        return super(ClientViewSet, self).destroy(request, *args, **kwargs)
+
+# class ClientViewSet(viewsets.GenericViewSet,
+#                     mixins.RetrieveModelMixin):
+#     model = Client
+#     serializer_class = ClientSerializer
+#     queryset = Client.objects.all()
+#     authentication_classes = (TokenAuthentication,)
+#     permission_classes = (IsAuthenticated,)
+#     renderer_classes = (UnicodeJSONRenderer, )
+#     lookup_field = 'name'
+#
+#     def initial(self, request, *args, **kwargs):
+#         super(ClientViewSet, self).initial(request, *args, **kwargs)
+#         if isinstance(request.DATA, dict):
+#             for key in request.DATA.keys():
+#                 if type(request.DATA[key]) is list:
+#                     request.DATA[key] = request.DATA[key][0]
+#
+#     def retrieve(self, request, *args, **kwargs):
+#         # if request.user != self.get_object():
+#         #     return Response(status=status.HTTP_403_FORBIDDEN)
+#         return super(ClientViewSet, self).retrieve(request, *args, **kwargs)
