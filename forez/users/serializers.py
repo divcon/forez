@@ -17,5 +17,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = GardenUser
         fields = ('username', 'email', 'phone', 'real_name',
-                  'class_num', 'gender', 'profile_pic')
+                  'class_num', 'gender', 'password')
         lookup_field = 'username'
+        read_only_fields = ('username', 'real_name', 'class_num', 'gender')
+        write_only_fields = ('password',)
+
+    def get_profie_url(self):
+        return GardenUser.profile_pic
