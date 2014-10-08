@@ -25,6 +25,9 @@ class TokensViewSet(viewsets.GenericViewSet,
                     request.DATA[key] = request.DATA[key][0]
 
     def create(self, request, *args, **kwargs):
+        """
+            Log in
+        """
         serializer = self.serializer_class(data=request.DATA)
 
         print serializer.is_valid()

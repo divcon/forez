@@ -36,6 +36,9 @@ class ClientViewSet(viewsets.GenericViewSet,
         return client_set
 
     def create(self, request, *args, **kwargs):
+        """
+            Registering client(app)
+        """
         serializer = ClientSerializer(data=request.DATA, context={'request': request})
         if serializer.is_valid():
             # create should be in serializers.py
@@ -55,14 +58,23 @@ class ClientViewSet(viewsets.GenericViewSet,
             return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request, *args, **kwargs):
+        """
+            Listing clients(apps)
+        """
         return super(ClientViewSet, self).list(request, *args, **kwargs)
 
     def retrieve(self, request, *args, **kwargs):
+        """
+            Searching client(app) by using application name
+        """
         if request.user != self.get_object().user:
             return Response(status=status.HTTP_403_FORBIDDEN)
         return super(ClientViewSet, self).retrieve(request, *args, **kwargs)
 
     def destroy(self, request, *args, **kwargs):
+        """
+            Unregistering client(app)
+        """
         if request.user != self.get_object().user:
             return Response(status=status.HTTP_403_FORBIDDEN)
         return super(ClientViewSet, self).destroy(request, *args, **kwargs)
