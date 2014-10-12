@@ -67,12 +67,3 @@ class GardenUser(AbstractBaseUser, PermissionsMixin):
     def __unicode__(self):
         return self.username
 
-# class GardenUser(models.Model):
-#     class Meta:
-#         verbose_name = 'GardenUser'
-#         verbose_name_plural = 'GardenUser'
-#
-#     # user = models.OneToOneField(settings.AUTH_USER_MODEL)
-#     user = models.OneToOneField(User)
-#     phone = models.CharField(verbose_name='phone', max_length=15, blank=False)
-
