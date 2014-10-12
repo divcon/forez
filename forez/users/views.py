@@ -60,6 +60,7 @@ class UserViewSet(viewsets.GenericViewSet,
 
 
 class UserCreateViewSet(viewsets.GenericViewSet,
+                        mixins.ListModelMixin,
                         mixins.CreateModelMixin):
     permission_classes = (AllowAny, )
     # model = User
@@ -76,6 +77,18 @@ class UserCreateViewSet(viewsets.GenericViewSet,
             for key in request.DATA.keys():
                 if type(request.DATA[key]) is list:
                     request.DATA[key] = request.DATA[key][0]
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = GardenUser.objects.all()
+        username = self.request.QUERY_PARAMS.get('username', None)
+        if username is not None:
+            queryset = queryset.filter(username=username)
+            return queryset
+        return queryset
 
     def create(self, request, *args, **kwargs):
         """
@@ -111,6 +124,11 @@ class UserCreateViewSet(viewsets.GenericViewSet,
                 return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
             return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
-    # def create(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs):
+        query_result = self.get_queryset()
+        if query_result:
+            data = {"error": "ID is already exists"}
+            print str(query_result)
+            return Response(data, status=status.HTTP_409_CONFLICT)
+        data = {"OK": "Can use ID"}
+        return Response(data, status=status.HTTP_200_OK)

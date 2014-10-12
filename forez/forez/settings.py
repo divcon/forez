@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'users',
     'utils',
     'oauth_manager',
+    'teams',
 
 )
 
