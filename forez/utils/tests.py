@@ -2,10 +2,10 @@ from request_form import api_request
 
 url = "/clients"
 #body = {'phone': '000000000', 'password': 'rkems', 'email': 'abv@test.com'}
-body = {'name': 'testuser12', 'url': '211.189.127.73:8000', 'redirect_uri': '211.189.127.73:8000', 
+body = {'name': 'testuser1212', 'url': 'http://211.189.127.73:8000', 'redirect_uri': 'http://211.189.127.73:8000', 
         'client_type': '0'}
 header = {'Authorization': 'Token 94083a1a472b0f1b36dd0d5f79b959f30cbae78b'}
-method = "GET"
+method = "POST"
 
 #url = "/clients/sungjin1"
 ##header = {'authorization': 'token 94083a1a472b0f1b36dd0d5f79b959f30cbae78b'}

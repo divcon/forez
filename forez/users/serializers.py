@@ -22,5 +22,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         read_only_fields = ('username', 'real_name', 'class_num', 'gender')
         write_only_fields = ('password',)
 
-    def get_profie_url(self):
+    def get_profile_url(self):
         return GardenUser.profile_pic
+
+    def change_password(self):
+        pass

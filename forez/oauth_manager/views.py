@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-from .serializers import ClientSerializer
+from .serializers import ClientSerializer, ClientCreateSerializer
 from provider.oauth2.models import Client
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -39,7 +39,7 @@ class ClientViewSet(viewsets.GenericViewSet,
         """
             Registering client(app)
         """
-        serializer = ClientSerializer(data=request.DATA, context={'request': request})
+        serializer = ClientCreateSerializer(data=request.DATA, context={'request': request})
         if serializer.is_valid():
             # create should be in serializers.py
             created_client = Client.objects.create(
