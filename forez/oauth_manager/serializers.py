@@ -11,8 +11,22 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
         lookup_field = 'name'
         read_only_fields = ('name', 'client_type', 'client_id', 'client_secret')
 
+     # create app detail when registering clients.
+    def init_app_detail(self):
+        pass
+
+    def init_teams(self):
+        pass
+
+
+class ClientCreateSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Client
+        fields = ('name', 'url', 'redirect_uri', 'client_type',)
+
     def is_valid(self):
-        if super(ClientSerializer, self).is_valid():
+        if super(ClientCreateSerializer, self).is_valid():
             _errors = dict()
             if Client.objects.filter(name=self.object.name).exists():
                 _errors['name'] = ['Application name is already exist.']
@@ -20,7 +34,3 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
                 return False
 
             return True
-
-    # create app detail when registering clients.
-    def init_app_detail(self):
-        pass
