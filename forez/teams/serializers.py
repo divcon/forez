@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
+from .models import Team
 
-#
-# class TeamSerializer(serializers.HyperlinkedModelSerializer):
-#
-#     class Meta:
-#         model = Team
-#
-#
-#
+
+class TeamSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Team
+        fields = ('id', 'team_name', 'leader', 'member1',
+                  'member2', 'member3', 'member4',
+                  'member5', 'member6', 'description')
+
+    def create_team(self, username):
+        pass
+
 # class ClientSerializer(serializers.HyperlinkedModelSerializer):
 #
 #     class Meta:

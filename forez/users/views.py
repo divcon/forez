@@ -128,7 +128,6 @@ class UserCreateViewSet(viewsets.GenericViewSet,
         query_result = self.get_queryset()
         if query_result:
             data = {"error": "ID is already exists"}
-            print str(query_result)
             return Response(data, status=status.HTTP_409_CONFLICT)
         data = {"OK": "Can use ID"}
         return Response(data, status=status.HTTP_200_OK)
