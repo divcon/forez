@@ -2,10 +2,10 @@ from request_form import api_request
 
 url = "/clients"
 #body = {'phone': '000000000', 'password': 'rkems', 'email': 'abv@test.com'}
-body = {'name': 'testuser1212', 'url': 'http://211.189.127.73:8000', 'redirect_uri': 'http://211.189.127.73:8000', 
-        'client_type': '0'}
+#body = {'name': 'testuser1212', 'url': 'http://211.189.127.73:8000', 'redirect_uri': 'http://211.189.127.73:8000', 
+#        'client_type': '0'}
 header = {'Authorization': 'Token 94083a1a472b0f1b36dd0d5f79b959f30cbae78b'}
-method = "POST"
+method = "GET"
 
 #url = "/clients/sungjin1"
 ##header = {'authorization': 'token 94083a1a472b0f1b36dd0d5f79b959f30cbae78b'}
@@ -17,6 +17,32 @@ method = "POST"
 #notebook test : True
 #Server test : False
 host = True
+
+#join us
+
+
+#login
+url = "/tokens"
+body = {'username': 'sungjin', 'password': 'rkems'}
+method = 'POST'
+
+#app registering
+url = "/clients"
+header = {'Authorization': 'Token aca623fac800aa174eafeb7ff8213024e459233e'}
+body = {'name': 'test3', 'url': 'http://211.189.127.73:8000', 'redirect_uri': 'http://211.189.127.73:8000', 
+        'client_type': '0'}
+method = "POST"
+
+#app list
+#url = "/clients/testuser1213"
+#header = {'Authorization': 'Token 3a327baddb77b0a0c86bb23c4dd321a3a547b987'}
+#method = "GET"
+
+#app delete
+#url = "/clients/testuser1213"
+#header = {'Authorization': 'Token 3a327baddb77b0a0c86bb23c4dd321a3a547b987'}
+#method = "DELETE"
+
 
 test = api_request(host)
 # resp, content = test.http_request(url=url, method="POST", body=body)

@@ -10,9 +10,15 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'team_name', 'leader', 'member1',
                   'member2', 'member3', 'member4',
                   'member5', 'member6', 'description')
+        read_only_fields = 'team_name', 'leader'
 
     def create_team(self, username):
         pass
+
+
+class TeamCreateSerializer(serializers.HyperlinkedModelSerializer):
+
+    pass
 
 # class ClientSerializer(serializers.HyperlinkedModelSerializer):
 #
