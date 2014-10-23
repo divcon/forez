@@ -7,6 +7,7 @@ from rest_framework import viewsets, mixins, status
 from rest_framework.renderers import UnicodeJSONRenderer
 from rest_framework.authentication import TokenAuthentication
 from users.models import GardenUser
+from teams.models import Team
 
 
 #update is in clients/{appname}/settings
@@ -48,10 +49,20 @@ class ClientViewSet(viewsets.GenericViewSet,
                 url=serializer.data['url'],
                 redirect_uri=serializer.data['redirect_uri'],
                 client_type=serializer.data['client_type'],)
+            created_team = Team.objects.create(
+                member=request.user,
+                client=created_client,
+                is_owner=True, )
+
+            leader = GardenUser.objects.get(id=created_team.member_id)
+            leader_name = leader.username
 
             response_data = {"client_id": created_client.client_id,
                              "client_secret": created_client.client_secret,
-                             "client_type": created_client.client_type, }
+                             "client_type": created_client.client_type,
+                             #app name
+                             "client_name": created_client.name,
+                             "team_owner": leader_name, }
             return Response(response_data, status.HTTP_201_CREATED)
 
         else:
@@ -78,6 +89,7 @@ class ClientViewSet(viewsets.GenericViewSet,
         if request.user != self.get_object().user:
             return Response(status=status.HTTP_403_FORBIDDEN)
         return super(ClientViewSet, self).destroy(request, *args, **kwargs)
+
 
 # class ClientViewSet(viewsets.GenericViewSet,
 #                     mixins.RetrieveModelMixin):
