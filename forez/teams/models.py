@@ -7,37 +7,43 @@ import time
 from django.db import models
 from django.db.models import Q
 from users.models import GardenUser
+from oauth_manager.models import GardenClient
 from provider.oauth2.models import Client
 
 
+class TeamManager(models.Manager):
+
+    def create_team(self, client, member, is_owner=False):
+        team = self.create(client=client, member=member, is_owner=is_owner)
+        return team
+
+    def get_team_owner(self, team_name):
+        leader = self.get(team_name=team_name, is_owner=True)
+        return leader
+
+    def add_team_member(self, member_info):
+        team_member = self.create(client=member_info['client'], member=['member'], is_owner=False)
+        print "new member is added"
+        return team_member
+
+    # go to views
+    #
+    # def is_exist(self, username):
+    #     """
+    #         True : exist
+    #         False : not Exist
+    #     """
+    #     if GardenUser.objects.get(username=username) is not None:
+    #         return True
+    #     return False
+
+
 class Team(models.Model):
-    id = models.AutoField(primary_key=True)
-    client = models.ForeignKey(Client, related_name='project_name', null=False, unique=True)
-    member = models.ForeignKey(GardenUser, related_name='team_member')
-    is_owner = models.BooleanField(null=False)
-    # optional
-    # team_log
-    # team_board = models.CharField(max_length=255, default='http://teamboard')
+    id = models.AutoField(primary_key=True, null=False, blank=False)
+    client = models.ForeignKey(GardenClient, related_name='project', null=False, to_field='client_name')
+    member = models.ForeignKey(GardenUser, related_name='member', null=False, to_field='username')
+    is_owner = models.BooleanField(null=False, blank=False, default=False)
+    objects = TeamManager()
 
     class Meta:
-        pass
-
-    def add_member(self):
-        pass
-
-    def get_leader_name(self, project_id):
-        team_leader = self.objects.get(client_id=project_id, is_owner=True)
-        return GardenUser.objects.get(id=team_leader.member_id)
-
-    def get_team_members(self, project_id):
-        project_list = self.objects.all()
-        object_list = project_list.filter(client_id=project_id)
-        member_list = list()
-
-        for o in object_list:
-            member_id = o.member_id
-            name = GardenUser.objects.get(id=member_id).name
-            member_list.append(name)
-        #for test
-        print member_list
-        return member_list
+        unique_together = ('client', 'member')

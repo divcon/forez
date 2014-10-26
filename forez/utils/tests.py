@@ -22,13 +22,13 @@ host = True
 
 
 #login
-url = "/tokens"
-body = {'username': 'sungjin', 'password': 'rkems'}
-method = 'POST'
+#url = "/tokens"
+#body = {'username': 'sungjin', 'password': 'rkems'}
+#method = 'POST'
 
 #app registering
 url = "/clients"
-header = {'Authorization': 'Token aca623fac800aa174eafeb7ff8213024e459233e'}
+header = {'Authorization': 'Token b6da821453aaaae2148c7c47433673b2889b8ff8'}
 body = {'name': 'test3', 'url': 'http://211.189.127.73:8000', 'redirect_uri': 'http://211.189.127.73:8000', 
         'client_type': '0'}
 method = "POST"
