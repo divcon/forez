@@ -35,4 +35,5 @@ class TokensViewSet(viewsets.GenericViewSet,
             token, created = Token.objects.get_or_create(user=serializer.object['user'])
             id_num = serializer.object['user'].id
             return Response({'token': token.key, 'id': id_num})
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'error': 'check your password'}, status=status.HTTP_400_BAD_REQUEST)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

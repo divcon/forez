@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from rest_framework.authentication import SessionAuthentication, BaseAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -118,10 +119,12 @@ class UserCreateViewSet(viewsets.GenericViewSet,
             if 'username' in serializer.errors:
                 username_error = serializer.errors.get('username', None)
                 if username_error == [u'User with this Username already exists.']:
-                    return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
+                    return Response(data={'error': 'username is already exists.'}, status=status.HTTP_409_CONFLICT)
+                    # return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
             elif 'email' in serializer.errors:
                 email_error = serializer.errors.get('email', None)
-                return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
+                return Response(data={'error': 'email is already exists'}, status=status.HTTP_409_CONFLICT)
+                # return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
             return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request, *args, **kwargs):

@@ -7,6 +7,7 @@ from rest_framework import viewsets, mixins, status
 from rest_framework.renderers import UnicodeJSONRenderer
 from rest_framework.authentication import TokenAuthentication
 from users.models import GardenUser
+from .models import GardenClient
 from teams.models import Team
 
 
@@ -43,30 +44,29 @@ class ClientViewSet(viewsets.GenericViewSet,
         serializer = ClientCreateSerializer(data=request.DATA, context={'request': request})
         if serializer.is_valid():
             # create should be in serializers.py
-            created_client = Client.objects.create(
+            created_client = GardenClient.objects.create(
                 user=request.user,
                 name=serializer.data['name'],
                 url=serializer.data['url'],
                 redirect_uri=serializer.data['redirect_uri'],
-                client_type=serializer.data['client_type'],)
+                client_type=serializer.data['client_type'],
+                client_name=serializer.data['name'], )
             created_team = Team.objects.create(
                 member=request.user,
                 client=created_client,
                 is_owner=True, )
-
-            leader = GardenUser.objects.get(id=created_team.member_id)
-            leader_name = leader.username
 
             response_data = {"client_id": created_client.client_id,
                              "client_secret": created_client.client_secret,
                              "client_type": created_client.client_type,
                              #app name
                              "client_name": created_client.name,
-                             "team_owner": leader_name, }
+                             "team_owner": created_team.member.username, }
             return Response(response_data, status.HTTP_201_CREATED)
 
         else:
-            return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={'error': 'Application name is already exist'}, status=status.HTTP_409_CONFLICT)
+            # return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request, *args, **kwargs):
         """

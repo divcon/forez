@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from provider.oauth2.models import Client
+from .models import GardenClient
 from rest_framework import serializers
 
 
 class ClientSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        model = Client
+        model = GardenClient
         fields = ('name', 'url', 'redirect_uri', 'client_type', 'client_id', 'client_secret')
         lookup_field = 'name'
         read_only_fields = ('name', 'client_type', 'client_id', 'client_secret')
@@ -19,11 +20,12 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
         pass
 
 
-class ClientCreateSerializer(serializers.HyperlinkedModelSerializer):
+class ClientCreateSerializer(serializers.ModelSerializer):
+    team = serializers.RelatedField(many=False)
 
     class Meta:
-        model = Client
-        fields = ('name', 'url', 'redirect_uri', 'client_type',)
+        model = GardenClient
+        fields = ('name', 'url', 'redirect_uri', 'client_type', 'project')
 
     def is_valid(self):
         if super(ClientCreateSerializer, self).is_valid():
