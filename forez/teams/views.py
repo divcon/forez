@@ -48,7 +48,7 @@ class TeamViewSet(viewsets.GenericViewSet,
         #chage to function
         #check member
         if not Team.objects.is_member(request.user, client_obj):
-            return Response(data={'Error': 'No Authentication'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response(data={'error': 'No Authentication'}, status=status.HTTP_401_UNAUTHORIZED)
 
         #_post_member
         if request.method == 'POST':
@@ -59,7 +59,7 @@ class TeamViewSet(viewsets.GenericViewSet,
                 tmp_dict['member'] = member_obj
                 Team.objects.add_team_member(tmp_dict)
                 return Response(data={'OK': 'add member'}, status=status.HTTP_201_CREATED)
-            return Response(data={'Error': 'Check user name'}, status=status.HTTP_409_CONFLICT)
+            return Response(data={'error': 'Check user name'}, status=status.HTTP_409_CONFLICT)
         #_get_member
         if request.method == 'GET':
             member_list = Team.objects.get_team_members(client_obj)

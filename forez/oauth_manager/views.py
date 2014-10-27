@@ -65,7 +65,8 @@ class ClientViewSet(viewsets.GenericViewSet,
             return Response(response_data, status.HTTP_201_CREATED)
 
         else:
-            return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={'error': 'Application name is already exist'}, status=status.HTTP_409_CONFLICT)
+            # return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request, *args, **kwargs):
         """
