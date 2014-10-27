@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
 from django.db import models
 
 from django.contrib.auth.models import (
@@ -27,6 +29,14 @@ class GardenUserManager(BaseUserManager):
         user.is_superuser = True
         user.save(using=self._db)
         return user
+
+    def is_exist(self, username):
+        if self.all().filter(username=username):
+            return True
+        return False
+
+    def get_user_obj(self, username):
+        return self.get(username=username)
 
 
 class GardenUser(AbstractBaseUser, PermissionsMixin):

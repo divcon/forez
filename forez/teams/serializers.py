@@ -8,7 +8,6 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Team
         fields = ('id', 'client', 'member')
-        read_only_fields = 'id'
         lookup_field = 'client'
 
 

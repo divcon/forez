@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-import hashlib
-import time
 
 from django.db import models
 from django.db.models import Q
 from users.models import GardenUser
 from oauth_manager.models import GardenClient
-from provider.oauth2.models import Client
 
 
 class TeamManager(models.Manager):
@@ -17,30 +14,37 @@ class TeamManager(models.Manager):
         team = self.create(client=client, member=member, is_owner=is_owner)
         return team
 
-    def get_team_owner(self, team_name):
-        leader = self.get(team_name=team_name, is_owner=True)
+    def get_team_owner(self, client):
+        leader = self.get(client=client, is_owner=True)
         return leader
 
     def add_team_member(self, member_info):
-        team_member = self.create(client=member_info['client'], member=['member'], is_owner=False)
+        client = member_info['client']
+        member = member_info['member']
+        team_member = self.create(client=client, member=member, is_owner=False)
         print "new member is added"
         return team_member
 
-    # go to views
-    #
-    # def is_exist(self, username):
-    #     """
-    #         True : exist
-    #         False : not Exist
-    #     """
-    #     if GardenUser.objects.get(username=username) is not None:
-    #         return True
-    #     return False
+    def get_team_members(self, client):
+        team_members = list()
+        queryset = self.all().filter(client=client)
+        for q in queryset:
+            tmp_dict = dict()
+            tmp_dict['member'] = q.member.username
+            tmp_dict['is_owner'] = q.is_owner
+            team_members.append(tmp_dict)
+        return team_members
+
+    def is_member(self, member, client):
+        queryset = self.all().filter(member=member, client=client)
+        if queryset.__len__() > 0:
+            return True
+        return False
 
 
 class Team(models.Model):
     id = models.AutoField(primary_key=True, null=False, blank=False)
-    client = models.ForeignKey(GardenClient, related_name='project', null=False, to_field='client_name')
+    client = models.ForeignKey(GardenClient, related_name='client', null=False, to_field='client_name')
     member = models.ForeignKey(GardenUser, related_name='member', null=False, to_field='username')
     is_owner = models.BooleanField(null=False, blank=False, default=False)
     objects = TeamManager()
