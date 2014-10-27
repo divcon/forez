@@ -25,7 +25,7 @@ class ClientCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GardenClient
-        fields = ('name', 'url', 'redirect_uri', 'client_type', 'project')
+        fields = ('name', 'url', 'redirect_uri', 'client_type')
 
     def is_valid(self):
         if super(ClientCreateSerializer, self).is_valid():
