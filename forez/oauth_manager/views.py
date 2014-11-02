@@ -80,7 +80,6 @@ class ClientViewSet(viewsets.GenericViewSet,
             Listing clients(apps)
         """
         clients_list = Team.objects.all().filter(member=request.user.username)
-        print clients_list.id
         result_list = list()
         for c in clients_list:
             tmp_dict = dict()

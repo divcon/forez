@@ -6,7 +6,7 @@ import os
 # server setting
 #notebook : true
 #server   : False
-host = True 
+host = False 
 directory = "/home/sungjin/error/"
 extends = ".html"
 
@@ -199,7 +199,7 @@ def enter_app_details(token_dict):
         log_file.write(content)
         bad_exit()
 
-def enter_app_details(token_dict):
+def enter_app_setting(token_dict):
     file_name = "client_details"
     url = "/clients/testapp1/setting"
     header = {'Authorization': 'Token ' + token_dict['1']}
