@@ -22,12 +22,8 @@ class api_request(object):
         request_header.update(self.headers)
         if not headers is None:
             request_header.update(headers)
-            print request_header
         if not body is None:
             request_body = json.dumps(body)
-            print str(type(body))
-            print str(type(request_body))
-            print request_body
         resp, content = h.request(request_url, method=method, body=request_body, headers=request_header)
         return resp, content
 

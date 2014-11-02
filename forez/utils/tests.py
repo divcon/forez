@@ -1,23 +1,8 @@
 from request_form import api_request
-
-url = "/clients"
-#body = {'phone': '000000000', 'password': 'rkems', 'email': 'abv@test.com'}
-#body = {'name': 'testuser1212', 'url': 'http://211.189.127.73:8000', 'redirect_uri': 'http://211.189.127.73:8000', 
-#        'client_type': '0'}
-header = {'Authorization': 'Token 94083a1a472b0f1b36dd0d5f79b959f30cbae78b'}
-method = "GET"
-
-#url = "/clients/sungjin1"
-##header = {'authorization': 'token 94083a1a472b0f1b36dd0d5f79b959f30cbae78b'}
-#header = {'authorization': 'token 7fe8d203d29bca0197ab48d7c8546686eef22481'}
-#body = {'url': 'http://211.189.127.73:8080', 'redirect_uri': 'http://211.189.127.73:8080'}
-#method = "PUT"
-
-
 #notebook test : True
 #Server test : False
 host = True
-host = False
+#host = False
 #join us
 
 
@@ -29,20 +14,22 @@ host = False
 #sungjin
 token = 'Token b6da821453aaaae2148c7c47433673b2889b8ff8'
 #test
-token = 'Token 15659b7e44e89607eaf0651ab8e103be84b4fad9'
+token = 'Token aeb6e590c44e085fe52020dbbce1d2f0d8ef83a7'
+#test4
+#token = 'Token d18f0e378d0abfc0b3321838dcc645cd25ba98e2'
 
-token = 'Token d18f0e378d0abfc0b3321838dcc645cd25ba98e2'
 #app registering
-url = "/clients"
-header = {'Authorization': token}
-body = {'name': 'test3', 'url': 'http://211.189.127.73:8000', 'redirect_uri': 'http://211.189.127.73:8000', 
-        'client_type': '0'}
-method = "POST"
+#url = "/clients"
+#header = {'Authorization': token}
+#body = {'name': 'test3', 'url': 'http://211.189.127.73:8000',
+#        'redirect_uri': 'http://211.189.127.73:8000', 'client_type': '0'}
+#method = "POST"
 
 #app list
-#url = "/clients/testuser1213"
-#header = {'Authorization': 'Token 3a327baddb77b0a0c86bb23c4dd321a3a547b987'}
-#method = "GET"
+url = "/clients"
+body = None
+header = {'Authorization': token}
+method = "GET"
 
 #app delete
 #url = "/clients/testuser1213"
@@ -68,10 +55,19 @@ method = "POST"
 #body = None
 #method = "GET"
 
+#post client details
+url = "/clients/testapp1/details"
+header = {'Authorization': token}
+body = {'tag1': 'sample1', 'tag2': 'sample2', 'tag3': 'sample3', 'category': 'sample4', 'short': 'short des', 'long': 'long des', 'explanation': 'ex', 'publish': 'False'}
+method = "POST"
+
+#get client details
+url = "/clients/testapp1/details"
+header = {'Authorization': token}
+body = None 
+method = "GET"
+
 test = api_request(host)
-# resp, content = test.http_request(url=url, method="POST", body=body)
-#"token": "a658422cb15e561df5073e43bbdee9e5703232ba", "id": 1
 resp, content = test.http_request(method=method, url=url, headers=header, body=body)
-#resp, content = test.http_request(method=method, url=url)#, headers=header)
 print resp
 print content

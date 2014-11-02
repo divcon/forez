@@ -59,7 +59,7 @@ class TeamViewSet(viewsets.GenericViewSet,
                 tmp_dict['member'] = member_obj
                 Team.objects.add_team_member(tmp_dict)
                 return Response(data={'OK': 'add member'}, status=status.HTTP_201_CREATED)
-            return Response(data={'error': 'Check user name'}, status=status.HTTP_409_CONFLICT)
+            return Response(data={'error': 'Check user name'}, status=status.HTTP_400_BAD_REQUEST)
         #_get_member
         if request.method == 'GET':
             member_list = Team.objects.get_team_members(client_obj)
