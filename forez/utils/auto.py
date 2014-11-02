@@ -186,7 +186,7 @@ def enter_app_details(token_dict):
     header = {'Authorization': 'Token ' + token_dict['1']}
     body = {'tag1': 'sample1', 'tag2': 'sample2', 'tag3': 'sample3', 'category': 'business',
             'short_description': 'short des', 'long_description': 'long des', 
-            'permission_explanation': 'ex', 'publish': 'False'}
+            'permission_explanation': 'ex'}
     method = "POST"
 
     test = api_request(host)
@@ -203,7 +203,7 @@ def enter_app_setting(token_dict):
     file_name = "client_details"
     url = "/clients/testapp1/setting"
     header = {'Authorization': 'Token ' + token_dict['1']}
-    body = {'display_name': 'test_client', 'contact_email': 'test@naver.com'}
+    body = {'display_name': 'test_client', 'contact_email': 'test@naver.com', 'publish': 'False'}
     method = "POST"
 
     test = api_request(host)

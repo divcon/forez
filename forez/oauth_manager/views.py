@@ -83,7 +83,7 @@ class ClientViewSet(viewsets.GenericViewSet,
         result_list = list()
         for c in clients_list:
             tmp_dict = dict()
-            tmp_dict['client'] = c.client.name
+            tmp_dict['name'] = c.client.name
             tmp_dict['owner'] = Team.objects.get_team_owner(c.client).member.username
             result_list.append(tmp_dict)
         # return super(ClientViewSet, self).list(request, *args, **kwargs)
@@ -120,9 +120,8 @@ class ClientViewSet(viewsets.GenericViewSet,
             client_obj.short_description = request.DATA['short_description']
             client_obj.long_description = request.DATA['long_description']
             client_obj.permission_explanation = request.DATA['permission_explanation']
-            client_obj.publish = request.DATA['publish']
             client_obj.save(update_fields=['tag1', 'tag2', 'tag3', 'category', 'short_description',
-                                           'long_description', 'permission_explanation', 'publish'])
+                                           'long_description', 'permission_explanation'])
             return Response(data=request.DATA, status=status.HTTP_200_OK)
 
     @action(['POST', 'GET'])
@@ -135,7 +134,8 @@ class ClientViewSet(viewsets.GenericViewSet,
         if request.method == 'POST':
             client_obj.display_name = request.DATA['display_name']
             client_obj.contact_email = request.DATA['contact_email']
-            client_obj.save(update_fields=['display_name', 'contact_email'])
+            client_obj.publish = request.DATA['publish']
+            client_obj.save(update_fields=['display_name', 'contact_email', 'publish'])
             return Response(data=request.DATA, status=status.HTTP_200_OK)
 
     @action(['GET'])

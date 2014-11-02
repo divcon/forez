@@ -24,14 +24,14 @@ class DetailSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = GardenClient
         fields = ('tag1', 'tag2', 'tag3', 'category', 'short_description',
-                  'long_description', 'permission_explanation', 'publish')
+                  'long_description', 'permission_explanation')
         lookup_field = 'name'
 
 
 class SettingSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = GardenClient
-        fields = ('display_name', 'contact_email')
+        fields = ('display_name', 'contact_email', 'publish')
         lookup_field = 'name'
 
 

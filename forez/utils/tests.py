@@ -26,7 +26,7 @@ body = {'name': 'test4', 'url': 'http://211.189.127.73:8000',
 method = "POST"
 
 #app list
-url = "/clients/testapp1"
+url = "/clients"
 body = None
 header = {'Authorization': token}
 method = "GET"
