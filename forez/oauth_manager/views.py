@@ -1,12 +1,15 @@
 #-*- coding: utf-8 -*-
-from .serializers import ClientSerializer, ClientCreateSerializer
-from provider.oauth2.models import Client
+
+from __future__ import unicode_literals
+from .serializers import ClientSerializer, ClientCreateSerializer, DetailSerializer
+# from provider.oauth2.models import Client
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins, status
 from rest_framework.renderers import UnicodeJSONRenderer
 from rest_framework.authentication import TokenAuthentication
 from users.models import GardenUser
+from rest_framework.decorators import action
 from .models import GardenClient
 from teams.models import Team
 
@@ -17,9 +20,10 @@ class ClientViewSet(viewsets.GenericViewSet,
                     mixins.ListModelMixin,
                     mixins.RetrieveModelMixin,
                     mixins.DestroyModelMixin):
-    model = Client
+    model = GardenClient
+    # model = Client
     serializer_class = ClientSerializer
-    queryset = Client.objects.all()
+    queryset = GardenClient.objects.all()
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
     renderer_classes = (UnicodeJSONRenderer, )
@@ -72,7 +76,16 @@ class ClientViewSet(viewsets.GenericViewSet,
         """
             Listing clients(apps)
         """
-        return super(ClientViewSet, self).list(request, *args, **kwargs)
+        clients_list = Team.objects.all().filter(member=request.user.username)
+        print clients_list.id
+        result_list = list()
+        for c in clients_list:
+            tmp_dict = dict()
+            tmp_dict['client'] = c.client.name
+            tmp_dict['owner'] = Team.objects.get_team_owner(c.client).member.username
+            result_list.append(tmp_dict)
+        # return super(ClientViewSet, self).list(request, *args, **kwargs)
+        return Response(data=result_list, status=status.HTTP_200_OK)
 
     def retrieve(self, request, *args, **kwargs):
         """
@@ -90,6 +103,38 @@ class ClientViewSet(viewsets.GenericViewSet,
             return Response(status=status.HTTP_403_FORBIDDEN)
         return super(ClientViewSet, self).destroy(request, *args, **kwargs)
 
+    @action(['POST', 'GET'])
+    def details(self, request, name=None):
+        client_obj = GardenClient.objects.get_client_obj(name)
+        if request.method == 'GET':
+            serializer = DetailSerializer(client_obj)
+            print str(serializer.data)
+            return Response(serializer.data)
+
+        if request.method == 'POST':
+            client_obj.tag1 = request.DATA['tag1']
+            client_obj.tag2 = request.DATA['tag2']
+            client_obj.tag3 = request.DATA['tag3']
+            client_obj.category = request.DATA['category']
+            client_obj.short_description = request.DATA['short_description']
+            client_obj.long_description = request.DATA['long_description']
+            client_obj.permission_explanation = request.DATA['permission_explanation']
+            client_obj.publish = request.DATA['publish']
+            client_obj.save(update_fields=['tag1', 'tag2', 'tag3', 'category', 'short_description',
+                                           'long_description', 'permission_explanation', 'publish'])
+            return Response(data=request.DATA, status=status.HTTP_200_OK)
+
+    @action(['POST', 'GET'])
+    def setting(self, request, name=None):
+        if request.method == 'GET':
+            pass
+        if request.method == 'POST':
+            pass
+
+    @action(['GET'])
+    def logs(self, request, name=None):
+        if request.method == 'GET':
+            pass
 
 # class ClientViewSet(viewsets.GenericViewSet,
 #                     mixins.RetrieveModelMixin):

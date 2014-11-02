@@ -20,6 +20,14 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
         pass
 
 
+class DetailSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = GardenClient
+        fields = ('tag1', 'tag2', 'tag3', 'category', 'short_description',
+                  'long_description', 'permission_explanation', 'publish')
+        lookup_field = 'name'
+
+
 class ClientCreateSerializer(serializers.ModelSerializer):
     team = serializers.RelatedField(many=False)
 

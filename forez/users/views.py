@@ -125,7 +125,9 @@ class UserCreateViewSet(viewsets.GenericViewSet,
                 email_error = serializer.errors.get('email', None)
                 return Response(data={'error': 'email is already exists'}, status=status.HTTP_409_CONFLICT)
                 # return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
-            return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
+
+            return Response(data={'error': 'username is already exists.'}, status=status.HTTP_409_CONFLICT)
+            # return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request, *args, **kwargs):
         query_result = self.get_queryset()
