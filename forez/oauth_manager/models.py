@@ -34,11 +34,11 @@ class GardenClient(Client):
     short_description = models.CharField(max_length=255, blank=True)
     long_description = models.TextField(blank=True)
     permission_explanation = models.TextField(blank=True)
+    #       publishing
+    publish = models.BooleanField(default=False)
     #       icon
     # small_icon = models.ImageField(blank=True)
     # app_icon = models.ImageField(blank=True)
-    #       publishing
-    publish = models.BooleanField(default=False)
 
     # settings
     display_name = models.CharField(max_length=30, blank=True)

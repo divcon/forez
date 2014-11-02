@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-from .serializers import ClientSerializer, ClientCreateSerializer, DetailSerializer
+from .serializers import ClientSerializer, ClientCreateSerializer, DetailSerializer, SettingSerializer
 # from provider.oauth2.models import Client
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -54,7 +54,10 @@ class ClientViewSet(viewsets.GenericViewSet,
                 url=serializer.data['url'],
                 redirect_uri=serializer.data['redirect_uri'],
                 client_type=serializer.data['client_type'],
-                client_name=serializer.data['name'], )
+                #delete client_name or display_name
+                client_name=serializer.data['name'],
+                display_name=serializer.data['name'],
+                contact_email=request.user.email)
             created_team = Team.objects.create(
                 member=request.user,
                 client=created_client,
@@ -108,8 +111,7 @@ class ClientViewSet(viewsets.GenericViewSet,
         client_obj = GardenClient.objects.get_client_obj(name)
         if request.method == 'GET':
             serializer = DetailSerializer(client_obj)
-            print str(serializer.data)
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
         if request.method == 'POST':
             client_obj.tag1 = request.DATA['tag1']
@@ -126,10 +128,16 @@ class ClientViewSet(viewsets.GenericViewSet,
 
     @action(['POST', 'GET'])
     def setting(self, request, name=None):
+        client_obj = GardenClient.objects.get_client_obj(name)
         if request.method == 'GET':
-            pass
+            serializer = SettingSerializer(client_obj)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
         if request.method == 'POST':
-            pass
+            client_obj.display_name = request.DATA['display_name']
+            client_obj.contact_email = request.DATA['contact_email']
+            client_obj.save(update_fields=['display_name', 'contact_email'])
+            return Response(data=request.DATA, status=status.HTTP_200_OK)
 
     @action(['GET'])
     def logs(self, request, name=None):
