@@ -28,6 +28,13 @@ class DetailSerializer(serializers.HyperlinkedModelSerializer):
         lookup_field = 'name'
 
 
+class SettingSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = GardenClient
+        fields = ('display_name', 'contact_email')
+        lookup_field = 'name'
+
+
 class ClientCreateSerializer(serializers.ModelSerializer):
     team = serializers.RelatedField(many=False)
 

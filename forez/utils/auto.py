@@ -6,7 +6,7 @@ import os
 # server setting
 #notebook : true
 #server   : False
-host = True
+host = True 
 directory = "/home/sungjin/error/"
 extends = ".html"
 
@@ -164,6 +164,7 @@ def registering_clients(token_dict):
         bad_exit()
 
 def give_permission(token_dict):
+    file_name = "teams"
     url = "/teams/testapp1/members"
     header = {'Authorization': 'Token ' + token_dict['1']}
     body = {'member': 'test2'}
@@ -175,18 +176,53 @@ def give_permission(token_dict):
     if resp.status == 201:
         print content
     else :
-        log_file = open(directory + file_name + '2' + extends, 'w')
+        log_file = open(directory + file_name + '1' + extends, 'w')
         log_file.write(content)
         bad_exit()
 
+def enter_app_details(token_dict):
+    file_name = "client_details"
+    url = "/clients/testapp1/details"
+    header = {'Authorization': 'Token ' + token_dict['1']}
+    body = {'tag1': 'sample1', 'tag2': 'sample2', 'tag3': 'sample3', 'category': 'business',
+            'short_description': 'short des', 'long_description': 'long des', 
+            'permission_explanation': 'ex', 'publish': 'False'}
+    method = "POST"
+
+    test = api_request(host)
+    resp, content = test.http_request(method=method, url=url, headers=header, body=body)
+
+    if resp.status == 200:
+        print content
+    else :
+        log_file = open(directory + file_name + extends, 'w')
+        log_file.write(content)
+        bad_exit()
+
+def enter_app_details(token_dict):
+    file_name = "client_details"
+    url = "/clients/testapp1/setting"
+    header = {'Authorization': 'Token ' + token_dict['1']}
+    body = {'display_name': 'test_client', 'contact_email': 'test@naver.com'}
+    method = "POST"
+
+    test = api_request(host)
+    resp, content = test.http_request(method=method, url=url, headers=header, body=body)
+
+    if resp.status == 200:
+        print content
+    else :
+        log_file = open(directory + file_name + extends, 'w')
+        log_file.write(content)
+        bad_exit()
 
 init_test()
 join()
 token_dict = login()
 registering_clients(token_dict)
 give_permission(token_dict)
-
-
+enter_app_details(token_dict)
+enter_app_setting(token_dict)
 
 
 
