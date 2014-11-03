@@ -1,7 +1,7 @@
 from request_form import api_request
 #notebook test : True
 #Server test : False
-host = True
+host = True 
 #host = False
 #join us
 
@@ -15,9 +15,10 @@ host = True
 token3 = 'Token 21f79828b4e9960a80a03bcf86e01250e3bff6bf'
 #test
 token1 = 'Token f97e83013f18f07d56faae62419f6aaaa3ab7845'
+server_token1 = 'Token 1d1b61b3c1ee872fc1046a021d2824a1b4467cd8'
 #test2
 token2 = 'Token 2cef969c8fc4be1ab27568b4db308841a3e28a26'
-
+server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 #app registering
 url = "/clients/testapp1"
 header = {'Authorization': token3}
@@ -44,10 +45,10 @@ method = "GET"
 #token = 'Token 9a8cf47d1c67f42370d2087a52e7f0939d590119'
 
 #add member
-#url = "/teams/test3/members"
-#header = {'Authorization': token}
-#body = {'member': 'test2'}
-#method = "POST"
+url = "/teams/testapp1/members"
+header = {'Authorization': token2}
+body = {'member': 'test1'}
+method = "POST"
 
 #team info
 #url = "/teams/test3/members"
@@ -56,18 +57,18 @@ method = "GET"
 #method = "GET"
 
 #post client details
-url = "/clients/testapp1/details"
-header = {'Authorization': token1}
-body = {'tag1': 'sample1', 'tag2': 'sample112', 'tag3': 'sample3', 'category': 'business',
-        'short_description': 'short des', 'long_description': 'long des',
-        'permission_explanation': 'ex', 'publish': 'False'}
-method = "POST"
+#url = "/clients/testapp1/details"
+#header = {'Authorization': server_token1}
+#body = {'tag1': 'sample1', 'tag2': 'sample112', 'tag3': 'sample3', 'category': 'business',
+#        'short_description': 'short des', 'long_description': 'long des',
+#        'permission_explanation': 'ex', 'publish': 'False'}
+#method = "POST"
 
 #get client details
-url = "/clients/testapp1/details"
-header = {'Authorization': token1}
-body = None
-method = "GET"
+#url = "/clients/testapp1/details"
+#header = {'Authorization': server_token1}
+#body = None
+#method = "GET"
 
 #post client setting
 #url = "/clients/test4/setting"

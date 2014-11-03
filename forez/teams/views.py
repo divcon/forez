@@ -52,14 +52,18 @@ class TeamViewSet(viewsets.GenericViewSet,
 
         #_post_member
         if request.method == 'POST':
-            if GardenUser.objects.is_exist(username=request.DATA['member']):
-                member_obj = GardenUser.objects.get_user_obj(request.DATA['member'])
-                tmp_dict = dict()
-                tmp_dict['client'] = client_obj
-                tmp_dict['member'] = member_obj
-                Team.objects.add_team_member(tmp_dict)
-                return Response(data={'OK': 'add member'}, status=status.HTTP_201_CREATED)
-            return Response(data={'error': 'Check user name'}, status=status.HTTP_400_BAD_REQUEST)
+            if not GardenUser.objects.is_exist(username=request.DATA['member']):
+                return Response(data={'error': 'Check user name'}, status=status.HTTP_400_BAD_REQUEST)
+            elif Team.objects.is_member(user_obj=request.user, client_obj=client_obj):
+                return Response(data={'error': 'User is member of client'}, status=status.HTTP_409_CONFLICT)
+
+            member_obj = GardenUser.objects.get_user_obj(request.DATA['member'])
+            tmp_dict = dict()
+            tmp_dict['client'] = client_obj
+            tmp_dict['member'] = member_obj
+            Team.objects.add_team_member(tmp_dict)
+            return Response(data={'OK': 'add member'}, status=status.HTTP_201_CREATED)
+
         #_get_member
         if request.method == 'GET':
             member_list = Team.objects.get_team_members(client_obj)
