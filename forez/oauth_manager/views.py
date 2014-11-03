@@ -11,6 +11,7 @@ from rest_framework.authentication import TokenAuthentication
 from users.models import GardenUser
 from rest_framework.decorators import action
 from .models import GardenClient
+from .permissions import ClientPermission
 from teams.models import Team
 
 
@@ -27,6 +28,7 @@ class ClientViewSet(viewsets.GenericViewSet,
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
     renderer_classes = (UnicodeJSONRenderer, )
+    permission_checker = ClientPermission()
     lookup_field = 'name'
 
     def initial(self, request, *args, **kwargs):
@@ -93,9 +95,15 @@ class ClientViewSet(viewsets.GenericViewSet,
         """
             Searching client(app) by using application name
         """
-        if request.user != self.get_object().user:
-            return Response(status=status.HTTP_403_FORBIDDEN)
-        return super(ClientViewSet, self).retrieve(request, *args, **kwargs)
+        # if request.user != self.get_object().user:
+        #     return Response(status=status.HTTP_403_FORBIDDEN)
+        client_name = kwargs['name']
+        if not self.permission_checker.has_permission(request, client_name):
+            return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
+        client_obj = GardenClient.objects.get_client_obj(client_name)
+        serializer = ClientSerializer(client_obj)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+        # return super(ClientViewSet, self).retrieve(request, *args, **kwargs)
 
     def destroy(self, request, *args, **kwargs):
         """
@@ -107,6 +115,9 @@ class ClientViewSet(viewsets.GenericViewSet,
 
     @action(['POST', 'GET'])
     def details(self, request, name=None):
+        if not self.permission_checker.has_permission(request, name):
+            return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
+
         client_obj = GardenClient.objects.get_client_obj(name)
         if request.method == 'GET':
             serializer = DetailSerializer(client_obj)
@@ -126,6 +137,9 @@ class ClientViewSet(viewsets.GenericViewSet,
 
     @action(['POST', 'GET'])
     def setting(self, request, name=None):
+        if not self.permission_checker.has_permission(request, name):
+            return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
+
         client_obj = GardenClient.objects.get_client_obj(name)
         if request.method == 'GET':
             serializer = SettingSerializer(client_obj)

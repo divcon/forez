@@ -35,8 +35,8 @@ class TeamManager(models.Manager):
             team_members.append(tmp_dict)
         return team_members
 
-    def is_member(self, member, client):
-        queryset = self.all().filter(member=member, client=client)
+    def is_member(self, user_obj, client_obj):
+        queryset = self.all().filter(member=user_obj, client=client_obj)
         if queryset.__len__() > 0:
             return True
         return False

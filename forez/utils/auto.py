@@ -6,7 +6,7 @@ import os
 # server setting
 #notebook : true
 #server   : False
-host = False 
+host = True 
 directory = "/home/sungjin/error/"
 extends = ".html"
 
@@ -223,36 +223,3 @@ registering_clients(token_dict)
 give_permission(token_dict)
 enter_app_details(token_dict)
 enter_app_setting(token_dict)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

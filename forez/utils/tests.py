@@ -11,24 +11,24 @@ host = True
 #body = {'username': 'sungjin', 'password': 'rkems'}
 #method = 'POST'
 
-#sungjin
-token = 'Token b6da821453aaaae2148c7c47433673b2889b8ff8'
+#test3
+token3 = 'Token 21f79828b4e9960a80a03bcf86e01250e3bff6bf'
 #test
-token = 'Token f97e83013f18f07d56faae62419f6aaaa3ab7845'
+token1 = 'Token f97e83013f18f07d56faae62419f6aaaa3ab7845'
 #test2
-token = 'Token 2cef969c8fc4be1ab27568b4db308841a3e28a26'
+token2 = 'Token 2cef969c8fc4be1ab27568b4db308841a3e28a26'
 
 #app registering
 url = "/clients/testapp1"
-header = {'Authorization': token}
+header = {'Authorization': token3}
 body = {'name': 'test4', 'url': 'http://211.189.127.73:8000',
         'redirect_uri': 'http://211.189.127.73:8000', 'client_type': '0'}
 method = "POST"
 
-#app list
-url = "/clients"
+#app list 
+url = "/clients/testapp2"
 body = None
-header = {'Authorization': token}
+header = {'Authorization': token3}
 method = "GET"
 
 #app delete
@@ -56,18 +56,18 @@ method = "GET"
 #method = "GET"
 
 #post client details
-#url = "/clients/testapp1/details"
-#header = {'Authorization': token}
-#body = {'tag1': 'sample1', 'tag2': 'sample2', 'tag3': 'sample3', 'category': 'business',
-#        'short_description': 'short des', 'long_description': 'long des',
-#        'permission_explanation': 'ex', 'publish': 'False'}
-#method = "POST"
+url = "/clients/testapp1/details"
+header = {'Authorization': token1}
+body = {'tag1': 'sample1', 'tag2': 'sample112', 'tag3': 'sample3', 'category': 'business',
+        'short_description': 'short des', 'long_description': 'long des',
+        'permission_explanation': 'ex', 'publish': 'False'}
+method = "POST"
 
 #get client details
-#url = "/clients/testapp1/details"
-#header = {'Authorization': token}
-#body = None
-#method = "GET"
+url = "/clients/testapp1/details"
+header = {'Authorization': token1}
+body = None
+method = "GET"
 
 #post client setting
 #url = "/clients/test4/setting"
