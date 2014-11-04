@@ -200,9 +200,9 @@ def enter_app_details(token_dict):
         bad_exit()
 
 def enter_app_setting(token_dict):
-    file_name = "client_details"
+    file_name = "client_setting"
     url = "/clients/testapp1/setting"
-    header = {'Authorization': 'Token ' + token_dict['1']}
+    header = {'Authorization': 'Token ' + token_dict['2']}
     body = {'display_name': 'test_client', 'contact_email': 'test@naver.com', 'publish': 'False'}
     method = "POST"
 

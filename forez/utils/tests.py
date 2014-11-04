@@ -1,10 +1,8 @@
 from request_form import api_request
 #notebook test : True
 #Server test : False
-host = True 
+host = True
 #host = False
-#join us
-
 
 #login
 #url = "/tokens"
@@ -13,6 +11,7 @@ host = True
 
 #test3
 token3 = 'Token 21f79828b4e9960a80a03bcf86e01250e3bff6bf'
+server_token3 = 'Token 230ff9bca92ce27d30b2eeac0d245906716eb933'
 #test
 token1 = 'Token f97e83013f18f07d56faae62419f6aaaa3ab7845'
 server_token1 = 'Token 1d1b61b3c1ee872fc1046a021d2824a1b4467cd8'
@@ -45,9 +44,9 @@ method = "GET"
 #token = 'Token 9a8cf47d1c67f42370d2087a52e7f0939d590119'
 
 #add member
-url = "/teams/testapp1/members"
-header = {'Authorization': token2}
-body = {'member': 'test1'}
+url = "/teams/testapp2/members"
+header = {'Authorization': token3}
+body = {'member': 'test2'}
 method = "POST"
 
 #team info

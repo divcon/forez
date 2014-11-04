@@ -54,7 +54,7 @@ class TeamViewSet(viewsets.GenericViewSet,
         if request.method == 'POST':
             if not GardenUser.objects.is_exist(username=request.DATA['member']):
                 return Response(data={'error': 'Check user name'}, status=status.HTTP_400_BAD_REQUEST)
-            elif Team.objects.is_member(user_obj=request.user, client_obj=client_obj):
+            elif Team.objects.is_member(user_obj=request.DATA['member'], client_obj=client_obj):
                 return Response(data={'error': 'User is member of client'}, status=status.HTTP_409_CONFLICT)
 
             member_obj = GardenUser.objects.get_user_obj(request.DATA['member'])
