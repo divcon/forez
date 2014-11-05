@@ -4,6 +4,7 @@ from request_form import api_request
 host = True
 #host = False
 
+
 #login
 #url = "/tokens"
 #body = {'username': 'sungjin', 'password': 'rkems'}
@@ -26,10 +27,16 @@ body = {'name': 'test4', 'url': 'http://211.189.127.73:8000',
 method = "POST"
 
 #app list 
-url = "/clients/testapp2"
+url = "/clients/testapp1"
 body = None
-header = {'Authorization': token3}
+header = {'Authorization': token1}
 method = "GET"
+
+#modify url
+#url = "/clients/testapp1"
+#body = {"url": "http://123.123.123.12:8000", "redirect_uri": "http://123.123.123.12:8000"}
+#header = {'Authorization': token1}
+#method = "PUT"
 
 #app delete
 #url = "/clients/testuser1213"
@@ -44,10 +51,10 @@ method = "GET"
 #token = 'Token 9a8cf47d1c67f42370d2087a52e7f0939d590119'
 
 #add member
-url = "/teams/testapp2/members"
-header = {'Authorization': token3}
-body = {'member': 'test2'}
-method = "POST"
+#url = "/teams/testapp2/members"
+#header = {'Authorization': server_token3}
+#body = {'member': 'test2'}
+#method = "POST"
 
 #team info
 #url = "/teams/test3/members"
@@ -70,16 +77,16 @@ method = "POST"
 #method = "GET"
 
 #post client setting
-#url = "/clients/test4/setting"
-#header = {'Authorization': token}
-#body = {'display_name': 'test_client4', 'contact_email': 'test4@naver.com'}
-#method = "POST"
+url = "/clients/testapp1/setting"
+header = {'Authorization': token1}
+body = {'display_name': 'test_client4', 'contact_email': 'test4@naver.com', 'publish': 'False'}
+method = "POST"
 
 #get client setting
-#url = "/clients/test4/setting"
-#header = {'Authorization': token}
-#body = None
-#method = "GET"
+url = "/clients/testapp1/setting"
+header = {'Authorization': token1}
+body = None
+method = "GET"
 
 
 test = api_request(host)

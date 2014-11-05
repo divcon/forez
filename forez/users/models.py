@@ -68,7 +68,7 @@ class GardenUser(AbstractBaseUser, PermissionsMixin):
     objects = GardenUserManager()
 
     def get_full_name(self):
-        return "%s" % (self.username)
+        return "%s" % self.username
 
     def get_short_name(self):
         return self.email

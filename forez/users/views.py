@@ -122,7 +122,6 @@ class UserCreateViewSet(viewsets.GenericViewSet,
                     return Response(data={'error': 'username is already exists.'}, status=status.HTTP_409_CONFLICT)
                     # return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
             elif 'email' in serializer.errors:
-                email_error = serializer.errors.get('email', None)
                 return Response(data={'error': 'email is already exists'}, status=status.HTTP_409_CONFLICT)
                 # return Response(serializer._errors, status=status.HTTP_409_CONFLICT)
 

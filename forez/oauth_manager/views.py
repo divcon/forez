@@ -2,25 +2,23 @@
 
 from __future__ import unicode_literals
 from .serializers import ClientSerializer, ClientCreateSerializer, DetailSerializer, SettingSerializer
-# from provider.oauth2.models import Client
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins, status
 from rest_framework.renderers import UnicodeJSONRenderer
 from rest_framework.authentication import TokenAuthentication
-from users.models import GardenUser
 from rest_framework.decorators import action
 from .models import GardenClient
 from .permissions import ClientPermission
 from teams.models import Team
 
 
-#update is in clients/{appname}/settings
 class ClientViewSet(viewsets.GenericViewSet,
                     mixins.CreateModelMixin,
                     mixins.ListModelMixin,
                     mixins.RetrieveModelMixin,
-                    mixins.DestroyModelMixin):
+                    mixins.DestroyModelMixin,
+                    mixins.UpdateModelMixin):
     model = GardenClient
     # model = Client
     serializer_class = ClientSerializer
@@ -105,6 +103,22 @@ class ClientViewSet(viewsets.GenericViewSet,
         return Response(serializer.data, status=status.HTTP_200_OK)
         # return super(ClientViewSet, self).retrieve(request, *args, **kwargs)
 
+    def update(self, request, *args, **kwargs):
+        """
+            modifying Client URL
+        """
+        client_name = kwargs['name']
+        if not self.permission_checker.has_permission(request, client_name=client_name):
+            return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
+        url = request.DATA['url']
+        redirect_uri = request.DATA['redirect_uri']
+
+        client_obj = GardenClient.objects.get_client_obj(client_name)
+        client_obj.url = url
+        client_obj.redirect_uri = redirect_uri
+        client_obj.save(update_fields=['url', 'redirect_uri'])
+        return Response(data=request.DATA, status=status.HTTP_200_OK)
+
     def destroy(self, request, *args, **kwargs):
         """
             Unregistering client(app)
@@ -149,6 +163,14 @@ class ClientViewSet(viewsets.GenericViewSet,
             client_obj.display_name = request.DATA['display_name']
             client_obj.contact_email = request.DATA['contact_email']
             client_obj.publish = request.DATA['publish']
+            if (request.DATA['publish'] == 'true') or (request.DATA['publish'] == 'True'):
+                client_obj.publish = True
+            elif (request.DATA['publish'] == 'false') or (request.DATA['publish'] == 'False'):
+                client_obj.publish = False
+                print client_obj.publish
+            else:
+                return Response(data={"error": "Attribute error. Check your request body"},
+                                status=status.HTTP_400_BAD_REQUEST)
             client_obj.save(update_fields=['display_name', 'contact_email', 'publish'])
             return Response(data=request.DATA, status=status.HTTP_200_OK)
 
@@ -156,25 +178,3 @@ class ClientViewSet(viewsets.GenericViewSet,
     def logs(self, request, name=None):
         if request.method == 'GET':
             pass
-
-# class ClientViewSet(viewsets.GenericViewSet,
-#                     mixins.RetrieveModelMixin):
-#     model = Client
-#     serializer_class = ClientSerializer
-#     queryset = Client.objects.all()
-#     authentication_classes = (TokenAuthentication,)
-#     permission_classes = (IsAuthenticated,)
-#     renderer_classes = (UnicodeJSONRenderer, )
-#     lookup_field = 'name'
-#
-#     def initial(self, request, *args, **kwargs):
-#         super(ClientViewSet, self).initial(request, *args, **kwargs)
-#         if isinstance(request.DATA, dict):
-#             for key in request.DATA.keys():
-#                 if type(request.DATA[key]) is list:
-#                     request.DATA[key] = request.DATA[key][0]
-#
-#     def retrieve(self, request, *args, **kwargs):
-#         # if request.user != self.get_object():
-#         #     return Response(status=status.HTTP_403_FORBIDDEN)
-#         return super(ClientViewSet, self).retrieve(request, *args, **kwargs)
