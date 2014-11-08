@@ -33,10 +33,10 @@ header = {'Authorization': token1}
 method = "GET"
 
 #modify url
-#url = "/clients/testapp1"
-#body = {"url": "http://123.123.123.12:8000", "redirect_uri": "http://123.123.123.12:8000"}
-#header = {'Authorization': token1}
-#method = "PUT"
+url = "/clients/testapp1"
+body = {"url": "http://123.123.123.12:8000", "redirect_uri": "http://123.123.123.12:8000"}
+header = {'Authorization': token1}
+method = "PUT"
 
 #app delete
 #url = "/clients/testuser1213"
@@ -77,17 +77,24 @@ method = "GET"
 #method = "GET"
 
 #post client setting
-url = "/clients/testapp1/setting"
-header = {'Authorization': token1}
-body = {'display_name': 'test_client4', 'contact_email': 'test4@naver.com', 'publish': 'False'}
-method = "POST"
+#url = "/clients/testapp1/setting"
+#header = {'Authorization': token1}
+#body = {'display_name': 'test_client4', 'contact_email': 'test4@naver.com', 'publish': 'False'}
+#method = "POST"
 
 #get client setting
-url = "/clients/testapp1/setting"
-header = {'Authorization': token1}
-body = None
-method = "GET"
+#url = "/clients/testapp1/setting"
+#header = {'Authorization': token1}
+#body = None
+#method = "GET"
 
+#get access token
+url = "/oauth2/access_token/"
+body = {"cleint_id": "63d2649aa23afb7c0653", "client_secret": "71920cd8d88815c94a555bd60f9e1e5d0dc464a2",
+        "grant_type": "a6b7192a5a1e169ec636130ba607bffcab3a86eb", "username": "test1", "password": "test"}
+header = None
+method = "POST"
+#"client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&grant_type=password&username=YOUR_USERNAME&password=YOUR_PASSWORD" http://localhost:8000/oauth2/access_token/
 
 test = api_request(host)
 resp, content = test.http_request(method=method, url=url, headers=header, body=body)
