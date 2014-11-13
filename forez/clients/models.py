@@ -37,7 +37,7 @@ class GardenClient(Client):
     # app_icon = models.ImageField(blank=True)
 
     # settings
-    display_name = models.CharField(max_length=30, blank=True)
+    display_name = models.CharField(max_length=30, blank=True, unique=True)
     contact_email = models.EmailField(blank=True)
 
     # Alert

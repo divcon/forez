@@ -43,6 +43,10 @@ class ClientCreateSerializer(serializers.ModelSerializer):
 
 
 class StoreSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = GardenClient
-        fields = ('display_name', 'category')
+        #app_icon add
+        fields = ('display_name', 'category', 'url', 'contact_email',
+                  'short_description', 'long_description',
+                  'permission_explanation', 'tag1', 'tag2', 'tag3')

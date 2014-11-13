@@ -1,7 +1,8 @@
 #-*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-from .serializers import ClientSerializer, ClientCreateSerializer, DetailSerializer, SettingSerializer
+from .serializers import ClientSerializer, ClientCreateSerializer
+from .serializers import SettingSerializer, StoreSerializer, DetailSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins, status
@@ -181,11 +182,8 @@ class ClientViewSet(viewsets.GenericViewSet,
 
 
 class StoreViewSet(viewsets.GenericViewSet,
-                   mixins.CreateModelMixin,
                    mixins.ListModelMixin,
-                   mixins.RetrieveModelMixin,
-                   mixins.DestroyModelMixin,
-                   mixins.UpdateModelMixin):
+                   mixins.RetrieveModelMixin):
     model = GardenClient
     # model = Client
     queryset = GardenClient.objects.all()
@@ -198,7 +196,6 @@ class StoreViewSet(viewsets.GenericViewSet,
     # all clients in store
     def list(self, request, *args, **kwargs):
         category = request.QUERY_PARAMS.get('category', None)
-        data = list()
 
         if category is not None:
             query_result = self.queryset.filter(publish=True, category=category)
@@ -210,12 +207,19 @@ class StoreViewSet(viewsets.GenericViewSet,
             data = self._make_app_list(query_result=query_result)
         return Response(data=data, status=status.HTTP_200_OK)
 
+    def retrieve(self, request, *args, **kwargs):
+        client_obj = GardenClient.objects.get_client_obj(client_name=kwargs['name'])
+        print client_obj.name
+        serializer = StoreSerializer(client_obj)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
     def _make_app_list(self, query_result):
         data = list()
         for s in query_result:
             app_dict = dict()
             app_dict['display_name'] = s.display_name
             app_dict['category'] = s.category
+            app_dict['client_name'] = s.client_name
             #app_dict['small_icon'] = s.small_icon
             data.append(app_dict)
         return data
