@@ -12,7 +12,7 @@ class api_request(object):
     test = None
 
     def __init__(self, test):
-        self.test=test
+        self.test = test
 
     def http_request(self, url, method="GET", headers=None, body=None):
         h = httplib2.Http()
@@ -41,7 +41,7 @@ class api_request(object):
  
     @property
     def host(self):
-        if self.test == True:
+        if self.test is True:
             self._host = "http://localhost:8000"
         else:
             self._host = "http://211.189.127.73:8000"

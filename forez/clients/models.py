@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-from provider.oauth2.models import Client
 from django.db import models
+# from oauth2_provider.models import AbstractApplication
+from provider.oauth2.models import Client
 
 
 class ClientManager(models.Manager):
@@ -16,6 +17,7 @@ class ClientManager(models.Manager):
 
 
 #contains client details
+# class GardenClient(AbstractApplication):
 class GardenClient(Client):
     client_name = models.CharField(max_length=255, blank=True, unique=True)
     #app_detail

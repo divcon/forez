@@ -8,7 +8,7 @@ from rest_framework.authentication import TokenAuthentication
 from teams.models import Team
 from rest_framework.decorators import action
 from users.models import GardenUser
-from oauth_manager.models import GardenClient
+from clients.models import GardenClient
 
 
 class TeamViewSet(viewsets.GenericViewSet,

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from provider.oauth2.models import Client
 from .models import GardenClient
 from rest_framework import serializers
 
@@ -42,12 +41,8 @@ class ClientCreateSerializer(serializers.ModelSerializer):
         model = GardenClient
         fields = ('name', 'url', 'redirect_uri', 'client_type')
 
-    def is_valid(self):
-        if super(ClientCreateSerializer, self).is_valid():
-            _errors = dict()
-            if Client.objects.filter(name=self.object.name).exists():
-                _errors['name'] = ['Application name is already exist.']
-                self._errors = _errors
-                return False
 
-            return True
+class StoreSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = GardenClient
+        fields = ('display_name', 'category')

@@ -39,11 +39,12 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_swagger',
+    # 'oauth2_provider',
     'provider',
     'provider.oauth2',
     'users',
     'utils',
-    'oauth_manager',
+    'clients',
     'teams',
 
 )
@@ -54,7 +55,7 @@ REST_FRAMEWORK = {
     #     'rest_framework.authentication.SessionAuthentication',
     # )
     # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework.authentication.OAuth2Authentication',
+    #     'oauth2_provider.ext.rest_framework.OAuth2Authentication',
     # ),
     'DEFAULT_PERMISSION_CLASSES': (
             'rest_framework.permissions.AllowAny',
@@ -63,6 +64,11 @@ REST_FRAMEWORK = {
             'rest_framework.parsers.FormParser',
             'rest_framework.parsers.JSONParser',
     ),
+}
+
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
 }
 
 SWAGGER_SETTINGS = {

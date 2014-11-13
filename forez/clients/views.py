@@ -178,3 +178,44 @@ class ClientViewSet(viewsets.GenericViewSet,
     def logs(self, request, name=None):
         if request.method == 'GET':
             pass
+
+
+class StoreViewSet(viewsets.GenericViewSet,
+                   mixins.CreateModelMixin,
+                   mixins.ListModelMixin,
+                   mixins.RetrieveModelMixin,
+                   mixins.DestroyModelMixin,
+                   mixins.UpdateModelMixin):
+    model = GardenClient
+    # model = Client
+    queryset = GardenClient.objects.all()
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    renderer_classes = (UnicodeJSONRenderer, )
+    permission_checker = ClientPermission()
+    lookup_field = 'name'
+
+    # all clients in store
+    def list(self, request, *args, **kwargs):
+        category = request.QUERY_PARAMS.get('category', None)
+        data = list()
+
+        if category is not None:
+            query_result = self.queryset.filter(publish=True, category=category)
+            data = self._make_app_list(query_result=query_result)
+            print data
+
+        else:
+            query_result = self.queryset.filter(publish=True)
+            data = self._make_app_list(query_result=query_result)
+        return Response(data=data, status=status.HTTP_200_OK)
+
+    def _make_app_list(self, query_result):
+        data = list()
+        for s in query_result:
+            app_dict = dict()
+            app_dict['display_name'] = s.display_name
+            app_dict['category'] = s.category
+            #app_dict['small_icon'] = s.small_icon
+            data.append(app_dict)
+        return data
