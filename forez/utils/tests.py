@@ -16,7 +16,7 @@ token3 = 'Token 4af9ce7420a4c611d794b117a91774616f2a4b58'
 server_token3 = 'Token 230ff9bca92ce27d30b2eeac0d245906716eb933'
 #test
 token1 = 'Token c1c98cc1faee9c20ccca8057817e2b60612c9b45'
-server_token1 = 'Token 1d1b61b3c1ee872fc1046a021d2824a1b4467cd8'
+server_token1 = 'Token cfb665f106bd9f9da512592199afe032ed0723b2'
 #test2
 token2 = 'Token e918bfc2810a5dcd5704a019d75ed941f4ccf0e1'
 server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
@@ -52,10 +52,10 @@ method = "POST"
 #token = 'Token 9a8cf47d1c67f42370d2087a52e7f0939d590119'
 
 #add member
-#url = "/teams/testapp2/members"
-#header = {'Authorization': server_token3}
-#body = {'member': 'test2'}
-#method = "POST"
+url = "/teams/testapp1/members"
+header = {'Authorization': server_token1}
+body = {'member': 'test3'}
+method = "POST"
 
 #team info
 #url = "/teams/test3/members"
@@ -78,14 +78,14 @@ method = "POST"
 #method = "GET"
 
 #post client setting
-url = "/clients/test44/setting"
-header = {'Authorization': token3}
-body = {'display_name': 'test_client2', 'contact_email': 'test4@naver.com', 'publish': 'True'}
-method = "POST"
+#url = "/clients/testapp1/setting"
+#header = {'Authorization': server_token1}
+#body = {'display_name': 'setting_test', 'contact_email': 'test4@naver.com', 'publish': 'True'}
+#method = "POST"
 
 #get client setting
-#url = "/clients/test44/setting"
-#header = {'Authorization': token3}
+#url = "/clients/testapp1/setting"
+#header = {'Authorization': server_token1}
 #body = None
 #method = "GET"
 
@@ -100,13 +100,19 @@ method = "POST"
 #get store list
 url = "/stores"
 body = None
-header = {'Authorization': token1}
+header = {'Authorization': token3}
 method = "GET"
 
 # get app list by category
-url = "/stores?category=business"
+#url = "/stores?category=business"
+#body = None
+#header = {'Authorization': server_token1}
+#method = "GET"
+
+# get app info 
+url = "/stores/testapp1"
 body = None
-header = {'Authorization': token1}
+header = {'Authorization': token3}
 method = "GET"
 
 test = api_request(host)

@@ -6,7 +6,8 @@ import os
 # server setting
 #notebook : true
 #server   : False
-host = True 
+host = True
+host = False
 directory = "/home/sungjin/error/"
 extends = ".html"
 
