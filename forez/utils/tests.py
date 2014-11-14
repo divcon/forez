@@ -115,6 +115,14 @@ body = None
 header = {'Authorization': token3}
 method = "GET"
 
+# get authorizateion
+url = "/oauth2/authorize?response_type=code&client_id=e4607356d090197a9689&state=xyz&scope=read&redirect_uri=http://211.189.127.73:8000"
+#GET /authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
+body = None
+header = {'Authorization': token3}
+method = "GET"
+
+
 test = api_request(host)
 resp, content = test.http_request(method=method, url=url, headers=header, body=body)
 print resp

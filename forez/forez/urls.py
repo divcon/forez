@@ -2,6 +2,7 @@
 
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+# from django.contrib.auth.views import login
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -15,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^', include('teams.urls')),
     # url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^oauth2/', include('provider.oauth2.urls', namespace='oauth2')),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^', include('redirects.urls')),
 )
