@@ -12,7 +12,7 @@ host = True
 
 
 #test3
-token3 = 'Token 4af9ce7420a4c611d794b117a91774616f2a4b58'
+token3 = 'Token 824669b77dc525181683afb005ee6177e3d5ec4b'
 server_token3 = 'Token 230ff9bca92ce27d30b2eeac0d245906716eb933'
 #test
 token1 = 'Token c1c98cc1faee9c20ccca8057817e2b60612c9b45'
@@ -23,8 +23,10 @@ server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 #app registering
 url = "/clients"
 header = {'Authorization': token3}
-body = {'name': 'test44', 'url': 'http://211.189.127.73:8000',
-        'redirect_uri': 'http://211.189.127.73:8000', 'client_type': '0'}
+body = {'name': 'test4', 'url': 'http://211.189.127.73:8000',
+        'redirect_uri': 'http://211.189.127.73:8000',
+        'client_type': 'confidential',
+        'authorization_grant_type': 'authorization-code'}
 method = "POST"
 
 #app list 
@@ -78,14 +80,14 @@ method = "POST"
 #method = "GET"
 
 #post client setting
-#url = "/clients/testapp1/setting"
-#header = {'Authorization': server_token1}
-#body = {'display_name': 'setting_test', 'contact_email': 'test4@naver.com', 'publish': 'True'}
-#method = "POST"
+url = "/clients/testapp2/setting"
+header = {'Authorization': token3}
+body = {'display_name': 'setting_test', 'contact_email': 'test4@naver.com', 'publish': 'True'}
+method = "POST"
 
 #get client setting
-#url = "/clients/testapp1/setting"
-#header = {'Authorization': server_token1}
+#url = "/clients/testapp2/setting"
+#header = {'Authorization': token3}
 #body = None
 #method = "GET"
 
@@ -96,7 +98,7 @@ method = "POST"
 #header = None
 #method = "POST"
 #"client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&grant_type=password&username=YOUR_USERNAME&password=YOUR_PASSWORD" http://localhost:8000/oauth2/access_token/
-
+#
 #get store list
 url = "/stores"
 body = None
@@ -106,21 +108,21 @@ method = "GET"
 # get app list by category
 #url = "/stores?category=business"
 #body = None
-#header = {'Authorization': server_token1}
+#header = {'Authorization': token3}
 #method = "GET"
 
 # get app info 
-url = "/stores/testapp1"
-body = None
-header = {'Authorization': token3}
-method = "GET"
+#url = "/stores/testapp1"
+#body = None
+#header = {'Authorization': token3}
+#method = "GET"
 
 # get authorizateion
-url = "/oauth2/authorize?response_type=code&client_id=e4607356d090197a9689&state=xyz&scope=read&redirect_uri=http://211.189.127.73:8000"
+#url = "/o/authorize?response_type=code&client_id=lTQYwlqn;..HW1TVSDFMJnRtx!vunZ-MB?6py??M&state=xyz&scope=read&redirect_uri=http://211.189.127.73:8000"
 #GET /authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
-body = None
-header = {'Authorization': token3}
-method = "GET"
+#body = None
+#header = {'Authorization': token3}
+#method = "GET"
 
 
 test = api_request(host)

@@ -39,9 +39,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_swagger',
-    # 'oauth2_provider',
-    'provider',
-    'provider.oauth2',
+    'oauth2_provider',
     'users',
     'utils',
     'clients',
@@ -54,11 +52,12 @@ REST_FRAMEWORK = {
     #     'rest_framework.authentication.BasicAuthentication',
     #     'rest_framework.authentication.SessionAuthentication',
     # )
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'oauth2_provider.ext.rest_framework.OAuth2Authentication',
-    # ),
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': (
-            'rest_framework.permissions.AllowAny',
+            'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_PARSER_CLASSES': (
             'rest_framework.parsers.FormParser',

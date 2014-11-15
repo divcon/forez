@@ -2,8 +2,8 @@
 
 from __future__ import unicode_literals
 from django.db import models
-# from oauth2_provider.models import AbstractApplication
-from provider.oauth2.models import Client
+
+from oauth2_provider.models import Application
 
 
 class ClientManager(models.Manager):
@@ -17,9 +17,9 @@ class ClientManager(models.Manager):
 
 
 #contains client details
-# class GardenClient(AbstractApplication):
-class GardenClient(Client):
+class GardenClient(Application):
     client_name = models.CharField(max_length=255, blank=True, unique=True)
+    url = models.URLField()
     #app_detail
     #      for search
     tag1 = models.CharField(max_length=50, blank=True)
@@ -39,6 +39,7 @@ class GardenClient(Client):
     # settings
     display_name = models.CharField(max_length=30, blank=True, unique=True)
     contact_email = models.EmailField(blank=True)
+    created_at = models.DateField(auto_now=True)
 
     # Alert
     # log module is needed

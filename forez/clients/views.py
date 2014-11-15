@@ -47,14 +47,19 @@ class ClientViewSet(viewsets.GenericViewSet,
             Registering client(app)
         """
         serializer = ClientCreateSerializer(data=request.DATA, context={'request': request})
+
+        if GardenClient.objects.get(name=serializer.data['name']) is not None:
+            return Response(data={'error': 'Application name is already exist'}, status=status.HTTP_409_CONFLICT)
+
         if serializer.is_valid():
             # create should be in serializers.py
             created_client = GardenClient.objects.create(
                 user=request.user,
                 name=serializer.data['name'],
                 url=serializer.data['url'],
-                redirect_uri=serializer.data['redirect_uri'],
+                redirect_uris=serializer.data['redirect_uris'],
                 client_type=serializer.data['client_type'],
+                authorization_grant_type=serializer.data['authorization_grant_type'],
                 #delete client_name or display_name
                 client_name=serializer.data['name'],
                 display_name=serializer.data['name'],
@@ -69,12 +74,13 @@ class ClientViewSet(viewsets.GenericViewSet,
                              "client_type": created_client.client_type,
                              #app name
                              "client_name": created_client.name,
-                             "team_owner": created_team.member.username, }
+                             "team_owner": created_team.member.username,
+                             "created_at": created_client.created_at}
             return Response(response_data, status.HTTP_201_CREATED)
 
         else:
-            return Response(data={'error': 'Application name is already exist'}, status=status.HTTP_409_CONFLICT)
-            # return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
+            print serializer._errors
+            return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request, *args, **kwargs):
         """
@@ -163,17 +169,18 @@ class ClientViewSet(viewsets.GenericViewSet,
         if request.method == 'POST':
             client_obj.display_name = request.DATA['display_name']
             client_obj.contact_email = request.DATA['contact_email']
-            client_obj.publish = request.DATA['publish']
-            if (request.DATA['publish'] == 'true') or (request.DATA['publish'] == 'True'):
-                client_obj.publish = True
-            elif (request.DATA['publish'] == 'false') or (request.DATA['publish'] == 'False'):
-                client_obj.publish = False
-                print client_obj.publish
-            else:
-                return Response(data={"error": "Attribute error. Check your request body"},
-                                status=status.HTTP_400_BAD_REQUEST)
+            client_obj.publish = self._is_publish_request(request.DATA['publish'])
+            # else:
+            #     return Response(data={"error": "Attribute error. Check your request body"},
+            #                     status=status.HTTP_400_BAD_REQUEST)
             client_obj.save(update_fields=['display_name', 'contact_email', 'publish'])
             return Response(data=request.DATA, status=status.HTTP_200_OK)
+
+    def _is_publish_request(self, publish):
+        if (publish == 'true') or (publish == 'True'):
+            return True
+        elif (publish == 'false') or (publish == 'False'):
+            return False
 
     @action(['GET'])
     def logs(self, request, name=None):
@@ -220,6 +227,7 @@ class StoreViewSet(viewsets.GenericViewSet,
             app_dict['display_name'] = s.display_name
             app_dict['category'] = s.category
             app_dict['client_name'] = s.client_name
+            app_dict['created_at'] = s.created_at
             #app_dict['small_icon'] = s.small_icon
             data.append(app_dict)
         return data

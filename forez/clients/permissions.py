@@ -9,9 +9,4 @@ class ClientPermission(object):
     def has_permission(self, request, client_name):
         user_obj = request.user
         client_obj = GardenClient.objects.get_client_obj(client_name=client_name)
-        if Team.objects.is_member(user_obj=user_obj, client_obj=client_obj):
-            return True
-        else:
-            return False
-
-
+        return Team.objects.is_member(user_obj=user_obj, client_obj=client_obj)
