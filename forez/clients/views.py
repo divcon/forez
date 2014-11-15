@@ -52,8 +52,9 @@ class ClientViewSet(viewsets.GenericViewSet,
                 user=request.user,
                 name=serializer.data['name'],
                 url=serializer.data['url'],
-                redirect_uri=serializer.data['redirect_uri'],
+                redirect_uris=serializer.data['redirect_uris'],
                 client_type=serializer.data['client_type'],
+                authorization_grant_type=serializer.data['authorization_grant_type'],
                 #delete client_name or display_name
                 client_name=serializer.data['name'],
                 display_name=serializer.data['name'],
@@ -62,6 +63,20 @@ class ClientViewSet(viewsets.GenericViewSet,
                 member=request.user,
                 client=created_client,
                 is_owner=True, )
+
+    # client_type = models.CharField(max_length=32, choices=CLIENT_TYPES)
+    # authorization_grant_type = models.CharField(max_length=32,
+    #                                             choices=GRANT_TYPES)
+    #         GRANT_TYPES = (
+    #     (GRANT_AUTHORIZATION_CODE, _('Authorization code')),
+    #     (GRANT_IMPLICIT, _('Implicit')),
+    #     (GRANT_PASSWORD, _('Resource owner password-based')),
+    #     (GRANT_CLIENT_CREDENTIALS, _('Client credentials')),
+    # )
+    #         CLIENT_TYPES = (
+    #     (CLIENT_CONFIDENTIAL, _('Confidential')),
+    #     (CLIENT_PUBLIC, _('Public')),
+    # )
 
             response_data = {"client_id": created_client.client_id,
                              "client_secret": created_client.client_secret,
@@ -72,8 +87,9 @@ class ClientViewSet(viewsets.GenericViewSet,
             return Response(response_data, status.HTTP_201_CREATED)
 
         else:
-            return Response(data={'error': 'Application name is already exist'}, status=status.HTTP_409_CONFLICT)
-            # return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
+            print serializer._errors
+            # return Response(data={'error': 'Application name is already exist'}, status=status.HTTP_409_CONFLICT)
+            return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request, *args, **kwargs):
         """

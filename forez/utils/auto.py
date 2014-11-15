@@ -136,7 +136,9 @@ def registering_clients(token_dict):
 # clients1
     header = {'Authorization': 'Token ' + token_dict['1']}
     body = {'name': 'testapp1', 'url': 'http://211.189.127.73:8000',
-            'redirect_uri': 'http://211.189.127.73:8000', 'client_type': '0'}
+            'redirect_uris': 'http://211.189.127.73:8000', 
+            'client_type': 'confidential',
+            'authorization_grant_type': 'authorization-code'}
 
     test = api_request(host)
     resp, content = test.http_request(method=method, url=url, headers=header, body=body)
@@ -151,7 +153,9 @@ def registering_clients(token_dict):
 # clients2
     header = {'Authorization': 'Token ' + token_dict['3']}
     body = {'name': 'testapp2', 'url': 'http://211.189.127.73:8000',
-            'redirect_uri': 'http://211.189.127.73:8000', 'client_type': '0'}
+            'redirect_uris': 'http://211.189.127.73:8000',
+            'client_type': 'confidential',
+            'authorization_grant_type': 'authorization-code'}
 
     test = api_request(host)
     resp, content = test.http_request(method=method, url=url, headers=header, body=body)
@@ -217,7 +221,7 @@ def enter_app_setting(token_dict):
         bad_exit()
 
 init_test()
-join()
+#join()
 token_dict = login()
 registering_clients(token_dict)
 give_permission(token_dict)

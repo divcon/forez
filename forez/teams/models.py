@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.db.models import Q
 from users.models import GardenUser
-from oauth_manager.models import GardenClient
+from clients.models import GardenClient
 
 
 class TeamManager(models.Manager):

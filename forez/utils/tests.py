@@ -23,7 +23,9 @@ server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 url = "/clients/testapp1"
 header = {'Authorization': token3}
 body = {'name': 'test4', 'url': 'http://211.189.127.73:8000',
-        'redirect_uri': 'http://211.189.127.73:8000', 'client_type': '0'}
+        'redirect_uri': 'http://211.189.127.73:8000',
+        'client_type': 'confidential',
+        'authorization_grant_type': 'authorization-code'}
 method = "POST"
 
 #app list 
@@ -89,11 +91,11 @@ method = "PUT"
 #method = "GET"
 
 #get access token
-url = "/oauth2/access_token/"
-body = {"cleint_id": "63d2649aa23afb7c0653", "client_secret": "71920cd8d88815c94a555bd60f9e1e5d0dc464a2",
-        "grant_type": "a6b7192a5a1e169ec636130ba607bffcab3a86eb", "username": "test1", "password": "test"}
-header = None
-method = "POST"
+#url = "/oauth2/access_token/"
+#body = {"cleint_id": "63d2649aa23afb7c0653", "client_secret": "71920cd8d88815c94a555bd60f9e1e5d0dc464a2",
+#        "grant_type": "a6b7192a5a1e169ec636130ba607bffcab3a86eb", "username": "test1", "password": "test"}
+#header = None
+#method = "POST"
 #"client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&grant_type=password&username=YOUR_USERNAME&password=YOUR_PASSWORD" http://localhost:8000/oauth2/access_token/
 
 test = api_request(host)

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from provider.oauth2.models import Client
+
 from .models import GardenClient
 from rest_framework import serializers
 
@@ -8,7 +8,8 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = GardenClient
-        fields = ('name', 'url', 'redirect_uri', 'client_type', 'client_id', 'client_secret')
+        fields = ('name', 'url', 'redirect_uris', 'client_type', 'client_id',
+                  'client_secret', 'authorization_grant_type')
         lookup_field = 'name'
         read_only_fields = ('name', 'client_type', 'client_id', 'client_secret')
 
@@ -40,14 +41,14 @@ class ClientCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GardenClient
-        fields = ('name', 'url', 'redirect_uri', 'client_type')
+        fields = ('name', 'url', 'redirect_uris', 'client_type', 'authorization_grant_type')
 
-    def is_valid(self):
-        if super(ClientCreateSerializer, self).is_valid():
-            _errors = dict()
-            if Client.objects.filter(name=self.object.name).exists():
-                _errors['name'] = ['Application name is already exist.']
-                self._errors = _errors
-                return False
-
-            return True
+    # def is_valid(self):
+    #     if super(ClientCreateSerializer, self).is_valid():
+    #         _errors = dict()
+    #         if GardenClient.objects.filter(name=self.object.name).exists():
+    #             _errors['name'] = ['Application name is already exist.']
+    #             self._errors = _errors
+    #             return False
+    #
+    #         return True
