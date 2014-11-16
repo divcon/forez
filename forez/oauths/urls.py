@@ -10,8 +10,10 @@ from django.conf.urls import patterns, url
 #
 # urlpatterns = router.urls
 
+# must solve trailing_slash problem
 urlpatterns = patterns(
     '',
     url(r'^oauths/authorize/$', AuthorizationViewSet.as_view(), name="authorize"),
+    url(r'^oauths/token/$', AuthorizationViewSet.as_view(), name="token"),
 )
 

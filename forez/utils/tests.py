@@ -2,7 +2,7 @@ from request_form import api_request
 #notebook test : True
 #Server test : False
 host = True
-#host = False
+host = False
 
 
 #login
@@ -14,7 +14,7 @@ method = 'POST'
 
 #test3
 token3 = 'Token 1ddc23a358c5f52b2d6ef5e6378c1f13f2125e94'
-server_token3 = 'Token 230ff9bca92ce27d30b2eeac0d245906716eb933'
+server_token3 = 'Token 8a0e3fa510aad716ac044de399f9f2545b0a2fbf'
 #test
 token1 = 'Token c1c98cc1faee9c20ccca8057817e2b60612c9b45'
 server_token1 = 'Token cfb665f106bd9f9da512592199afe032ed0723b2'
@@ -100,9 +100,10 @@ server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 #method = "GET"
 
 #get access token
-url = "/oauth2/access_token/"
-body = {"cleint_id": "63d2649aa23afb7c0653", "client_secret": "71920cd8d88815c94a555bd60f9e1e5d0dc464a2",
-        "grant_type": "a6b7192a5a1e169ec636130ba607bffcab3a86eb", "username": "test1", "password": "test"}
+url = "/o/token/"
+body = {"cleint_id": "TMcIpph@CU18e_@r07J0D_o??VToL.9GBJXt.!Wb", 
+        "client_secret": "vQ0.Z0Sfqo@C6u;D27xtSoLs:LeZNk6G-GRDWnkq_uf3Yywj0=bFmau?=HYpxO4U;PWf4WT_2;c9YyheV7Rb9i;n?sWz6B3zKEaA?E@ffKuEv5z6O:MIBvn!c=Z!Q7R4i",
+        "grant_type": 'athorization-code', 'authorization': ''}
 header = None
 method = "POST"
 #"client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&grant_type=password&username=YOUR_USERNAME&password=YOUR_PASSWORD" http://localhost:8000/oauth2/access_token/
@@ -126,11 +127,11 @@ method = "POST"
 #method = "GET"
 
 # get authorization
-url = "/oauths/authorize?response_type=code&client_id=qKdUf!3pGIsA4o7hnm5eZY7OZ88j!b.!!=3vg8bJ&scope=read&approval_prompt=auto&redirect_uri=http://211.189.127.73:8000"
+#url = "/oauths/authorize?response_type=code&client_id=HuW!F1Ph_liu_!9IGakzEMbAP3.J9FKrWfFo4rPx&scope=read&state=xyz&approval_prompt=auto&redirect_uri=http://211.189.127.73:8000"
 #GET /authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
-body = None
-header = {'Authorization': token2}
-method = "GET"
+#body = None
+#header = {'Authorization': token2}
+#method = "GET"
 
 #curl -X POST -d "grant_type=password&username=<sungjin>&password=<rkems>" http://<VbM-z;VZ9BNTSnPfCArqNeKSKtz7uOgn?5YtFgtm>:<.dmop.;XZD;OznZU-p:JfSayX7R;n._gKCTUETuD?hQYK=e?:hoE8JuimIDOPkVFo4@hdm.0YXAN8WUU8L2bktPn?wdhpYy_vFy=pwrVterUUwaXIJKk!Pd1daL5f6nS>@localhost:8000/o/token/
 

@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^', include('oauths.urls')),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^docs/', include('rest_framework_swagger.urls')),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^', include('redirects.urls')),
 )

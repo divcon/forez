@@ -1,15 +1,8 @@
 #-*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-from oauth2_provider.views.base import AuthorizationView
-from clients.models import GardenClient
+from oauth2_provider.views.base import AuthorizationView, TokenView
 from users.models import GardenUser
-from teams.models import Team
-# from rest_framework.permissions import IsAuthenticated
-# from rest_framework.authentication import TokenAuthentication
-# from rest_framework import viewsets, mixins
-# from oauth2_provider.models import Grant
-# from .serializers import GrantSerializer
 
 
 class AuthorizationViewSet(AuthorizationView):
@@ -24,11 +17,15 @@ class AuthorizationViewSet(AuthorizationView):
         return super(AuthorizationViewSet, self).get(request, *args, **kwargs)
 
     def dispatch(self, request, *args, **kwargs):
-        print str(type(request))
-        request.user = GardenUser.objects.get(username='sungjin')
+        # print str(type(request))
+        request.user = GardenUser.objects.get(username='test1')
         # print request['client_id']
         # print request['redirect_uri']
         return super(AuthorizationViewSet, self).dispatch(request, *args, **kwargs)
+
+
+class TokenViewSet(TokenView):
+    pass
 
 # class AuthorizationViewSet(AuthorizationView,
 #                            viewsets.GenericViewSet,
