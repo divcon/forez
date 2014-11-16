@@ -26,6 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+OAUTH2_PROVIDER_APPLICATION_MODEL = 'clients.GardenClient'
 AUTH_USER_MODEL = 'users.GardenUser'
 # AUTH_PROFILE_MODULE = 'users.UserProfile'
 # Application definition
@@ -44,7 +45,7 @@ INSTALLED_APPS = (
     'utils',
     'clients',
     'teams',
-
+    'oauths',
 )
 
 REST_FRAMEWORK = {
@@ -57,7 +58,7 @@ REST_FRAMEWORK = {
         'oauth2_provider.ext.rest_framework.OAuth2Authentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-            'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_PARSER_CLASSES': (
             'rest_framework.parsers.FormParser',

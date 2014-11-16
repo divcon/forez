@@ -51,7 +51,7 @@ class GardenUser(AbstractBaseUser, PermissionsMixin):
     real_name = models.CharField(max_length=50, blank=False)
     class_num = models.CharField(max_length=10, blank=False)
     gender = models.CharField(max_length=5, blank=False)
-
+    id = models.AutoField(primary_key=True)
     #need add
     # birth = models.DateField(blank=True, null=True)
     profile_pic = models.CharField(max_length=255,

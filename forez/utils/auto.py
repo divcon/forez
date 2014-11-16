@@ -222,9 +222,9 @@ def enter_app_setting(token_dict):
         bad_exit()
 
 init_test()
-#join()
+join()
 token_dict = login()
 registering_clients(token_dict)
-#give_permission(token_dict)
-#enter_app_details(token_dict)
-#enter_app_setting(token_dict)
+give_permission(token_dict)
+enter_app_details(token_dict)
+enter_app_setting(token_dict)

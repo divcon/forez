@@ -6,33 +6,41 @@ host = True
 
 
 #login
-#url = "/tokens"
-#body = {'username': 'sungjin', 'password': 'rkems'}
-#method = 'POST'
+url = "/tokens"
+body = {'username': 'test3', 'password': 'test'}
+header = None
+method = 'POST'
 
 
 #test3
-token3 = 'Token 824669b77dc525181683afb005ee6177e3d5ec4b'
+token3 = 'Token 1ddc23a358c5f52b2d6ef5e6378c1f13f2125e94'
 server_token3 = 'Token 230ff9bca92ce27d30b2eeac0d245906716eb933'
 #test
 token1 = 'Token c1c98cc1faee9c20ccca8057817e2b60612c9b45'
 server_token1 = 'Token cfb665f106bd9f9da512592199afe032ed0723b2'
 #test2
-token2 = 'Token e918bfc2810a5dcd5704a019d75ed941f4ccf0e1'
+token2 = 'Token bcd234a5e6b6f2654a5df0df6e413287502d9643'
 server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
+
+# changing information
+#url = "/users/test3"
+#header = {'Authorization': token3}
+#body = {'email': 'hello@naver.com', 'phone': '01001001', 'password': 'rkems'}
+#method = "PUT"
+
 #app registering
-url = "/clients"
-header = {'Authorization': token3}
-body = {'name': 'test4', 'url': 'http://211.189.127.73:8000',
-        'redirect_uri': 'http://211.189.127.73:8000',
-        'client_type': 'confidential',
-        'authorization_grant_type': 'authorization-code'}
-method = "POST"
+#url = "/clients"
+#header = {'Authorization': token3}
+#body = {'name': 'test4867w698', 'url': 'http://211.189.127.73:8000',
+#        'redirect_uris': 'http://211.189.127.73:8000',
+#        'client_type': 'confidential',
+#        'authorization_grant_type': 'authorization-code'}
+#method = "POST"
 
 #app list 
-#url = "/clients/testapp1"
+#url = "/clients"
 #body = None
-#header = {'Authorization': token1}
+#header = {'Authorization': token3}
 #method = "GET"
 
 #modify url
@@ -54,10 +62,10 @@ method = "POST"
 #token = 'Token 9a8cf47d1c67f42370d2087a52e7f0939d590119'
 
 #add member
-url = "/teams/testapp1/members"
-header = {'Authorization': server_token1}
-body = {'member': 'test3'}
-method = "POST"
+#url = "/teams/testapp1/members"
+#header = {'Authorization': server_token1}
+#body = {'member': 'test3'}
+#method = "POST"
 
 #team info
 #url = "/teams/test3/members"
@@ -80,10 +88,10 @@ method = "POST"
 #method = "GET"
 
 #post client setting
-url = "/clients/testapp2/setting"
-header = {'Authorization': token3}
-body = {'display_name': 'setting_test', 'contact_email': 'test4@naver.com', 'publish': 'True'}
-method = "POST"
+#url = "/clients/testapp2/setting"
+#header = {'Authorization': token3}
+#body = {'display_name': 'setting_test', 'contact_email': 'test4@naver.com', 'publish': 'True'}
+#method = "POST"
 
 #get client setting
 #url = "/clients/testapp2/setting"
@@ -92,18 +100,18 @@ method = "POST"
 #method = "GET"
 
 #get access token
-#url = "/oauth2/access_token/"
-#body = {"cleint_id": "63d2649aa23afb7c0653", "client_secret": "71920cd8d88815c94a555bd60f9e1e5d0dc464a2",
-#        "grant_type": "a6b7192a5a1e169ec636130ba607bffcab3a86eb", "username": "test1", "password": "test"}
-#header = None
-#method = "POST"
+url = "/oauth2/access_token/"
+body = {"cleint_id": "63d2649aa23afb7c0653", "client_secret": "71920cd8d88815c94a555bd60f9e1e5d0dc464a2",
+        "grant_type": "a6b7192a5a1e169ec636130ba607bffcab3a86eb", "username": "test1", "password": "test"}
+header = None
+method = "POST"
 #"client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&grant_type=password&username=YOUR_USERNAME&password=YOUR_PASSWORD" http://localhost:8000/oauth2/access_token/
 #
 #get store list
-url = "/stores"
-body = None
-header = {'Authorization': token3}
-method = "GET"
+#url = "/stores"
+#body = None
+#header = {'Authorization': token3}
+#method = "GET"
 
 # get app list by category
 #url = "/stores?category=business"
@@ -117,13 +125,14 @@ method = "GET"
 #header = {'Authorization': token3}
 #method = "GET"
 
-# get authorizateion
-#url = "/o/authorize?response_type=code&client_id=lTQYwlqn;..HW1TVSDFMJnRtx!vunZ-MB?6py??M&state=xyz&scope=read&redirect_uri=http://211.189.127.73:8000"
+# get authorization
+url = "/oauths/authorize?response_type=code&client_id=qKdUf!3pGIsA4o7hnm5eZY7OZ88j!b.!!=3vg8bJ&scope=read&approval_prompt=auto&redirect_uri=http://211.189.127.73:8000"
 #GET /authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
-#body = None
-#header = {'Authorization': token3}
-#method = "GET"
+body = None
+header = {'Authorization': token2}
+method = "GET"
 
+#curl -X POST -d "grant_type=password&username=<sungjin>&password=<rkems>" http://<VbM-z;VZ9BNTSnPfCArqNeKSKtz7uOgn?5YtFgtm>:<.dmop.;XZD;OznZU-p:JfSayX7R;n._gKCTUETuD?hQYK=e?:hoE8JuimIDOPkVFo4@hdm.0YXAN8WUU8L2bktPn?wdhpYy_vFy=pwrVterUUwaXIJKk!Pd1daL5f6nS>@localhost:8000/o/token/
 
 test = api_request(host)
 resp, content = test.http_request(method=method, url=url, headers=header, body=body)

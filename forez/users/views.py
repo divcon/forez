@@ -48,7 +48,17 @@ class UserViewSet(viewsets.GenericViewSet,
         """
         if request.user != self.get_object():
             return Response(status=status.HTTP_403_FORBIDDEN)
-        return super(UserViewSet, self).update(request, *args, **kwargs)
+        data = dict()
+        request_user = GardenUser.objects.get(username=request.user)
+        request_user.email = request.DATA['email']
+        request_user.phone = request.DATA['phone']
+        if not request.DATA['password'] == "":
+            request_user.set_password(request.DATA['password'])
+            data['password'] = 'changed'
+        request_user.save()
+        data['email'] = request_user.email
+        data['phone'] = request_user.phone
+        return Response(data=data, status=status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
         """

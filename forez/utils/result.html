@@ -1,2 +1,104 @@
-{'status': '200', 'content-location': 'http://localhost:8000/stores', 'server': 'WSGIServer/0.1 Python/2.7.6', 'allow': 'GET, HEAD, OPTIONS', 'date': 'Sat, 15 Nov 2014 02:18:28 GMT', 'x-frame-options': 'SAMEORIGIN', 'content-type': 'application/json'}
-[{"category": "", "client_name": "testapp2", "display_name": "setting_test", "created_at": "2014-11-15"}]
+{'status': '200', 'content-location': 'http://localhost:8000/oauths/authorize/?response_type=code&client_id=qKdUf!3pGIsA4o7hnm5eZY7OZ88j!b.!!=3vg8bJ&scope=read&approval_prompt=auto&redirect_uri=http://211.189.127.73:8000', 'set-cookie': 'csrftoken=abGo5x7kxui37NRM0E9iF1pb104H0BfP; expires=Sun, 15-Nov-2015 08:30:23 GMT; Max-Age=31449600; Path=/', 'vary': 'Cookie', 'server': 'WSGIServer/0.1 Python/2.7.6', 'date': 'Sun, 16 Nov 2014 08:30:23 GMT', 'x-frame-options': 'SAMEORIGIN', 'content-type': 'text/html; charset=utf-8'}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+        
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    
+
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+        .block-center {
+            max-width: 500px;
+            padding: 19px 29px 29px;
+            margin: 0 auto 20px;
+            background-color: #fff;
+            border: 1px solid #e5e5e5;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        }
+        .block-center .block-center-heading {
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    
+    <div class="block-center">
+        
+            <form id="authorizationForm" method="post">
+                <h3 class="block-center-heading">Authorize testapp2?</h3>
+                <input type='hidden' name='csrfmiddlewaretoken' value='abGo5x7kxui37NRM0E9iF1pb104H0BfP' />
+
+                
+                    
+                
+                    
+                        <input id="id_redirect_uri" name="redirect_uri" type="hidden" value="http://211.189.127.73:8000" />
+                    
+                
+                    
+                        <input id="id_scope" name="scope" type="hidden" value="read" />
+                    
+                
+                    
+                        <input id="id_client_id" name="client_id" type="hidden" value="qKdUf!3pGIsA4o7hnm5eZY7OZ88j!b.!!=3vg8bJ" />
+                    
+                
+                    
+                        <input id="id_state" name="state" type="hidden" />
+                    
+                
+                    
+                        <input id="id_response_type" name="response_type" type="hidden" value="code" />
+                    
+                
+
+                <p>Application requires following permissions</p>
+                <ul>
+                    
+                        <li>Read scope</li>
+                    
+                </ul>
+
+                
+                
+
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" class="btn btn-large" value="Cancel"/>
+                        <input type="submit" class="btn btn-large btn-primary" name="allow" value="Authorize"/>
+                    </div>
+                </div>
+            </form>
+
+        
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+

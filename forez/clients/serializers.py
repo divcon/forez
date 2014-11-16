@@ -43,16 +43,6 @@ class ClientCreateSerializer(serializers.ModelSerializer):
         model = GardenClient
         fields = ('name', 'url', 'redirect_uris', 'client_type', 'authorization_grant_type')
 
-    # def is_valid(self):
-    #     if super(ClientCreateSerializer, self).is_valid():
-    #         _errors = dict()
-    #         if GardenClient.objects.filter(name=self.object.name).exists():
-    #             _errors['name'] = ['Application name is already exist.']
-    #             self._errors = _errors
-    #             return False
-    #
-    #         return True
-
 
 class StoreSerializer(serializers.HyperlinkedModelSerializer):
 
