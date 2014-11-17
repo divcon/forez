@@ -51,7 +51,8 @@ class ClientViewSet(viewsets.GenericViewSet,
         if serializer.is_valid():
             print serializer.data['name']
             if GardenClient.objects.already_exist(serializer.data['name']):
-                return Response(data={'error': 'Application name is already exist'}, status=status.HTTP_409_CONFLICT)
+                return Response(data={'error': 'Application name is already exist'},
+                                status=status.HTTP_409_CONFLICT)
 
             created_client = GardenClient.objects.create(
                 user=request.user,
