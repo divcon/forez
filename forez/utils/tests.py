@@ -2,7 +2,7 @@ from request_form import api_request
 #notebook test : True
 #Server test : False
 host = True
-host = False
+#host = False
 
 
 #login
@@ -13,7 +13,7 @@ method = 'POST'
 
 
 #test3
-token3 = 'Token 1ddc23a358c5f52b2d6ef5e6378c1f13f2125e94'
+token3 = 'Token e04271b00743412b5e2373d976863aaee6b44f31'
 server_token3 = 'Token 8a0e3fa510aad716ac044de399f9f2545b0a2fbf'
 #test
 token1 = 'Token c1c98cc1faee9c20ccca8057817e2b60612c9b45'
@@ -120,11 +120,11 @@ method = "POST"
 #header = {'Authorization': token3}
 #method = "GET"
 
-# get app info 
-#url = "/stores/testapp1"
-#body = None
-#header = {'Authorization': token3}
-#method = "GET"
+# get app info
+url = "/stores/testapp1"
+body = None
+header = {'Authorization': token3}
+method = "GET"
 
 # get authorization
 #url = "/oauths/authorize?response_type=code&client_id=HuW!F1Ph_liu_!9IGakzEMbAP3.J9FKrWfFo4rPx&scope=read&state=xyz&approval_prompt=auto&redirect_uri=http://211.189.127.73:8000"
@@ -134,6 +134,19 @@ method = "POST"
 #method = "GET"
 
 #curl -X POST -d "grant_type=password&username=<sungjin>&password=<rkems>" http://<VbM-z;VZ9BNTSnPfCArqNeKSKtz7uOgn?5YtFgtm>:<.dmop.;XZD;OznZU-p:JfSayX7R;n._gKCTUETuD?hQYK=e?:hoE8JuimIDOPkVFo4@hdm.0YXAN8WUU8L2bktPn?wdhpYy_vFy=pwrVterUUwaXIJKk!Pd1daL5f6nS>@localhost:8000/o/token/
+
+#add user app
+url = "/users/test3/apps"
+body = {"client_name": "testapp1"}
+header = {'Authorization': token3}
+method = "POST"
+
+#get user's app
+url = "/users/test3/apps"
+body = None
+header = {'Authorization': token3}
+method = "GET"
+
 
 test = api_request(host)
 resp, content = test.http_request(method=method, url=url, headers=header, body=body)

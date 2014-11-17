@@ -221,6 +221,9 @@ def enter_app_setting(token_dict):
         log_file.write(content)
         bad_exit()
 
+def add_app(token_dict):
+    pass
+
 init_test()
 join()
 token_dict = login()
@@ -228,3 +231,4 @@ registering_clients(token_dict)
 give_permission(token_dict)
 enter_app_details(token_dict)
 enter_app_setting(token_dict)
+add_app(token_dict)

@@ -171,9 +171,6 @@ class ClientViewSet(viewsets.GenericViewSet,
             client_obj.display_name = request.DATA['display_name']
             client_obj.contact_email = request.DATA['contact_email']
             client_obj.publish = self._is_publish_request(request.DATA['publish'])
-            # else:
-            #     return Response(data={"error": "Attribute error. Check your request body"},
-            #                     status=status.HTTP_400_BAD_REQUEST)
             client_obj.save(update_fields=['display_name', 'contact_email', 'publish'])
             return Response(data=request.DATA, status=status.HTTP_200_OK)
 

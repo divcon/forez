@@ -2,6 +2,7 @@
 
 from __future__ import unicode_literals
 from django.db import models
+from clients.models import GardenClient
 
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin
@@ -76,3 +77,28 @@ class GardenUser(AbstractBaseUser, PermissionsMixin):
     def __unicode__(self):
         return self.username
 
+
+class UserAppManager(models.Manager):
+    def is_already_registering(self, user_obj, client_obj):
+        queryset = self.all().filter(user=user_obj, client=client_obj)
+        if queryset.__len__() > 0:
+            return True
+        return False
+
+    def get_app_list(self, user_obj):
+        queryset = self.all().filter(user=user_obj)
+        app_list = list()
+        for q in queryset:
+            app_list.append(q.client)
+        print app_list
+        return app_list
+
+
+class UserApp(models.Model):
+    id = models.AutoField(primary_key=True, null=False, blank=False)
+    client = models.ForeignKey(GardenClient, related_name='application', null=False, to_field='client_name')
+    user = models.ForeignKey(GardenUser, related_name='user', null=False, to_field='username')
+    objects = UserAppManager()
+
+    class Meta:
+        unique_together = ('client', 'user')

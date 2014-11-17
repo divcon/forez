@@ -1,20 +1,17 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-from rest_framework.authentication import SessionAuthentication, BaseAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework import viewsets, mixins, status, generics
-from .models import GardenUser
-from serializers import *
-from rest_framework.renderers import UnicodeJSONRenderer, BrowsableAPIRenderer, JSONRenderer
-from users import models
+from rest_framework import viewsets, mixins, status
+from clients.models import GardenClient
+from .models import GardenUser, UserApp
+from .serializers import UserSerializer, UserCreateSerializer, AppSerializer
+from rest_framework.renderers import UnicodeJSONRenderer, JSONRenderer
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.decorators import action
 
 
-#combine all class later....(refactoring)
-#retrieve another user's info
 class UserViewSet(viewsets.GenericViewSet,
                   mixins.RetrieveModelMixin,
                   mixins.DestroyModelMixin,
@@ -67,6 +64,36 @@ class UserViewSet(viewsets.GenericViewSet,
         if request.user != self.get_object():
             return Response(status=status.HTTP_403_FORBIDDEN)
         return super(UserViewSet, self).destroy(request, *args, **kwargs)
+
+    @action(['POST', 'GET'])
+    def apps(self, request, username=None):
+        if request.user != self.get_object():
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        else:
+            pass
+
+        if request.method == 'GET':
+            app_list = UserApp.objects.get_app_list(request.user)
+            serializer_list = self._make_app_serializer_list(app_list)
+            data = self._make_app_dict(serializer_list)
+            return Response(data=serializer_list, status=status.HTTP_200_OK)
+
+        if request.method == 'POST':
+            client_name = request.DATA['client_name']
+            client_obj = GardenClient.objects.get_client_obj(client_name)
+            if UserApp.objects.is_already_registering(user_obj=request.user, client_obj=client_obj):
+                return Response(data={"error": "Already regitering"}, status=status.HTTP_409_CONFLICT)
+            if not GardenClient.objects.is_publish(client_obj.name):
+                return Response(data={"error": "Application is not available"}, status=status.HTTP_403_FORBIDDEN)
+            else:
+                UserApp.objects.create(user=request.user, client=client_obj)
+                return Response(data=request.DATA, status=status.HTTP_201_CREATED)
+
+    def _make_app_serializer_list(self, app_list):
+        app_serializer_list = list()
+        for a in app_list:
+            app_serializer_list.append(AppSerializer(a))
+        return app_serializer_list
 
 
 class UserCreateViewSet(viewsets.GenericViewSet,

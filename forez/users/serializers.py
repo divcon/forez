@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
 from .models import GardenUser
+from clients.models import GardenClient
 
 
 class UserCreateSerializer(serializers.HyperlinkedModelSerializer):
@@ -26,3 +27,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     def change_password(self):
         pass
+
+
+class AppSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = GardenClient
+        fields = ('name', 'url', 'display_name')
