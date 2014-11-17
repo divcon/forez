@@ -1,0 +1,2168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <title>UnicodeDecodeError at /clients/testapp1/icons</title>
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; }
+    h2 { margin-bottom:.8em; }
+    h2 span { font-size:80%; color:#666; font-weight:normal; }
+    h3 { margin:1em 0 .5em 0; }
+    h4 { margin:0 0 .5em 0; font-weight: normal; }
+    code, pre { font-size: 100%; white-space: pre-wrap; }
+    table { border:1px solid #ccc; border-collapse: collapse; width:100%; background:white; }
+    tbody td, tbody th { vertical-align:top; padding:2px 3px; }
+    thead th { padding:1px 6px 1px 3px; background:#fefefe; text-align:left; font-weight:normal; font-size:11px; border:1px solid #ddd; }
+    tbody th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    table.vars { margin:5px 0 2px 40px; }
+    table.vars td, table.req td { font-family:monospace; }
+    table td.code { width:100%; }
+    table td.code pre { overflow:hidden; }
+    table.source th { color:#666; }
+    table.source td { font-family:monospace; white-space:pre; border-bottom:1px solid #eee; }
+    ul.traceback { list-style-type:none; color: #222; }
+    ul.traceback li.frame { padding-bottom:1em; color:#666; }
+    ul.traceback li.user { background-color:#e0e0e0; color:#000 }
+    div.context { padding:10px 0; overflow:hidden; }
+    div.context ol { padding-left:30px; margin:0 10px; list-style-position: inside; }
+    div.context ol li { font-family:monospace; white-space:pre; color:#777; cursor:pointer; }
+    div.context ol li pre { display:inline; }
+    div.context ol.context-line li { color:#505050; background-color:#dfdfdf; }
+    div.context ol.context-line li span { position:absolute; right:32px; }
+    .user div.context ol.context-line li { background-color:#bbb; color:#000; }
+    .user div.context ol li { color:#666; }
+    div.commands { margin-left: 40px; }
+    div.commands a { color:#555; text-decoration:none; }
+    .user div.commands a { color: black; }
+    #summary { background: #ffc; }
+    #summary h2 { font-weight: normal; color: #666; }
+    #explanation { background:#eee; }
+    #template, #template-not-exist { background:#f6f6f6; }
+    #template-not-exist ul { margin: 0 0 0 20px; }
+    #unicode-hint { background:#eee; }
+    #traceback { background:#eee; }
+    #requestinfo { background:#f6f6f6; padding-left:120px; }
+    #summary table { border:none; background:transparent; }
+    #requestinfo h2, #requestinfo h3 { position:relative; margin-left:-100px; }
+    #requestinfo h3 { margin-bottom:-1em; }
+    .error { background: #ffc; }
+    .specific { color:#cc3300; font-weight:bold; }
+    h2 span.commands { font-size:.7em;}
+    span.commands a:link {color:#5E5694;}
+    pre.exception_value { font-family: sans-serif; color: #666; font-size: 1.5em; margin: 10px 0 10px 0; }
+  </style>
+  
+  <script type="text/javascript">
+  //<!--
+    function getElementsByClassName(oElm, strTagName, strClassName){
+        // Written by Jonathan Snook, http://www.snook.ca/jon; Add-ons by Robert Nyman, http://www.robertnyman.com
+        var arrElements = (strTagName == "*" && document.all)? document.all :
+        oElm.getElementsByTagName(strTagName);
+        var arrReturnElements = new Array();
+        strClassName = strClassName.replace(/\-/g, "\-");
+        var oRegExp = new RegExp("(^|\s)" + strClassName + "(\s|$)");
+        var oElement;
+        for(var i=0; i<arrElements.length; i++){
+            oElement = arrElements[i];
+            if(oRegExp.test(oElement.className)){
+                arrReturnElements.push(oElement);
+            }
+        }
+        return (arrReturnElements)
+    }
+    function hideAll(elems) {
+      for (var e = 0; e < elems.length; e++) {
+        elems[e].style.display = 'none';
+      }
+    }
+    window.onload = function() {
+      hideAll(getElementsByClassName(document, 'table', 'vars'));
+      hideAll(getElementsByClassName(document, 'ol', 'pre-context'));
+      hideAll(getElementsByClassName(document, 'ol', 'post-context'));
+      hideAll(getElementsByClassName(document, 'div', 'pastebin'));
+    }
+    function toggle() {
+      for (var i = 0; i < arguments.length; i++) {
+        var e = document.getElementById(arguments[i]);
+        if (e) {
+          e.style.display = e.style.display == 'none' ? 'block' : 'none';
+        }
+      }
+      return false;
+    }
+    function varToggle(link, id) {
+      toggle('v' + id);
+      var s = link.getElementsByTagName('span')[0];
+      var uarr = String.fromCharCode(0x25b6);
+      var darr = String.fromCharCode(0x25bc);
+      s.innerHTML = s.innerHTML == uarr ? darr : uarr;
+      return false;
+    }
+    function switchPastebinFriendly(link) {
+      s1 = "Switch to copy-and-paste view";
+      s2 = "Switch back to interactive view";
+      link.innerHTML = link.innerHTML == s1 ? s2 : s1;
+      toggle('browserTraceback', 'pastebinTraceback');
+      return false;
+    }
+    //-->
+  </script>
+  
+</head>
+<body>
+<div id="summary">
+  <h1>UnicodeDecodeError at /clients/testapp1/icons</h1>
+  <pre class="exception_value">&#39;ascii&#39; codec can&#39;t decode byte 0x89 in position 1: ordinal not in range(128)</pre>
+  <table class="meta">
+
+    <tr>
+      <th>Request Method:</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Request URL:</th>
+      <td>http://211.189.127.73:8000/clients/testapp1/icons</td>
+    </tr>
+
+    <tr>
+      <th>Django Version:</th>
+      <td>1.6.5</td>
+    </tr>
+
+    <tr>
+      <th>Exception Type:</th>
+      <td>UnicodeDecodeError</td>
+    </tr>
+
+
+    <tr>
+      <th>Exception Value:</th>
+      <td><pre>&#39;ascii&#39; codec can&#39;t decode byte 0x89 in position 1: ordinal not in range(128)</pre></td>
+    </tr>
+
+
+    <tr>
+      <th>Exception Location:</th>
+      <td>/usr/lib/python2.7/json/encoder.py in encode, line 210</td>
+    </tr>
+
+    <tr>
+      <th>Python Executable:</th>
+      <td>/home/sungjin/webp/oauth2toolkit/bin/python2.7</td>
+    </tr>
+    <tr>
+      <th>Python Version:</th>
+      <td>2.7.6</td>
+    </tr>
+    <tr>
+      <th>Python Path:</th>
+      <td><pre>[&#39;/home/sungjin/webp/forez/forez&#39;,
+ &#39;/home/sungjin/webp/forez/forez&#39;,
+ &#39;/home/sungjin/PycharmProjects/python_sdk&#39;,
+ &#39;/home/sungjin/webp/oauth2toolkit/lib/python2.7&#39;,
+ &#39;/home/sungjin/webp/oauth2toolkit/lib/python2.7/plat-x86_64-linux-gnu&#39;,
+ &#39;/home/sungjin/webp/oauth2toolkit/lib/python2.7/lib-tk&#39;,
+ &#39;/home/sungjin/webp/oauth2toolkit/lib/python2.7/lib-old&#39;,
+ &#39;/home/sungjin/webp/oauth2toolkit/lib/python2.7/lib-dynload&#39;,
+ &#39;/usr/lib/python2.7&#39;,
+ &#39;/usr/lib/python2.7/plat-x86_64-linux-gnu&#39;,
+ &#39;/usr/lib/python2.7/lib-tk&#39;,
+ &#39;/home/sungjin/webp/oauth2toolkit/local/lib/python2.7/site-packages&#39;,
+ &#39;/home/sungjin/webp/oauth2toolkit/lib/python2.7/site-packages&#39;]</pre></td>
+    </tr>
+    <tr>
+      <th>Server time:</th>
+      <td>Mon, 17 Nov 2014 16:42:54 +0000</td>
+    </tr>
+  </table>
+</div>
+
+<div id="unicode-hint">
+    <h2>Unicode error hint</h2>
+    <p>The string that could not be encoded/decoded was: <strong>&quot;�PNG\r</strong></p>
+</div>
+
+
+
+
+<div id="traceback">
+  <h2>Traceback <span class="commands"><a href="#" onclick="return switchPastebinFriendly(this);">Switch to copy-and-paste view</a></span></h2>
+  
+  <div id="browserTraceback">
+    <ul class="traceback">
+      
+        <li class="frame django">
+          <code>/home/sungjin/webp/oauth2toolkit/local/lib/python2.7/site-packages/django/core/handlers/base.py</code> in <code>get_response</code>
+
+          
+            <div class="context" id="c140507908184040">
+              
+                <ol start="130" class="pre-context" id="pre140507908184040"><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>                raise ValueError(&quot;The view %s.%s didn&#39;t return an HttpResponse object.&quot; % (callback.__module__, view_name))</pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre></pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>            # If the response supports deferred rendering, apply template</pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>            # response middleware and then render the response</pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>            if hasattr(response, &#39;render&#39;) and callable(response.render):</pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>                for middleware_method in self._template_response_middleware:</pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>                    response = middleware_method(request, response)</pre></li></ol>
+              
+              <ol start="137" class="context-line"><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>                response = response.render()</pre> <span>...</span></li></ol>
+              
+                <ol start='138' class="post-context" id="post140507908184040"><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre></pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>        except http.Http404 as e:</pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>            logger.warning(&#39;Not Found: %s&#39;, request.path,</pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>                        extra={</pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>                            &#39;status_code&#39;: 404,</pre></li><li onclick="toggle('pre140507908184040', 'post140507908184040')"><pre>                            &#39;request&#39;: request</pre></li></ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140507908184040')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140507908184040">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>callback_args</td>
+                    <td class="code"><pre>()</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>resolver_match</td>
+                    <td class="code"><pre>ResolverMatch(func=&lt;function ClientViewSet at 0x7fca8bfc7578&gt;, args=(), kwargs={u&#39;name&#39;: u&#39;testapp1&#39;}, url_name=&#39;gardenclient-icons&#39;, app_name=&#39;None&#39;, namespace=&#39;&#39;)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>middleware_method</td>
+                    <td class="code"><pre>&lt;bound method CsrfViewMiddleware.process_view of &lt;django.middleware.csrf.CsrfViewMiddleware object at 0x7fca91aeda90&gt;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x7fca92a74350&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&#39;&lt;WSGIRequest\npath:/clients/testapp1/icons,\nGET:&lt;QueryDict: {}&gt;,\nPOST:&lt;QueryDict: {}&gt;,\nCOOKIES:{\&#39;csrftoken\&#39;: \&#39;asuV0k1k6zlqVXecjb3HCiQ8W3F6rNih\&#39;,\n \&#39;sessionid\&#39;: \&#39;awt2blqiq0popvwuje89syz9l865wo9e\&#39;},\nMETA:{\&#39;CLASSPATH\&#39;: \&#39;/home/sungjin/pycharm-2.7.3/bin/../lib/bootstrap.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/extensions.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/util.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/jdom.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/log4j.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/trove4j.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/jna.jar\&#39;,\n \&#39;CLUTTER_IM_MODULE\&#39;: \&#39;xim\&#39;,\n \&#39;COMPIZ_BIN_PATH\&#39;: \&#39;/usr/bin/\&#39;,\n \&#39;COMPIZ_CONFIG_PROFILE\&#39;: \&#39;ubuntu\&#39;,\n \&#39;CONTENT_LENGTH\&#39;: \&#39;10055\&#39;,\n \&#39;CONTENT_TYPE\&#39;: \&#39;multipart/form-data; boundary=----WebKitFormBoundaryYliPl7XSFIeHEya0\&#39;,\n u\&#39;CSRF_COOKIE\&#39;: u\&#39;asuV0k1k6zlqVXecjb3HCiQ8W3F6rNih\&#39;,\n \&#39;DBUS_SESSION_BUS_ADDRESS\&#39;: \&#39;unix:abstract=/tmp/dbus-ub71Trguu5\&#39;,\n \&#39;DEFAULTS_PATH\&#39;: \&#39;/usr/share/gconf/ubuntu.default.path\&#39;,\n \&#39;DESKTOP_SESSION\&#39;: \&#39;ubuntu\&#39;,\n \&#39;DESKTOP_STARTUP_ID\&#39;: \&#39;compiz-3698-SWSSM-&quot;/home/sungjin/pycharm-2.7.3/bin/pycharm.sh&quot;-4_TIME56194813\&#39;,\n \&#39;DISPLAY\&#39;: \&#39;:0\&#39;,\n \&#39;DJANGO_SETTINGS_MODULE\&#39;: \&#39;forez.settings\&#39;,\n \&#39;GATEWAY_INTERFACE\&#39;: \&#39;CGI/1.1\&#39;,\n \&#39;GDMSESSION\&#39;: \&#39;ubuntu\&#39;,\n \&#39;GDM_LANG\&#39;: \&#39;ko\&#39;,\n \&#39;GIO_LAUNCHED_DESKTOP_FILE\&#39;: \&#39;/home/sungjin/.local/share/applications/jetbrains-pycharm.desktop\&#39;,\n \&#39;GIO_LAUNCHED_DESKTOP_FILE_PID\&#39;: \&#39;12518\&#39;,\n \&#39;GNOME_DESKTOP_SESSION_ID\&#39;: \&#39;this-is-deprecated\&#39;,\n \&#39;GNOME_KEYRING_CONTROL\&#39;: \&#39;/run/user/1000/keyring-LzeBna\&#39;,\n \&#39;GNOME_KEYRING_PID\&#39;: \&#39;3344\&#39;,\n \&#39;GPG_AGENT_INFO\&#39;: \&#39;/run/user/1000/keyring-LzeBna/gpg:0:1\&#39;,\n \&#39;GTK_IM_MODULE\&#39;: \&#39;ibus\&#39;,\n \&#39;GTK_MODULES\&#39;: \&#39;overlay-scrollbar:unity-gtk-module\&#39;,\n \&#39;HOME\&#39;: \&#39;/home/sungjin\&#39;,\n \&#39;HTTP_ACCEPT\&#39;: \&#39;*/*\&#39;,\n \&#39;HTTP_ACCEPT_ENCODING\&#39;: \&#39;gzip,deflate,sdch\&#39;,\n \&#39;HTTP_ACCEPT_LANGUAGE\&#39;: \&#39;ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4\&#39;,\n \&#39;HTTP_AUTHORIZATION\&#39;: \&#39;Token 174fd85cfd7e23e2dca1445a2c4f471b84e92411\&#39;,\n \&#39;HTTP_CACHE_CONTROL\&#39;: \&#39;no-cache\&#39;,\n \&#39;HTTP_CONNECTION\&#39;: \&#39;keep-alive\&#39;,\n \&#39;HTTP_COOKIE\&#39;: \&#39;sessionid=awt2blqiq0popvwuje89syz9l865wo9e; csrftoken=asuV0k1k6zlqVXecjb3HCiQ8W3F6rNih\&#39;,\n \&#39;HTTP_HOST\&#39;: \&#39;211.189.127.73:8000\&#39;,\n \&#39;HTTP_ORIGIN\&#39;: \&#39;chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm\&#39;,\n \&#39;HTTP_USER_AGENT\&#39;: \&#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36\&#39;,\n \&#39;IM_CONFIG_PHASE\&#39;: \&#39;1\&#39;,\n \&#39;INSTANCE\&#39;: \&#39;\&#39;,\n \&#39;JAVA_HOME\&#39;: \&#39;/usr/lib/jvm/java-7-oracle/\&#39;,\n \&#39;JOB\&#39;: \&#39;dbus\&#39;,\n \&#39;LANG\&#39;: \&#39;ko_KR.UTF-8\&#39;,\n \&#39;LANGUAGE\&#39;: \&#39;ko\&#39;,\n \&#39;LD_LIBRARY_PATH\&#39;: \&#39;/home/sungjin/pycharm-2.7.3/bin:\&#39;,\n \&#39;LOGNAME\&#39;: \&#39;sungjin\&#39;,\n \&#39;MANDATORY_PATH\&#39;: \&#39;/usr/share/gconf/ubuntu.mandatory.path\&#39;,\n \&#39;NLSPATH\&#39;: \&#39;/usr/dt/lib/nls/msg/%L/%N.cat\&#39;,\n \&#39;PATH\&#39;: \&#39;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-7-oracle/bin:/home/sungjin/android-ndk-r9d:/home/sungjin/webp/oauth2toolkit/bin\&#39;,\n \&#39;PATH_INFO\&#39;: u\&#39;/clients/testapp1/icons\&#39;,\n \&#39;PWD\&#39;: \&#39;/home/sungjin\&#39;,\n \&#39;PYCHARM_HOSTED\&#39;: \&#39;1\&#39;,\n \&#39;PYTHONIOENCODING\&#39;: \&#39;UTF-8\&#39;,\n \&#39;PYTHONPATH\&#39;: \&#39;/home/sungjin/webp/forez/forez:/home/sungjin/PycharmProjects/python_sdk\&#39;,\n \&#39;PYTHONUNBUFFERED\&#39;: \&#39;1\&#39;,\n \&#39;QT4_IM_MODULE\&#39;: \&#39;xim\&#39;,\n \&#39;QT_IM_MODULE\&#39;: \&#39;ibus\&#39;,\n \&#39;QT_QPA_PLATFORMTHEME\&#39;: \&#39;appmenu-qt5\&#39;,\n \&#39;QUERY_STRING\&#39;: \&#39;\&#39;,\n \&#39;REMOTE_ADDR\&#39;: \&#39;211.189.127.73\&#39;,\n \&#39;REMOTE_HOST\&#39;: \&#39;\&#39;,\n \&#39;REQUEST_METHOD\&#39;: \&#39;POST\&#39;,\n \&#39;RUN_MAIN\&#39;: \&#39;true\&#39;,\n \&#39;SCRIPT_NAME\&#39;: u\&#39;\&#39;,\n \&#39;SELINUX_INIT\&#39;: \&#39;YES\&#39;,\n \&#39;SERVER_NAME\&#39;: \&#39;SWSSM.local\&#39;,\n \&#39;SERVER_PORT\&#39;: \&#39;8000\&#39;,\n \&#39;SERVER_PROTOCOL\&#39;: \&#39;HTTP/1.1\&#39;,\n \&#39;SERVER_SOFTWARE\&#39;: \&#39;WSGIServer/0.1 Python/2.7.6\&#39;,\n \&#39;SESSION\&#39;: \&#39;ubuntu\&#39;,\n \&#39;SESSIONTYPE\&#39;: \&#39;gnome-session\&#39;,\n \&#39;SESSION_MANAGER\&#39;: \&#39;local/SWSSM:@/tmp/.ICE-unix/3481,unix/SWSSM:/tmp/.ICE-unix/3481\&#39;,\n \&#39;SHELL\&#39;: \&#39;/bin/bash\&#39;,\n \&#39;SSH_AUTH_SOCK\&#39;: \&#39;/run/user/1000/keyring-LzeBna/ssh\&#39;,\n \&#39;TEXTDOMAIN\&#39;: \&#39;im-config\&#39;,\n \&#39;TEXTDOMAINDIR\&#39;: \&#39;/usr/share/locale/\&#39;,\n \&#39;TZ\&#39;: \&#39;UTC\&#39;,\n \&#39;UBUNTU_MENUPROXY\&#39;: \&#39;1\&#39;,\n \&#39;UPSTART_SESSION\&#39;: \&#39;unix:abstract=/com/ubuntu/upstart-session/1000/3346\&#39;,\n \&#39;USER\&#39;: \&#39;sungjin\&#39;,\n \&#39;XAUTHORITY\&#39;: \&#39;/home/sungjin/.Xauthority\&#39;,\n \&#39;XDG_CONFIG_DIRS\&#39;: \&#39;/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg\&#39;,\n \&#39;XDG_CURRENT_DESKTOP\&#39;: \&#39;Unity\&#39;,\n \&#39;XDG_DATA_DIRS\&#39;: \&#39;/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/\&#39;,\n \&#39;XDG_GREETER_DATA_DIR\&#39;: \&#39;/var/lib/lightdm-data/sungjin\&#39;,\n \&#39;XDG_MENU_PREFIX\&#39;: \&#39;gnome-\&#39;,\n \&#39;XDG_RUNTIME_DIR\&#39;: \&#39;/run/user/1000\&#39;,\n \&#39;XDG_SEAT\&#39;: \&#39;seat0\&#39;,\n \&#39;XDG_SEAT_PATH\&#39;: \&#39;/org/freedesktop/DisplayManager/Seat0\&#39;,\n \&#39;XDG_SESSION_ID\&#39;: \&#39;c2\&#39;,\n \&#39;XDG_SESSION_PATH\&#39;: \&#39;/org/freedesktop/DisplayManager/Session0\&#39;,\n \&#39;XDG_VTNR\&#39;: \&#39;7\&#39;,\n \&#39;XFILESEARCHPATH\&#39;: \&#39;/usr/dt/app-defaults/%L/Dt\&#39;,\n \&#39;XMODIFIERS\&#39;: \&#39;@im=ibus\&#39;,\n \&#39;wsgi.errors\&#39;: &lt;open file \&#39;&lt;stderr&gt;\&#39;, mode \&#39;w\&#39; at 0x7fca95f911e0&gt;,\n \&#39;wsgi.file_wrapper\&#39;: &lt;class wsgiref.util.FileWrapper at 0x7fca936037a0&gt;,\n \&#39;wsgi.input\&#39;: &lt;socket._fileobject object at 0x7fca91aee5d0&gt;,\n \&#39;wsgi.multiprocess\&#39;: False,\n \&#39;wsgi.multithread\&#39;: True,\n \&#39;wsgi.run_once\&#39;: False,\n \&#39;wsgi.url_scheme\&#39;: \&#39;http\&#39;,\n \&#39;wsgi.version\&#39;: (1, 0)}&gt;&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>callback</td>
+                    <td class="code"><pre>&lt;function ClientViewSet at 0x7fca8bfc7578&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>wrapped_callback</td>
+                    <td class="code"><pre>&lt;function ClientViewSet at 0x7fca8bfc7578&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>resolver</td>
+                    <td class="code"><pre>&lt;RegexURLResolver &#39;forez.urls&#39; (None:None) ^/&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>callback_kwargs</td>
+                    <td class="code"><pre>{u&#39;name&#39;: u&#39;testapp1&#39;}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>response</td>
+                    <td class="code"><pre>&lt;rest_framework.response.Response object at 0x7fca8bf94c10&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>urlconf</td>
+                    <td class="code"><pre>&#39;forez.urls&#39;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        <li class="frame django">
+          <code>/home/sungjin/webp/oauth2toolkit/local/lib/python2.7/site-packages/django/template/response.py</code> in <code>render</code>
+
+          
+            <div class="context" id="c140507908183536">
+              
+                <ol start="98" class="pre-context" id="pre140507908183536"><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre></pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>        If the content has already been rendered, this is a no-op.</pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre></pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>        Returns the baked response instance.</pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>        &quot;&quot;&quot;</pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>        retval = self</pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>        if not self._is_rendered:</pre></li></ol>
+              
+              <ol start="105" class="context-line"><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>            self.content = self.rendered_content</pre> <span>...</span></li></ol>
+              
+                <ol start='106' class="post-context" id="post140507908183536"><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>            for post_callback in self._post_render_callbacks:</pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>                newretval = post_callback(retval)</pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>                if newretval is not None:</pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>                    retval = newretval</pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre>        return retval</pre></li><li onclick="toggle('pre140507908183536', 'post140507908183536')"><pre></pre></li></ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140507908183536')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140507908183536">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;rest_framework.response.Response object at 0x7fca8bf94c10&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>retval</td>
+                    <td class="code"><pre>&lt;rest_framework.response.Response object at 0x7fca8bf94c10&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        <li class="frame user">
+          <code>/home/sungjin/webp/oauth2toolkit/local/lib/python2.7/site-packages/rest_framework/response.py</code> in <code>rendered_content</code>
+
+          
+            <div class="context" id="c140507908183464">
+              
+                <ol start="52" class="pre-context" id="pre140507908183464"><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre></pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>        if content_type is None and charset is not None:</pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>            content_type = &quot;{0}; charset={1}&quot;.format(media_type, charset)</pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>        elif content_type is None:</pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>            content_type = media_type</pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>        self[&#39;Content-Type&#39;] = content_type</pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre></pre></li></ol>
+              
+              <ol start="59" class="context-line"><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>        ret = renderer.render(self.data, media_type, context)</pre> <span>...</span></li></ol>
+              
+                <ol start='60' class="post-context" id="post140507908183464"><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>        if isinstance(ret, six.text_type):</pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>            assert charset, &#39;renderer returned unicode, and did not specify &#39; \</pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>            &#39;a charset value.&#39;</pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>            return bytes(ret.encode(charset))</pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre></pre></li><li onclick="toggle('pre140507908183464', 'post140507908183464')"><pre>        if not ret:</pre></li></ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140507908183464')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140507908183464">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>content_type</td>
+                    <td class="code"><pre>u&#39;application/json&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;rest_framework.response.Response object at 0x7fca8bf94c10&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>charset</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>renderer</td>
+                    <td class="code"><pre>&lt;rest_framework.renderers.UnicodeJSONRenderer object at 0x7fca8bf94390&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>context</td>
+                    <td class="code"><pre>{u&#39;args&#39;: (),
+ u&#39;kwargs&#39;: {u&#39;name&#39;: u&#39;testapp1&#39;},
+ u&#39;request&#39;: &lt;rest_framework.request.Request object at 0x7fca8bf94350&gt;,
+ u&#39;response&#39;: &lt;rest_framework.response.Response object at 0x7fca8bf94c10&gt;,
+ u&#39;view&#39;: &lt;clients.views.ClientViewSet object at 0x7fca8bf94110&gt;}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>media_type</td>
+                    <td class="code"><pre>u&#39;application/json&#39;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        <li class="frame user">
+          <code>/home/sungjin/webp/oauth2toolkit/local/lib/python2.7/site-packages/rest_framework/renderers.py</code> in <code>render</code>
+
+          
+            <div class="context" id="c140507908183968">
+              
+                <ol start="78" class="pre-context" id="pre140507908183968"><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>            indent = params.get(&#39;indent&#39;, indent)</pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>            try:</pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>                indent = max(min(int(indent), 8), 0)</pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>            except (ValueError, TypeError):</pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>                indent = None</pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre></pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>        ret = json.dumps(data, cls=self.encoder_class,</pre></li></ol>
+              
+              <ol start="85" class="context-line"><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>            indent=indent, ensure_ascii=self.ensure_ascii)</pre> <span>...</span></li></ol>
+              
+                <ol start='86' class="post-context" id="post140507908183968"><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre></pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>        # On python 2.x json.dumps() returns bytestrings if ensure_ascii=True,</pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>        # but if ensure_ascii=False, the return type is underspecified,</pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>        # and may (or may not) be unicode.</pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>        # On python 3.x json.dumps() returns unicode strings.</pre></li><li onclick="toggle('pre140507908183968', 'post140507908183968')"><pre>        if isinstance(ret, six.text_type):</pre></li></ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140507908183968')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140507908183968">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>indent</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>accepted_media_type</td>
+                    <td class="code"><pre>u&#39;application/json&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>renderer_context</td>
+                    <td class="code"><pre>{u&#39;args&#39;: (),
+ u&#39;kwargs&#39;: {u&#39;name&#39;: u&#39;testapp1&#39;},
+ u&#39;request&#39;: &lt;rest_framework.request.Request object at 0x7fca8bf94350&gt;,
+ u&#39;response&#39;: &lt;rest_framework.response.Response object at 0x7fca8bf94c10&gt;,
+ u&#39;view&#39;: &lt;clients.views.ClientViewSet object at 0x7fca8bf94110&gt;}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;rest_framework.renderers.UnicodeJSONRenderer object at 0x7fca8bf94390&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>params</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>base_media_type</td>
+                    <td class="code"><pre>u&#39;application/json&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>data</td>
+                    <td class="code"><pre>&lt;MultiValueDict: {u&#39;icon&#39;: [&lt;InMemoryUploadedFile: default.png (image/png)&gt;]}&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        <li class="frame user">
+          <code>/usr/lib/python2.7/json/__init__.py</code> in <code>dumps</code>
+
+          
+            <div class="context" id="c140507908183680">
+              
+                <ol start="243" class="pre-context" id="pre140507908183680"><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>        return _default_encoder.encode(obj)</pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>    if cls is None:</pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>        cls = JSONEncoder</pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>    return cls(</pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>        skipkeys=skipkeys, ensure_ascii=ensure_ascii,</pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>        check_circular=check_circular, allow_nan=allow_nan, indent=indent,</pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>        separators=separators, encoding=encoding, default=default,</pre></li></ol>
+              
+              <ol start="250" class="context-line"><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>        sort_keys=sort_keys, **kw).encode(obj)</pre> <span>...</span></li></ol>
+              
+                <ol start='251' class="post-context" id="post140507908183680"><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre></pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre></pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>_default_decoder = JSONDecoder(encoding=None, object_hook=None,</pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre>                               object_pairs_hook=None)</pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre></pre></li><li onclick="toggle('pre140507908183680', 'post140507908183680')"><pre></pre></li></ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140507908183680')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140507908183680">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>indent</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>encoding</td>
+                    <td class="code"><pre>&#39;utf-8&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>default</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>separators</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>kw</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>skipkeys</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>allow_nan</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>obj</td>
+                    <td class="code"><pre>&lt;MultiValueDict: {u&#39;icon&#39;: [&lt;InMemoryUploadedFile: default.png (image/png)&gt;]}&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>sort_keys</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>ensure_ascii</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>check_circular</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>cls</td>
+                    <td class="code"><pre>&lt;class &#39;rest_framework.utils.encoders.JSONEncoder&#39;&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        <li class="frame user">
+          <code>/usr/lib/python2.7/json/encoder.py</code> in <code>encode</code>
+
+          
+            <div class="context" id="c140507908183608">
+              
+                <ol start="203" class="pre-context" id="pre140507908183608"><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>                return encode_basestring(o)</pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>        # This doesn&#39;t pass the iterator directly to &#39;&#39;.join() because the</pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>        # exceptions aren&#39;t as detailed.  The list call should be roughly</pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>        # equivalent to the PySequence_Fast that &#39;&#39;.join() would do.</pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>        chunks = self.iterencode(o, _one_shot=True)</pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>        if not isinstance(chunks, (list, tuple)):</pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>            chunks = list(chunks)</pre></li></ol>
+              
+              <ol start="210" class="context-line"><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>        return &#39;&#39;.join(chunks)</pre> <span>...</span></li></ol>
+              
+                <ol start='211' class="post-context" id="post140507908183608"><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre></pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>    def iterencode(self, o, _one_shot=False):</pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>        &quot;&quot;&quot;Encode the given object and yield each string</pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>        representation as available.</pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre></pre></li><li onclick="toggle('pre140507908183608', 'post140507908183608')"><pre>        For example::</pre></li></ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140507908183608')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140507908183608">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>chunks</td>
+                    <td class="code"><pre>[&#39;{&#39;,
+ u&#39;&quot;icon&quot;&#39;,
+ &#39;: &#39;,
+ &#39;[&#39;,
+ &#39;&quot;\x89PNG\\r\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\\u001a\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u00016\\u0000\\u0000\\u00016\\b\\u0006\\u0000\\u0000\\u0000\xeb\xbc\xbe\xa9\\u0000\\u0000&amp;VIDATx\xda\xec\xdd\xc1\x8d\x82@\\u0014\x80\xe1)\xc1\\u0012\xa6\\u0014K\xb0\\u0004K\xb0\\u0004J0T0\xa5p\xf5F\\t\x96@\\u0007\xbb/\\u001e\\u0016\x93u\xcd\xea\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xc2\xecg\xf2q\xf1`\xf2H\xfe\\f\\u000eh\x9a\xf5\xd5\x9er\xd8\x87&amp;t\xa1\\u000f\\u001f@u\xfa\xd0\x85&amp;\xecC\x9e\xa91\\u0017s|\xd06\x94pNN6\xfcg\xe7P\xc2v\x9da\x8b:\x87\xa3\x98\\u0001w\\&quot;w\\fy\xd9a\\u001b\x83V\x92\x93\\u0006\xfc^\\tyyakO\\u001bA\\u0003^\\u0010\xb8\xcd2\xc2\xd6\x9e\\u000eaHN\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xf0wC8\xbc/l\xb1t\xb4\xab\\tL\xa4\\u000fy\xde\xb0\xb5\xa7\x9dU\\u001a0\xb1!\xec\xa6\\u000e\xdbx\xe9i\xe0\xc0|\\u000e\x93\x86\xcd\\u0006\\u0001\xf0&amp;\xe5\x81\xb0\x89\\u001aPI\xdc\xc6\xb0\x89\\u001a\xb0*\xe5%a\xbb&lt;\xebe\x98\xc0r4\xcf\x86m\xdc\xfd4D`yvO\x85-\xde\xccn\xe9\\u0000\\u0016j\\b\xf9\xe1\xb0\xb9\xf9\\u0016X\xb8\xfe\x87\xb0\xf9^\\rX\xb5\xe6F\xd8\\\\\x82\\u0002\x95\\\\\x92\x8eask\\u0007\xb0z\xe5n\xd8.\xe53$`}\xf2U\xd8\xac\xd6\x80*\x94\xab\xb0Y\xad\\u0001\xd5\xc8\xb7\xc2vL\\u0006\\u0003\xac\xd7\xf1[\xd8\xec\x84\\u0002+7\x84\\u0014&lt;:\\u0005Te\\u0017l\\u001a\\u0000U)_a\xf3\xff\x9f@%\xce\xc1n(P\x9d\x9c\xe2\xb0O\\u0006\\u0001\xd4c\xef\x81w\xa06M\x8aC\x97\\f\\u0002\xa8G\xe7w\xd7\x80\xda\xf4)\\u0019\\u0002P\\u0019a\\u0003\x84\\r@\xd8\\u0000\x84\\r@\xd8\\u0000\x84\\r\\u00106\\u0000a\\u0003\\u00106\\u0000a\\u0003\\u00106@\xd8\\u0000\x84\\r@\xd8\\u0000\x84\\r@\xd8\\u0000a\x83O\xf6\xce,6\xea*\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xe3\x95\xdd\xa0\\u0011!\xc1\\&quot;&amp;\xe2B\xe2\\u0003\\u000f\x82\\u000f\\u0002\xeeB\x80DD\xd1D\\u0011\xa3\\t!1j4\x8a!\xc1\xa0\\u0010cb\\u0014(-c\xa9\\u0002]\x94\\u0012\xb6\\u0016l\xa1\xec\x8b\\b\xe92\x9d\xb6SJ;\xedt\\u001b:m)\xed\xd0\x8dv\xba\xcd\xb4\xfd&lt;\xb9\xff\xa4\xc4\x87\x86\xe0lw\xda\xefK\xbe\xf4\xa50\xcd\xbds\x7f\xffs\xce\xbd\xe7\xfei\x9a`\xa3i\x9a&amp;\xd8h\x9a\xa6\\t6\x9a\xa6i\x82\x8d\xa6i\x9a`\xa3i\x9a`\xa3i\x9a&amp;\xd8h\x9a\xa6\\t6\x9a\xa6i\x82\x8d\xa6i\x9a`\xa3i\x9a`\xa3i\x9a&amp;\xd8h\x9a\xa6\\t6\xfa\x9e\xbc\xc3\x8c\x88\xe8\\u001cDl\\u0017Ge#b[\\u0016\\&quot;\xb6\\u000e\xe3m\xd9\xeaw\xd4\xef\xc7\xc8\xbf3\xe5r\xfc\xfc\xe1\x98\xe1\xc6\xdew\xcb\x9c\xa9\xb9\x95y\xe68\\u0013l#\\u0014`1\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;`\xc6\x97}\x8b\xf1\xc5\\u001f\\u001bk\xc1\xf4\\u0004+\x9eN.\xc2\xbcC%x\xf9h)\\u0016\xa5\x95a\xe91;\x96\\u001f/\xc7\\u001b\xe2%\xe9v\xbc\xfeW\\u0019\x9eO\xb1a\xce\xfek\x98\x99X\x88Iq\\u0016c1n\xc9\xbc\xb3xb\xb8\x80\xee\xc9\xdb\xb3\xd5\\u001c&lt;\xb4+\\u001f\xcf\\u001e(\xc6\xab2\xf6K\xd3\xedj\xcc\x97\xfb\xe6\xa1y[\x90j\xc3S{\xaf\\u001a\x9f\&#39;\x9f%s\xc4q\&#39;\xd8\xc2\\u001efCQ\xc0\xb8\x9d\\u0016D\xc6\\u0017`\xa1|\xd1\xbf\xbeR\x83]\xc5M8\xeblG\xa1\xab\\u000b\xce\xce&gt;\xb4\xf5\xf6c`\\u0010wU\xb7w\\u0000\\rn\\u000fJ\x9a\xbbq\xa9\xae\\u0003I\xa5.\xac\xbb\xe2\xc4\x8b\xa9\xa5\x88\\u0014@\xca\xe7*h\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xf4\\u0018\xd1\\rg\x93X\xc6g\xde\xc1b\xec-\xbb\x85\x8a\xb6\\u001exe\xf0\\u0003\xa5\xd6^/\xf2\x9a\xdc\xf8%\xff\\u0006f$Z!\x9f\xcd9 \xd8\xc2\xcc*\\&quot;\xcbR?\xa7\xed)\xc0\xdb\\u0019\xe5\xf89\xbf\\u0001\xff\xd4w\xa0]\xbe\xe0\x81T\x9b\xfc\xff\xa7j\xda\xf1Cn=^\x93\xe8cL\xac\\u0011\xd5ID\xc7H\xee\x8e\xd5\xfc||\xaeZ=$\x82-gG\\u001f\xe4\xe1F\xb8\\u0011la\\u0012\x99E\\u0019i\xcd\xe3I\x85x\xfft%\x8eT\xb5\xa2\xb1\xcb\x83P\xa9\x7fpPE\\&quot;Q\\u0005\\rX\x90bS\x7f\xa3\x91\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\x8dr\xc0\\t\xe4\x97\xa4\xd9\\u0011J9\xda{1\xe5\xf7&lt;\xce\\u0005\xc1\xa6\xa5\x87`1I\xd2\xcc\xc5R\\u0003;P\xde\\fW\xb7\\u0017:*\xe7f\&#39;\xbe\xb8t\\u001d\\u000f\xef.0\\u0000\\u0017=\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;k=1f\\u0001J&gt;\\u001c\xb7{\\u0011j\xbdw\xba\x8aQ\\u001b\xc1\xa6\x99\xa3\x8dt\xf3\xc1\xdf\xf2\xf0\xe9\xdf\xd7\x91\xdf\xe4F\xb8\xa8N\xeay\x9br\xea03\xc1:\xfa\\u0000\&#39;\xb5\xc7\\rYu\xd0A?\xe5\xdd \xd8\\b6\x8d\\&quot;4Y\\u001c\xd3d\\u0017mCf\xadz\xf2\x87\xa9Td\xf9\x9d,\xf2)\\u0002g\\u0005\xb8\\u001d\xe6\\u0011\\u001f\xadM\x8e\xb3h3g\x9b\xcd\xf5\\u0004\\u001b\xc1\\u0016b\x9b\x8c\x82\xf3DI9\xbf\x94t\xaeZ\\u0016\xc7HQ\x85\xd4{\xd6\x9c\xabV\\u000b_\\u0016\xda\x88\xae\xad\xad&lt;Y\\u0001]\xf4fF\x85\xfcM\\u0004\\u001b\xc1\\u0016\xca\xb3N\xb2\xe0\x97\\u001d+W)\xe7HU\x86\xa3\\rs\x92\x8bFn\xf4&amp;sx\xa4\xaa\\u0005\\u001aH\xed\xc6&gt;\xb1\xf7\xaa|\xb7\\b6\x82-\xd86\\u00195\x99G\\u0013\xadH.k\xc6hP\x87\xa7\\u001f\xeb.\xd7\\fuB\x8c\xa04T\x9d\xf1k\xe9\xf1B\\u0007\x99\\u001b;1&gt;6\x97Gp\\b\xb6\xa0z\xa8C\xe0\xa33Uh\xe8\xf2`\xb4)\xbd\xba\\u0015\x8f\\t\\b$\xfd\\u001e1\x9b\\u0006k\xce;\xa0\x8bb\x8b\\u001a!\\u001d#\\\\g\\u0004[p\\u000foN\x95\x82\xfa\\u001f\xa5.\x8cfUJ\xed\xed\x95\xa3\xa5F\\u0017\x83\xc9\\u001c\xde\x91w\xb4\\u0019\\u0007\xcb[\xa0\x8b\xde=Y\xc9\xfa\\u001a\xc1\\u0016\xdc\xd4s\xae\xf4\\f\\u0016I\xbb\\u0012\\u0005x\xa4\xcd\xe8\x93\\u000b\x8e\xf0\xee\\\\\x904t\xaat\x804\xf7x\xb5I\xf7\xa7\xc7[y8\x97`\\u000b^O\xe7\xea\xb3Uh\xef\xeb\\u0007\xf5_m-h0\xd2\xf3hq\\u0018n\\u001a\xbc#\\u0011\x92.:\xedl7\\&quot;`\\u0013\xc1F\xb0\\u0005\xceC\xc7\\u001c6f\xd7\x81\\u001aV*5\\u001fo2\x87\xdfN\x9eD\xe1I\xb6[\xd0E\xeb3\x9d\x90\x9dg\xae;\x82-\xb0\\u001d\\u0004cb\xcc\xaa\x98K\xdd]i\xd5m\xea,\x9f\x8c[\xf8\\u001c\xca\x95z\xa9]zf5\x90\xbaAd~\xaa\x8d\xf55\x82-\xb0P\x9b`\xca\xc5\xc1\x8a\\u0016P\xf7\x96JM\x8e\xb5\\u0018\xc7AbuOC\xb30?\xc5\x86\xc1A\xe8 u)\xc1\x84X\\u000b\xd3P\x82-\x90P3\xe3p%\xa1\xf6\x7ft\xa2\xa6\\u001d\x93~U7\xffj__\xfb6\xabV\x9ft\xde\xe6b\xb4F\xb0\\u0005\xee\x8c\xda8\xf9\x99B\xa8\xf9\\&quot;5~cM\xeaV`\xad\xe7:\xab\xa1\\u0003\xba\xe8\xad\\u0013\\u0015\xec\\u000f%\xd8\\u0002\xe0\\u0018#\xca\xd8go\\u0006\xe5\xbb\\u0012m.\\u0019\xcfl5\xae:F\xe5OJ\xdbR\xa7\xa7\\u001f:\xa8\xb5\xc7\x8bG\\u0012\xad\x92\xc2\xf3jp\x82\xcd\x9f6\x99U\\u001a\xb0\xd5\xda\\u0000\xca\x7f\xda\x94So\xec\xf2\x99\xf4\xdb\\r]{\xd1\\u0001]t\xdc\xd1\\u0006y\\b\xb0\xbeF\xb0\xf9\xbf\xa3\xe0\x9bL\&#39;(\xffk\xcd\\u0005\x87^G\\u0018LFd\xbe_\xa3\xc8\xfc\xab\xcbN\xb6Q\\u0011l\xfe\x7fz\xbfs\xb2\\u0002T`\xd4\xdb?\xa8\xde\xae%p\xd3\xa6\xb66ew&gt;\\u001a5\xe9\xf3\xed\\u001b\\u0018\xc4\xec\xe4\\&quot;\xbe\xa1\x8a`\xf3\xef=\\\\\xcf$\\u0017\xa9\x96\\u001a*`R\\u00178\xce\x88\xd7\xa4\x86\\u0014\x95\x83\xc5ie\xd0E\xe6\x9bnH\xaa\xce\xb7\x86\\u0011l~+ \xab[S\\u000b\\\\nP\x81\xd7\xc5\xba\xdb\xb8o\x87\xa4\x81\xe2\\u0010G\xe8Z\\u001d\xba\xfe&gt;\xa7\x8e\xc7&lt;\\b6?\xd9d\xb4J\xed)q\x81\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\x9e~\xb4\xa8\xcd\x84\x90\xf6\xfdN\x8c\xb5\xe0Zs\\u0017t\x90d\xe9x\xe1H\xa9\x80\x8dmT\\u0004\x9b\xefV\x85\xdaU\xd2\xd4N\\u0005_r\xdbp\xe8\xe0&amp;\x91\xd1\xdcC%\xaa}I\x8f\xeb\x9fzp\xffNv\\u001b\\u0010l~:q&gt;+\xa9\\u0010\xad\xbd\xac\xab\x85\xeaMX\x91\xbb\\u000bBSo\\u0013\xb0\xad\xcf\xac\x85.J\xb0\xb9\xd8\xf4N\xb0\xf9)\\u0005\x95\\u0005\x95\xeeh\\u0003\\u0015:\xed/oV\\u000f\\u0018\x99\x8f\xa0\xd7U/\xd7w@\\u0017\xad\xc8`\xb7\\u0001\xc1\xe6\xbb\xd5\xd3\xf1C\xa6\xa0Zh\xd5\x99*5\\u001f\xc1\xec,\x99\xf5\xe7U\xb85\xe96pu{0=\xc1*\xb0\xe51\\u000f\x82\xcd\xc7\xa7ud\xbcU\x9d_\xa2B\xaf&amp;Y\xd83\\u0013\\u000b\x83\x97\x92n\xc9R/\xb0\xd6E\x87+Z \xd1\\u001a\x8fy\\u0010l\xbeGkq\xd7\x9a@i#u\xfa?b[\\u0010\\u0016\xb7\xc9x\xb0\\u001d\xadj\x85.Z{\xc1!\xb0e}\x8d`\xf3u7\xec`\xb1\xba\xa7\x9f\xd2K\xcb\x8e\xdb\\u0003\x9e\x92\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xd4T\x93y\x9b\\u001e\\u001bF\xaa\xf9^\xa2U\xbe\xdb\x80`\xf3\xc1&amp;\xa3\xber\xbe\xf66(\xfddo\xed\xc6\\u0003qy\x81]\xe4\x92\xf2\xad&gt;[\\t]t\xaa\xa6]`kf\\u001aJ\xb0\xf9\x96\x82\xae8\xc1^P\x9d\xb5\xd9\\u001c\xd8\x83\xbb\xf2\x7fku\xc7\xdeg\x97\xae\xf3P.\xc1\xe6\xdbI\xf3\xb1\xf23\xb7\xd1\x8dpS\x97w\\u0000\xb6\x96n\xf5t\xdfn\xbd\x89\xcfe1\xac\x94f\xfd\x97\xe4\xa4\xfas\x87JTj\xbd0\xd5\x86E\xd2\xf7\xf8\x81\xec0n\xcc\xaeU/U\xb14\xba\xd1(\x85\xf9p\x92\xdb3\x80\xd9\xfb\x8a\\u0002\xf32\\u0018i.\x9f&amp;\xe7\xe6n\xb8\xfb\xb4\x99\xd7\x7f\xd9\xbb\xb6\xd8\xa8\xaa(\\u001a\xa0\xa0B\x84`\\u0004\\fH\x94\\u000f#\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xa2\\u0006A\x83\\u0011\xdf\x86DL4(\xfe\\u0018\xfdP\x83\x98\xe0\xe3\xc3\\u000f\xf4C\xc4 \\u0018\\u000b8@A\xdaj+\xb6`\\t\\u0014\x90\\u0004\x84\xc4\xda\xf2\xe8k:}\xb7\xd3\xd2\x96&gt;\x98\xe9\\u0013\xfa\\u0018\xe8c\xda\xa1\xdb\x9d=IS\x81\xe2p\xef\xf5\x9e\xd3\x99\xb5\xc8\xcd$\\r4\xa5\xf7\xdcu\xcf\xd9{\xad\xb5\xe7&amp;\\u0015C\xe6\\u0001b3)\xef8Y=\xaa:\x85\x89LN\xef\x9d\xac\xa1\\u0005\xc9\xc5\\u0014\xb5#W\xfe\\u000fR`\x8f\\u001evm\x96k\xf8\xd7\xe4\xef\xf0\xdf\x95z\xd2l\\u0016 /?ZI\x8e\x82f\xaa\xf7\xf9i4\xe0@u\xfb\x90\xb6\xcd\xea5\xb0\xfc\x8fJ\xd2\\u0004\x92\xda\xcb\x9d`\\u001cCAl&amp;|\x81\xfcY\xa2\xff\x80c\\t\\u001a|\xe7D\\rM\xd9\xed\\u0012b\\u0012\x82\x8a68\x88\xd8\x91\xf3\xaf\xef1i\x97\x93\xde\xe5\\u001d\xdd\x89\xfaN\xd2\\u001dK\xad\xf7M\xca\\u000b`w\x89&gt;\xddp\xdeY\xc3m\\u0000b3\xf7\xa6^q\xacJ\xdf\xe3\xd7\xc0U\x89\xcf^\xb0\xb7d\x88\x88\x84\xc8\\u001c\x96\\u0013\xfc\xd0N\xee\xc5T7\x9dl\xd0\x97\xe0N{}4\xc6\xca\xdf\x81#8b\xcf\xa3\xc91\x94\x9b\xf24?\xb9\\u0018\\u0011\xe0 6\xa3Wp\x9av&amp;o\xfbuD\x92\xbb\x8d\\u001e\xd9S$\xbb\\u0013\xdb\xacE2\xd1^\\bNjr\xb5&gt;\x7f\xd8;\\u0012\xf8\xfbH]R\\u0017d5]\xa6q\xdbs\xf8^@\xe6\\u0001b3\xa8[{\xf9p\\u0005\xe9\\u0006w{/\xbdv\xa4B\xde\xd8\xca\x8a\xc7\x8e\xe0\\u000enf\x9c\x8b\x92\xf4\\u001b\\\\#\xa5\x83\xf1\xdbs\xcd?\xfc\x8e\xe0:\x88\xd3(\x9aj}\x8e\\u0007\xa2\\\\\\u0010\x9b\xb9L\xfb\xc35z\\u0019\xddw\x97\xb4\xd2\x94\x9dN&amp;\\u0015Ml4[\x82\xe4\xfaIz\x9dv\xc2\xe5Ui\xb5B\\u0000f\xbb\xa1Sb]\x92&amp;\xa2\\u0003\\u0002\xfc;^\x94R\x8ac(\x88\xcdp\xb1X\xda\xe9\xfe\x80\\u001e\\u000f+\xff\\u001c\xe2Q\xe4\xdd\x83~\x8b:X\x7f\x93\xda[\x93F\\u001e\xda\xaa\x8e^\x9a\xb4#\xd7\x8chWH\xfbU\x8d\xba\xa1Em\xdd\xfcs!\\u0002\\u001c\xc4f\xc2\xec\xbc\xd1\xd9H:\xa0\xbd/@\xcb\\u000eU\\u0004w\\u001f\\u000e\xbd\\u001b-\\u000b\xb9\xa8\xed\xed\xee\\u000f\x97\xe9V\xf2o\\u0013\xb9\x96\xa9\\u000b\xd6e{\\u0010\\u0001\\u000eb3\\u001eM\xc3\xc7=\\u001d\xb4[2 fIJ\x99\x90\xdah\xe9\\&quot;\xcf\xdbS\xa4\x8d\xee\xed\\\\\\u0007\xa7\xcb\xc68\xa5\xb4`h\\u0012\xd5Oy|\\f\xd5\xa7\\u001b\xba8\xa5\\f\xc4\\u0006b3\xfep\xbe\xa9\x81\xc4\xe3\\u0012\x93\\u001a/\xe4Q\xa7W\\u0012r\xfb\xad\x98\\u001a\xbb\xfb\xb5\xa9\xb5\xf1\xcfdL\x94{\xb4R\xab\x86\xc8\x84m\xe8\x86\x82\xd8\x8c\\\\\\u000e\xa9\xafI\xce\x95BH!\xfe\x95\xc3r\xfc\\u001c\xad/\\u0007\xb1j\xb1\xf5g\xf4vH\xa3\xb3D#\xa8\\u000b\xd8\\u0012\\u0007Q.\x88\xcdx\\u0017l\\u0016[\x89|\x8a\\u0013RW\xa7KGo\xd4\\u000f\xbbYy\xbcJ\\u001f][\xe8n\\u0004!\xc1\xa9\xb1.\xadf\xc5&gt;\x99R\x86n(\x88\xcd\xf8\xc3\xf8iF\x9d\xea\xe1\\u001cV\\u000bn\x95j\xdd\xbea\xdd\x95jd7_\xa6\xb1[\xb3\x84\xb0B\xddq\xb2\xd7V\xa3nh\\u000f\xdd\\u0016\x93\x8bc(\x88\xcd\xd8\x838fk\x96R?d9\xe7\x8aM\xde\xe9\x94\x9dc\x98xm\xa5\\u0019\xf3\xa7\\u0006\\u001e\xd3\xe7S\xdd\xa2\xff\\u000b\xad\\u001c\xc1I\xb9\\u001aE\\u0014}\x9f\xd7\x88c(\x88\xcd\xd0%\x8by\xce\xaf\x85\xd4\\u001bPW\\u0017z6\xb5&lt;\xdc\\u0016\xb0\xec&gt;g\xc5\xe7\xab\xf6ZJ\xa47\xdf\xe3\x90\xd6\xc1\xec\x84\\u0002\x89A\xd2e 2\xd7+\\u0011Q\\u0004b3l\xa1\x92\\fyU\xf8\xa5\xac-Hj\x8e\xf0\xd4\\u0005\xbe\xa5\xb6\xde&amp;\\u0003\x8e\xe7\&#39;\x97\xfc\\u0017\xb9\xc9=\xf8\x88s\xeb4\x81\xe4\xe9\x8d\x85(\\u0017\xc4f\x9c\xd8\xceJ\xf4\x8f\\u001a\\u0011\xee\x804-\xf8\xa1\\u000b\xe3Y\xac\x99\xb4\xafR\xad\xaft[a\xf3\xcdw\xc4\x8e`74\xedB\\u0017\xe9\\u0002\xaeQ\\&quot;)\\u0017\xc4f\xbc\\u001b:=\xde%s\\u001aU`m\xf8\xe7k\\tiO\x8fs)\xb5]\xb5\xf5\\f\xd0\xb4x\xc9\xab\\u001b\xf1\xd8&lt;\x975x=\\u0003\xfa\\u001cC\\u0017\xfe^\\u0006b\\u0003\xb1\\u0019&gt;*)\xf3\\u0004z\xaf\xf4\xd3\xd4\xddyRd\x8f\\u0004\xab\xda\\u0007i\xe7I%&gt;N\xaf\\u001b\xe9%\\&quot;_\xff\xfcT=\xe9\x82\\u0002\xf6\x86\x8ewd\xa3\\u001b\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;b3^\xe0\xde\xe0\xf4\xaa\\u001cB\\u00121\x89\xc4\\u001c\\u0002)\x99b\xaa\x90\xd7\xdaM\xe3n\\u0014D\xe9\x90\xaf\xc9\xbc\\u0007]\xb0\xc1\xd9\x88\x88\\&quot;\\u0010\x9b\\t\x99\\u0007\x7f:[\xae(\xa9\xad\xcdVP[S\xdd\xa4Yz\xb0\x9cTap\x90\xe8\x85C\xee\xeb\x8fw\x9b3\xb9\xfbXN:\x81\x93\x91!\xca\\u0005\xb1\\u00197\xbd\xcfI,\xa4&gt;\\u00052\\u000f\\u000ei\x8c\xbc\xfa\x89\\u0014\xe8\xd5\xda\xd6~\\u000e\x8a\xa0\xaf;&amp;;\xb8\xb9\xa0\\tDT\\u001c\x85\xa4\\\\\\u0010\x9b\x89\\u001d\x84\\fAQ\x81\x97\\u000e\xb9#P\x9f$\xc4&amp;\xd2\\u000by\x99(@g_\x80f\xc4\xe73id\\r5\x8f&amp;s\x92Gm\x97\x9ft\xc1W\x99\\u0017p\\f\\u0005\xb1\x99\xb3Qm/jVb\xce\x8e\xda\\u0011\xb16\\u0019\xa9+\xc6\x96\xb6\x90\\&quot;H\x93\x80\x89c\x88h_\xd7h\xaeA/we\\u001fN*\xe6\xee-\x8e\xa1 6\xa3\xc3\x90\xf9h\x94\xee\xf1\xd9\\u001f\\u001a\x98\xe3\\u0019n\xf1\x89\xc8]\\u001b\\u000f8V\x95\\u0000\\&quot;\\r\x8c(Gp\\r\xf0}\\u0010g\x82.8\xe5\xf5\x81\xd4@l\xe62\xfbgr\xf1\xfeRo\xc0\xf6X\xa2\xc5)\xa5\\b\\rT\x9cP\xbbh?k\xc46\x9d\x91\\u0006N\xbbFI\\u001e\xab\xd3j\xb16@l&amp;\xaeh\xe9\xd0)9\x86\xb2\xe4\\u00006\\u0019\xeeD\xceK.V6\\b\xe6\xc7\\u0002v\\&quot;\xac\xcf`m\x9b&gt;\\u0016\xaa.\x7f\x80\xeeO,D7\\u0014\xc4f\x8e\xd8\xd6\xb0`\xd3nD\xbb\x9a\xf0F\\u001en\xb5:wQ\xd9\xc0\x97;\xb8\xf3\xf8W\x83&gt;\\u0016\xaa\xe3u\x9d\\u0014\x8c\xadB7\\u0014\xc4f\xa2#\x9aP\xdej\x7f7\xf4\xb0\\u001b\xc46\xec\\u001e&lt;s\xa0\\\\\x99\xa6mc^\xa3\xc4\xb0\xeb\x82\xf7e\\u0000\\r\xd6\\u0006\x88\xcd\xb8\x9eJjly6\\u000bs[\xba\xfb\xd9\x97\x9a\x8f\xe2\xf05\xb5\xce\\f\x8fO\x9dh\x97\xf4@G_ \xb86\xb6b\xb7\\u0006b3!\xcc\x9d\xc6\xa6\xecF\xf6j\xda\\b\\t\xb2\xe4\\u0007\\u0019G\x8dk\x92UV\\u001e\xaf\xa6H\xc7\xde\xca\x8bX\\u001b 6\xf3\xf5\xb5\xa7\xf6\x97IN\x97\x9d`O*w\xe2 \xbc\xbc6]\xe5NN\\u000e\xae\xe9\xec\xa3H\xc6\x8acUH\xca\\u0005\xb1\x99\x97\\u001a\xacT0f\x8fG\xba!\\ru\x84\xe4\x8fos\xbd\\u0014\xa9h\xf0\xf9i\xe2N\&#39;,T 6\xf3\xc4\xf6\xc5\x99z{\\u0015\xe5\x81A\xba7\xa1\x80w(\xa8\xaf\xdd\xa8\xce\xf6\\u0000\\u000f[\xf6\xf3\\u000e:\\u0012\xb1\xa3\xa8\\u0005\\r%\\u0010\x9b5\x8d\x83\xd8\xd2V\x9b\xa7\\ru\xb3\xb1\\u0019\xd3\x86F\x90~\xc8=I\xadi\xa7H\xc3 _O\\u001f(\\u0007\xb1\x81\xd8,\x89*\xb2=\\u0002:\xa9\xa2\x8dwk\\u0010\xe6\xdel\\u0017\xfd\x86\\u001e\x9eM\xdb_x\\u0013\x90\xe4\\u0001b\xb3\xc2#z{\x8c\x93\xcew\xd9[\xac\xfe2\xeb\\u0002\x8a\xc37\xbf/\xd2D\xa8\xf7\xf9)\x92\xf0\x9d\xd3\x8b$\\u000f\\u0010\x9b5R\x8f\xbbc\xf3m7`\xbf}\xbc\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\\u000b8\x84]\xdb\x96\x82&amp;\x8a\\u0014pI\x91meH\xf2\\u0000\xb1YT\xa8~\x94\xd3I\\u0003W\\u0007m\\u001d\xff\xb6d?\xe6C\x86\\&quot;\xc3y\x82\\u0003\\u0002\\u0006\xf9O\\u0004@\xca!c\\u001c\xd9\xd0\xae\x81\xd8,1_\xdb&gt;\xbc\xa5\xb5g\x80\xeeK(\xc4\x9b9\x84\xdd\xf4\\u0004\xfet\xb5^\xa1H\xc0\xaa\xb4Z\x94\&#39;@l\x96)\xddeA\xd9\x89\xea\xce^\xba-\\u0006\\u001d\xd1P5m_g{(\xcc!\\u001e\xd5{`\xa1\\u0002\xb1Y\xf9\xe0\xac\xcb\xf1\x92\x9d\xe0a1\xbcS\xc414\xd4R\xc1\xbc\xa4b\xae?\\r\x86\xbb\x85\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\\u0012\\u000f\\u0010\x9b\x85\xd7&amp;\xfb\xe3\xc0\x8f\xd4t\xa0\xbe\\u0016\xda54\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xef\x8c\xf72\x853\x96\\u001d\xa9\\u0000\xb1\x81\xd8\xac\xed\xbc%\xf3\xdb\xd2N\xf0\\u0004$\\u0010\xdb-\xde\xa35\\u0019u\\u0014\xae\xa8\xe4,\xb8\x891N\\u001cCAl\xd6\xba\\u000e\x8e\xd6v\x90\x9dX{\xb6\\u0001\xc4v\x8b\\r\x9e\\u0007\\r\xcfD\xd0\\u001f?\xe47\\u0012\\u000f\\u0012\xc2}\\u0006\xb1Y8\x8d\x9c?O{}vw\xbf@l\xb7LnY2\xd8$\\u001c-T\x8f\xed\xc30d\\u0010\x9b\xc5\\u00119\x93v9\xa9\xe8b\x8f\xdd\x914 6\\u0003\xe9\xba\x9f\xf1\x98\xbcp\xc3\xdf\x9e.~\xc1B\xbb\\u0006b\xb3\x98\xd8\xee\x8au\xd1\xb9\\u000e{\xedT\xcf\\u001dt\x83\xd8\\f\\u001cG\\u001fJ\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\\u000e{\\t\&#39;|\\b\xed\\u001a\x88\xed\x7f\x90\\u0012\x88v\xc8s\xd9Ov\xe2\xf1}% 6\\u0003e\x83(\xfe\xccl\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\x9f\xeehkO?\xcd\x88\xcbGt\\u0015\x88\xed\\u001f\xf6\xae.\xb6\xc92\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xab\\u0018\\u0014\\tF\xa3D\x83\xb2\xf8\\u0017%\xc6\x81\\u0001\xd1\\u000b\\r\x8a\xd1\\u000b\\u0012\\u00125\x8b\x89&amp;\\u001a/\xd1\\u0018\xb9Qc\\&quot;zC\xc0 \xf1b\x99s\xfc\xa8\xe0\x98\xce\x8d8p2\\u0010f\\f\xa2c\xcc\xb6c[\xd7\xfd3([:\xdbu\xdd\\u001a\xd6n\xed\xda\xe5xzvc\\f\x9am\xfdz\xbe\xf7\xeb\x9e\&#39;\xf9\xb2\xcb-\xed\xde\xe7=\xdf9\xcf\xf3\\u001c\xeb\xfb6\\u0005\x9c\x896\xa2\xbc\xc0\x83uY \xb6\xf9m\xea\xcf+\xb1\xeeW\xbeaTk \xb6\x9c\\u0010\x9b\\u0004\\u001aN\xe8M\xdb$&lt;\x91\x7f\&#39;\\u0004\xba\xf3\xac\xb0\xd7}\xdf\x9e7\xce\xd1\xa7~\xe8\xc4\\u0005\\u0007b\xcb\x8d\xc9zF\xd5Nj\xb8\x92L\xd3\xbdX\x82\x9bMv\x9e\\f{\x9c\x8e\xf3\xc3\x92\xbb\\u0006\xed\\u001a\x88-7\xc4V\xc811\x9a\\b\xb1\\u0001\xfe\xae\\u0003-0\xc0g1\\u001d\xdd\xe1\\u000e\x90\xd3\xf1~\xc3\\u0000\xb4k \xb6\x9c\\u0011\x9b4\xf251\xc8\x83\x8a;\xb0K4+\\u0017\xc2sG\xbb\xc8\xc9\x88O\xa5i\xe5\\u0001\xec\xbb\\u0000\xb1\xe5\x90\xd8\xd6V\xf9H\\u0011\x92\xd4{\xfb\x97\xcd \xb6,\xa2\x8cn\xde\xe3\xe8d]\xb1\xf0q+\\u0002\xb1\xf0 \xb6\x9c\\u0006\\u0019\xaaG\\u0016\xdd\xb6\\u001f\xc4\xa6\xe0\xef5\\u0016\xcf\xff\x981\xbcc\\u001a\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;b\xcba\xbf\xe6\x89\xc3\\u001d 6\\u0007^H\xafp\xb4\xba\\u0013\xd1\\u0011\x99\xc8\x84g\xc2i\\u0000bS 6\xe5$\x87[\xf6y\xd0_\xc9N\xf6!\\u0003\x98h2MN\xc3\xbb\x7f\\f@\xbb\\u0006b\xcb?b\xf3\xf1\x8d\xbdl/\x88-\xeb\xf0\\u0002\xee\xb5\xfd\xec\x8f\x92\x930\x96\x90\x898\xa4&gt; 6Tlx\xfe\xdb\x85\xf0a\xe3 9\\t\xdfvKJ.^CAl\xb9\&#39;\xb6\xc7\xd1cs\xae\\u000b\xa1\xca\&#39;\\u001b\xbf\x9c\x82\x8dG\\u0010~\\u0000b\xd3iB\xf3\xe1\xc0T\xd4\xa9!\xa1\xd7\x95\xb8\xa8k\xd4\\u0019.\\u0004W(\xc6\x7f36\xff\x83\xd8\x94\x88\xed\xd1J]\x81\xae\x9ful\xcb\xa1c\xb3\x82\xd8\xc4o[\xdc\\u001a$\&#39;\xe0\xad\xd3\x99x\\&quot;Tk 6%b{D\xd9R\\u0015\x88%\xe9N8\\u000f,\xd3\xb3m&gt;\xd6C\xa6#\\u0018O\xd1rT\xe9 6\xd5\xf0\xc2\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;/\xa5\\u0014W\xbb\x85\xd9+z7\xbc\xa2V\xf5\xd9$\xcf,\\u0018\x9f\\&quot;\x93Q\xd2\\u0016\x84\xc4\\u0003\xc4\xa6\\u001b[t\x7fy\\u001b\x8dOM\x93\\u0016\xa2\x894\xdds\\u0010\xe9\\u001eV\\u000e\x80N^\x8e\x92\xa1\x90\xe1Fa\xa5\\u00171U 6\xdd\\u001b\x7f%\\u0007M\x86\xf5\x82&amp;%\xda\xfaA\xe4\xb1Y\xba\xc9\x7f\xab\xc1\xab\xf9j/\x8ee\xfe\xcf \xf1\\u0000\xb1\xa9G\x83K\xe2\x86&amp;\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xbfC4\xb8\x95U\xf7\xc3\x9c\xa9\x976T\xf5\xb1\xf9X/|\xa1 6\xf5e.,\x96m\xa6n\\u0016\xcdj\x82%&amp; 6\\u000b\xd3&gt;n\xfc\xc2E\xcd\xc312\\r\xdep\x9c\\u0016\xc1\\u0017\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;b\xb3\xe3P\xdc\xc0\x87\xc2\\u0013\x8a\x93&amp;\x9e\x85P\xd3\xe2\xe9h\\u0003\xedt\\u0005\xc84l\xc1\\u0006*\\u0010\x9b\x9d\\u000b\x93\xcf(/\xe2}\\u0019{E\xad}v5\xd0\\u0007\xbc]\xdf \xc8\xa4\xf6\xd6}\xcd\xb0\xce\x81\xd8l\xc9\xd0\x97&gt;[\xdd\xa51\xd2\xc4\x9b\xd8\\u0004oe;\x81\\t\xc4#\\u0001\x9e&amp;a\xa7;\xc0\xd5\\u001a\xa2\xbfAl\xb6\x99\xa9\xcf\x8a9Y\\u0013\\u001f7\\r\x82\xd8,\\u0014\xe9n;g\x96\\u0019&gt;2\x89\\u0014\\u000f\\u0010\x9b\\u0001\xaf1\xa5\xde\\u0010i\xa2\xcc\\u001b\\u0002\xb1Y2\xd5\x96jM\\u0016\\u000f\x9b\x84\xfd\xbeaLBAl\xb6Wl\xeaKxk/\x8e\x82\xd8\xac\xa9\xd6\x8c[\xa0&lt;\xcd\xcf\x93\xd8\\u0017\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;b3A\xb9\xbe\xe5\xd7K\xa4\\tO(\\u0006\x81\xae\\u0005\xd5\xda\x8a\xaf[\xe4\xb5\xcf$\xb4\x85\xe3H\xf1\\u0000\xb1\x99a\x84\x7f\xa1\xaeW9\xba(!2\x93k\x8a\xa1o\x9ag\xb2\x87Tk\x9f\x9d\xff\x8bL\xc3\xa7\x9e!\\\\Z 63n\xfe\xf5\xd5\\u001d4\xadh\x84\\u001f\x99L\xb1G\xb5\\u0015F\xf8,\xdc\\u0006\\u000f\xf0\xe7\\u0017c\x8f\xafix\xe9x/\xb4k 6#\xb4l\xb2\xc0x\\&quot;\xa5wH2\xa1\xafO\xa3\\u000f\x93\x8d?T&amp;\xd9\x86A.\xc7\xf5\xd5p\x95\x80\xd8\\f!\xb6%enu\xbf\xe8\xab\&#39;/\xf0\xe0\\u0002:\xa7\xf9\xf4D\xd7U\xb5S\xd2@s\xe8\xf8T\x9aVU \xe0\\u0000\xc4f\x88Hw\xd1\xe7.j\\u0018\xd2u\\u001f\xf04\x8f\\u000f)\\u000e\xc0\\u001c{k\\&quot;\xc8=\xe1\\u001f#\\u0003!d\xbb\xa6\xd2\x8b\x8a\\r\xc4f\xc8a)&gt;G\x87\xba\xc2\xa4\x89\xea\xbeH\xa6Z\x84Az\x8e\xf2\x8e\xa2\xe3}d2^\xacC\x8f\\r\xc4f\\u0006\xb1I\xe5\xb4\xdd\xa5\xab\x87j\\u001f\x99\xa0\xebK1\\u0019\x9d\x8buj1W\xd6\x9d\x91I2\\u0019\x9f\xb8\\u0003\xa8\xd8@l\xe6\x88t\xdf\xf8\xa5\x9f4\x91HOS\xc1\xc1\\u0016\x98\xa4\xe7P\xad\xbd\xd70@\xa6\xc3-\xdb\xa8\xfe\x84\x8e\\r\xc4fFCz\xe3\x91N\xd2nG\\u0017\x9d\xe8\xc5\xed&gt;KyG\\u0001{/\xa3\xc9\\u0014\x99\x8eD*\x93\x90\xec\x85\x94\\u0007\xc4f\x86\x96\xed\xbe\xf26u\\u0015\xfb.\xcf\\u0010&amp;\xa3\xb3i\\u00150\xf9W\xb0\xbc\xc3)x\xe77?\x7f\xaf\xe8\xb3\x81\xd8L\x98\x8c\xf2O\xed\xe5\xbb\xf5\\u0003Q\xe4\xe1\xcfB\xb3\xb6\xe9\xa7\\u001er\\u0010$\\u0006\x8b[\\f\xe8\x9f\x82\xd8\x8cx\\u001d\xd5\xcee\\u0013\\u0007\xc2\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;Y\xc5\x87\xd7\xd1\xabW\xd2MtSif`0A\\u000e\x828\\&quot;\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xbe\x81\xb3\\u0004\xc4f\x86gT&amp;Z\xda\xd8T\xdb\\r=\xdb\xff\\fu\xb6\xbb\\u0002\xe4D\xbc}\xda\x8f\xe8\\&quot;\\u0010\x9b\\u0011\xc4&amp;\\u001a$m\x94\xb4\\u0006q\\u0000\xae\xfe}\x88=\x895\xaf\x8e\xc4\xd9\xa1\xf1L\xc5\x86\xe9(\x88\xcd\xfe\x83\xb4\xaa\xc2+\\u000bn5\xd13:I\x8bK \\u000f\xf8\xd7\x92\\u001d\xf9L\\\\\xc1\\u00189\\u0015\\tf\xe4\xd5\x95X\xb3\\bb3`2\xbal\xafG}\\u0015_\x9a\x8d\xd3\\u001bj:\xf1:\xfa\xcf\x87\&#39;\xc5\\u001fq\xdc\xb7\xd3\xb1\xc3\\u0015\xc0\xf7\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;b3CVp\xb8o\x94\xb4\xb1\xbby(s\\u0000P\xb5\xcdLA\xe5\\u00154\xc9\x95\xb3\xd310\x9e\xa4\xa5{\xdc\x98\x8e\x82\xd8\xec\xdf\x7f\xb0\xadQ\xbdR\x90\\rKK\xcap\\u00002\\u0012\x89\xa5&lt;\\u0005m\\r\xc7)_\xf0z}?\xbc\xa3 6[\\u001f\x89\x9by\x86_\\u000b\xed@\xd1B\\u000f(\x9c\xf1\xecR\xa97H\xf9\x84\xdf\\u0003W\xe8\xda\xe2&amp;\\\\Z 6{\xb3\xd9\xf8\xd5A\x96\xddj\xe3\xd4\xe5(\\u0013\xeb\x82\\u0015u\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xa9\xbfV\x7f\x81\xf2\\u0011\\u001bj\\u0010*\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;b\xb3=\xef\xab\x89\x8e\xf6GH\\u001bS\xdcSZ[\xe5[\x98\xcd\xe6\xdd\x8d\xf4\xd0\xa16\\u001aM\xa4(\\u001fQ\xd3\\u0017\xc1\\u0010\\u0001\xc4f\x7f\xe5\xb0\xf5\x8c\x9f\xec@yWx\xa1i\xdad\\u001a\xcd\xee\\u0002I\xc5P\x84z\x92\xcbj\\t\xa0D\xaf\\r\xc4f\xa3\xb5\xea\xb1j\x9fTPvTmk\\u0016\x92\xf6\xa9\xb8I\x88\xedo\xf6\xae&gt;6\xca\xbb\x8e\xc7.c\xa3\\&quot;\x8e1p2\\ff\xd3\x85\xecE\xb7\xc4\xc5\xf9\\u0016\xa3\xc9\x9cL\x87\x891LH\xe6\xb2\xc4\xc4-j\\\\\\\\L\xd4\xcc-\x9bf\x89X\xa4g)\xb4%@\xa5\xc0x\\u000b\xb4\xe0x\\u0011\xe8\\u001cR\xb8]\xef\xa5\xbdk{\xbd\xbe\xbfq\xbdk\xaf\xf4\xfa:[\xda}\xfd&gt;\x9f\&#39;\\u000f\\u0003%\xdd]\xdb\xbb\xe7\xf9=\xcf\xf7\x93|s\xa5\x7f\xd0\xeb\xfd\xfa|~\xdf\xd7\xcfw_$Av\xc7\xee\xc6\x84\x84\xa3Bl\xe6\x86\xa3\xb7\\u0019\\u0003\xf1&amp;\xe0\x90\\u0016\xb6\xe49\xa0\xf5\xc3\xe5\x86w\xfc\x8a\xbb\x9b\\u001c\\u0000\xc8\x86?\xb87\xc8yT\x99\\u001f\\u0015b31\\u001c-\\u000e\xc5\xc9,|\xa7\xbc\xd1\xee\\u0015R\xb4\xd6\xfc\xf8T39\\to5i^\x9b\xf4+\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xb1\x998^\xf5$\x93\x8bY\\b\\r\x8cq?\\u0017\xfa\xbal{q&lt;Q\xde\x88\xdc\x93\x83\x80)\x93\xaf\\u001d\x96)\\u0013!6\\u0013\\u0013\xdaKJ\xbc\xd43:Af\xe1\x8f\xd5\x97\xed(V\x88\xdf\xe9\xb1\xfdu\x90lr\\&quot;*\xbb\x87d8^\x88\xcd\xdc\xf1\xaa\xd2p\x9f\xa9\xb7\xfb\xb7\x8f\x84\xe1\xdd\xd8\xc9S{\xa8,H\x97G\&#39;\xc9\xc1\xe0\\u0010\xbcE\xa6\\u0011\x84\xd8\xcc\x9bY\\\\{\xbc\x89L\\u0004\x968\xaf\xe4-\xf5X\xc0[\xa0&gt;\xa9}qO\x90z\xf8wr:\xb4s\xbd\xab\xc4\\u0007\xcf\xcd\xec\x8a4\\u00173\xd8.\xa6a\x97\\f\xd5g!6U[\\u0011ry\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xa1\xdbd\xef\xe2\xdf\xd1\\u0011\xba\xcd\x85\x85&amp;J\xabu&lt;\xc2m,\xed&lt;\\u0013+\xd0Q\\u0012\xea\xd3{\\u0016]\xd9\xabB\x83\x98\xf2t[XXM\xf7\x96\xd6@Z\x89\xdb\x9bR3N!&lt;\xcc\x95\xddU\xbb\\u0002X2\x8e\\\\a\\u001e[\xbe[\x88M\xb5\\&quot;B\x9e?j\x81j\xda\\u0000\xe5\xf0-\x89b\x82\x82\xa4\xf6\xcdC\xf5\xc8\xa9\\tn\xc4\xf7\x8e5e#\x8fjxfLJ!\xfa\x83\xbb\\u001b\xf3\xab-\xc9\xf7\xb53\x81\x8c\xf9\xfbS\xa9\xdb\xc8\xe4\\u0014\xf5\x8dOR\x84\xe5\xbd\xca[\\u0007\xe9G\&#39;\x9a\\f\xefO\x88M-\\t\x9dz\xba\xca\xf9.\xb3\xb1;\x9c\xa0\x9c|\xb7\xee\xb9\\u0015(\xe1\xf1\\&quot;\xfc\\\\w\xb2\x99F\xf8\xe1\\u0011\xfc\\u001f\x90k\\\\\xb1\xdd\x8f3\xcd\xe0\xe5\x8ct\xc6\x9e\xc6D\xc6\xd6KV\xb4]\xa1\xa5E^\xed\xe2\\u0015bS\xa5\x89\xf4c\x9b\xdd\x96Qr=\xc0\xcd\xbb\xb9\x7f\xf3X\xbc\x83\\u001da3\xde\xe3\xef\xab\xbaH\xf0\x91\\u001b\xad\xf07\xc63\xca\\u0019!\xb5\xfb8\xdc\\f\xb3Js\xa6q\xc0\x88*\\\\n!6U\x92\xde?\xabl\&#39;\xab\xe0\\\\\xf70\xad\xdc\xe1\x877iU/\xf7\x8e\\&quot;/F\x88\\u0004\xa9!\xcf\xdf\xabWI]\xf3+\xaf\xfe\xc9\xad^\xaa\xcf\xde\x86/\xf4\xe81\x99\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xb1\xa9\xb2\\u0002ni\x89\\u000fRFVA\xfb\xf0\\u0004=U\xde\x88\xfc\x8cE\xdc\x7f\xbc\\u000f4\xde\\u001e\\t\xc3C\\u0010\xa4\x87_\\u0018K\x96]\xf3\\u0012i \xb1_P\\u001b\xcb\xf6\\u0002p!6e\xcc\xa5{m\x9b\\u0002\xbdd5\xfc\xd9\\u001b\xa5E[&lt;x\x7f\xc8i\x99\x98K[\\\\\xe8\xa1\x8d\xde\xa8r\x93\\u0000-IkTj\xb54\xee\xb3\xa7\xb5\xfe\xb6\\u000bs=K\x90\xcbC{\x83X(\x93M\\u001ck\\u001b\\u0014bSm\\u0012\xe1\xf3\xac\\u00176f\xbd$8\x86\xf5\xd7\xbd\xdd\x84\xf7\xa8\xefM\xc8\xaa\xe2-&lt;\xb5\\r\\\\ hN\xaa\xe7\xa5\x95\xd4\xc5\xe93;\\u0003\xa8\xf6Y\\u0001\xd3\xccn/\xbc\xd3\\u000e\xcfm\\u000e\xe4\x86s9\xcc\xf9\xd8l\xe3\x82\xb6rp\x93\\u0010\x9brrF\xbb\\u001a\xfa\xc9\xaa8\xd5\x91\xa45G\\u001b\\r\\u000f\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;D\x97\xc1\x90\\u0013?\xe7)\xfeyg\xba\x92\xa4\\&quot;\xba8\x9c_R\xec\xc50\xfe\\u001e\x8b\xe5\\u0003\xdfx\xef2R  \x89Y\xb4\xd7\xac\xa9\x880I\x9a\\&quot;\x83.\xc4\xa6\x98A$\xf0\xd1\xb7\xea\xb0w\xd4\xca\xf8W\xcf\\u0010m\xe0\x90\xe6\xaeb\\u001fn~\x84\\u0006\x7f\x9d\x83\xe4\xb8\\u000b=J\xf8\x7f\\u0010rrBz\xdd\x89f\xcc&lt;\xaa\x8c\xef\\u001f\x8f\xa0\xd0\xc1\xc6\xd2\xdda\xb2\xda\xb1VpX\xf7\xb9\xd2\\u001a\\u0010UJ\xb3\xa5.\x9d\xd4\xee\xd9\\u00110-\xbc&gt;\xd9\x91\x94PT\xd1\xbe6\xb4\\\\\xa8\x80\\u000e\xf6H\xca\xc2\xfd\xdav{\x84[9\\u0005\\u001e\\u0010\xddud\x87\xca\\u0019\\b\xcf\\u0005\xc3\xd7\xf8\xde&amp;\x84\xb5\x9a7\x83\x7f//\xf1a\xc9MQ0N\xcdxh\xd4\xc6F\xbd\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;y}\xaa\xc1\x8aD\\r\xa9\xf4Wy\xbf\xea\xdd\xdc\x87\x86\xf30&lt;\xf1\xfc\xeb\xcf\\u000b\\u001e4\xec\xf1\xfdu&amp;\\u0016n\xa0\\u0000-\xc4\xa6\xe8$\\u0002{m!xm\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\\u0001\xdd\xe5\xe7\xf8\xc1u\xd5\xc4P}\xfbnE\\u0004\xa34+\xf8v_\xc4cc\\u000b\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;=X\xff\xb7\x84\xbd\xbcU\xec%|\xe5`=\xad\xe7A\xed7&lt;\x97!|\\u0019EE\xd8\\u001ex/6J\xb7\xeb\xed\\u0010\xd7_X\xf0\xe0\xac\x8a\xfe\xf1\xab\x9c\\u000f\xec\xa3\xf5\x9c\xcb\\\\]VK\x8b\x8b\xbc83~\xd5vE \xc7Y\xda\xd0\\u000f\\u0005f3\xf1\xa6TE\xd5m\xd8\xe5\x83\xc3\xcd\xa4:\xc6\xaeNk\\u001e\\u0001\xdaX\xa2\xdc\\u0001\xdf\xcb\xaf}\xfc\\u0000%\&#39;\xa6\xa0\xf6jC`\\u001c\xe8\x81=A\\u0010\xd9\xffVv\\u0017\xf0\xab7&gt;\xaa\xc4\xef\\u0010\\u001f\xc7\x99\xe1u\x98\xcf\xcb*x\xfel\x9b\\u0010\x9b\xa2\x860\xed\xbe\xbf\xd7\xd0\\u0010\xffA\\t\xd4\xc2\xfa\xd33\xc8\\u0005\xe9\xe3_$\x98=\xbe|\xb0^\x88M\xf1i\\u0004\x84i\\u0002u\xb0)\\u0010\x9b\xa9\\u001d\\u0006\xdf\xbf\x85_\xb5mY\x82\xf4\x91`o\x7f\xc5\xce\x80TEU\xefk\xbb\xb3\xa8\x9a\xdaD\x86\xc7\xfa@\xa5x\x98n\xd1w\xc6~\xe4\x85\xf5\xc3\xb7\xc5k\x9b\\r\xde\xe5V\x8f\\u001c\\u00144dVTmC\xe8\xd2B\\u0002k\xa3\x8d\xab\xb8\xf7h\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\\u001ay\x97R\xca\xa1\xe6p\x95\xf1|t\x98\\u0004\xe9\xe1/\xfe(W\xd1\xabD\xddCys\xe9\x9e\xdb\xd1\xd6+$\xb0n5\xf8\xf1\x83\xf5\xb8\x84\xd2h\xc4\x86$\xbb =&lt;q4\xac\x85\xa1Bl6)$@\\u0016f@D\\u0014\xad\xba[ }!G]\xf3\x8e\xca\xdb\xe4\xc2J\\u0011\x90{\xcf\xdd\xe6\xd5&gt;;!6;m]z\xeeL+\\t\xac\x85\xdf]\xec\x9e\xad\\u0014\\u0010\xc2\xd6\xd5eAn\x89\\u0011\x81\xccT\xe0\xaa\xe9%}_\xaa(\xe8\xda\xc6\\f-\xf9\xc3-r\xc3[\\u0005[C1\x9c\xc9\xdc\\u0006\xc9\xab\xe8O\xd5R\xf9NE\x95\xe4[G\xc2Z\\b/\xd2\xe0v\xac\x92\xde]\xe2\x93e%\xe6\\u0003\x93\\u00129\xfah\xd8\x9c\x87\xfd\\u0017\xf34F\xf3\xa0h\xcb\xcd\x84`b\x8c\xab\xa1\xb8\xe0\x85\xd8\xec:G\xfa\x8d\xc3\\r\xd0\xc0\\u0012\x98\x83\xb3&lt;6v\xfb\xfcm\xf4B(\xbb\x96gm\\u00053\\u000bd\xf2\xdf\xbel\xa9\xb2{\xbe\xed\xa5\xf3\x9d$\xc8&gt;\xaa\xa2#\xb4dk5Hm\xbe\xd3\\f{#\\&quot;s~\\u0013`[\xd5R}?\xaa\\u0010\x9b\xad-\\u001f\xb3\xa4\xd0m\\u0013d\\u000f\xee\xdeQ\xbas\x9b\\u0017\xa4\x96\x894\xc3\xa7\xb7\xfb\xb9\xf27I\x82\\u001b\x80\\u001c${\xb5\xb20\xd9\\u0011\xb6Y\\u001f\xa8&gt;\xd59D\x82\xcc\xc3\\u001d\\u001b\xc5\xea\xb7\\f\xce(\xe2\xe1}\x9a\xd5?\\u0004\xd7\\u0000\xc1\x84eL\xf8\x9c\x8b\\u0014bsR\x7f\xdb2~\xd8\\u0002\xfdc$\xc8\xac\\u0014\xf5r\x9d\xd4\xb2 \x83^E\xdbBq\\u0012\xe8\xf8MU\x97\xe1\xad\\t\xb19MJ\xfc\xb3;\xfd\xd4*\x95\xd2\x8c\xe0dg\x92\\u0016\\u0015V#\\u0007\x96\xadme\xb9[&lt;2$\xcfh\xe2J\xf1\xc2-\\u001e\xcd[\\u0013bs\xea&lt;\xe9j\\u0016\\u0002lN\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xb9\xcd\&#39;\\u000erK\xc7Bx\xc6\\u0017\xb3}Y\xa1q7\xe1\xf0I\x93\xa7\xff\\u00111\xbc5!6\&#39;\xb7\x81&lt;\xc8\xe4\xd6\xc5c\&#39;\x82\xb9#\xbf&amp;\x86&lt;&amp;*q\xe6\\\\V\x90[w*\xf67\\r\x90&gt;e\xe0\\u0016bs\xbc\xf1\xc3p?\xcf\x94\x86\xa5\xd9s\xd6\xf8\x80\xed\xd7\xe7;\xf1P\x81\xd8L\xde3\xfb[\\u001e\xd9r\\u001a:\x87\&#39;h\xf9\xf6k\xed\\u001dBlbz\\u0018\xb3\x92\x97r\\\\\\u0010I\x9c\xb4\\u0011\xe3~\xa9\\u001f\\u001c\x8f\\u0018k\xff,\xd3\xd6S\\u0018\x8c;jt\xea\xc9\xf2F#\\u0004\\u0015b\\u0013\xbba\\u0019\\f\xc6t\xcaE\xea(e\\u0004\xfa\xc6\xe8\\u000be\xb5\xd6{\xa0\xf2\xb1-\x8a\xf3}\xce8KV\x8c6\xce@\x88M\xec\xa6\\r\x9f\\u00103\xdc\xe8\x8b\x92`f\\u0014\xd7\xc5\xb9\xf2\xe9A\x9e\xd2\xa2g\x89\x9e\xc5c\xed\x83v\xcf\xab\\u0019k\xff\x84\xd8\xc4f\\u001c\xb0\xc6\xc3\xfa\xcc\x89\\u0016\xc7W\xd8n\x86~\xfeL\x9e=\xddb\xec?\xb5|\xcfbn\x81\x87\x8e\xb5\xd9\x93\xdc*YV\xfd\xe3\\u001f\xb6v\\b\xb1\x89\xa5\x94\x84\xe60+HU\xbd#$\xd0q\xa6+I\\u000f\xec\xae1\xb4\xd4\x94\xb9\xa8n\xe5\xd7\\u0003\xec\xd9\xd8\\t~N\\u0003,/\xf6\\u0019\xa3jBlb\xe9\xe5\xddnu\xb9\xe95\xde\xf8=&gt;5MN\xc5\xe0\xc4\\u0014\xfd\xbc\xb2\\u001d$\\u0001OM\xc5\\u0014\\u0003\xdb\x96\xda\xb8mF\xd5&gt;U\xe23\xceB\x88MlV\xf3\xa5P\\u0006\xf9\xd2\xbe\\u0010\x9d\xeb\\u001ar^oT$\x81v\\u0018\xfe\\f\x94\xce\xe3\\u0018\xa4\xfc\xabw;h\x8a\xcb\x88*{\xcd\xcb&gt;\\u001cU\\u0013b\\u0013\x9b\xb3\xf7\x865q/V\xb6Q\\u0007\xf7\\f\xd9\\u001d&gt;\\u000eu\xd6V4\\&quot;\xd4\x81\xd9CQ\\u0019a\xf4\x9a\xa3a\xec\\u0002P\\r\xa5\xe1&gt;ZPpM\xd3N\x88Ml\x9e,_\xf7\xde\x96\\u0015{\xe9M.\xb1_\xf9\x8f\xfd\x8a\\u000b\\rW\xc6\xe9\xa7g[\x91\x97B\xc5\xd3e\xcb\xa6l\xc8\\u001d\xedkJ\x90\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\x98\x98\xfe\x80^&gt;\xdf\xa9\x8d\xa9\\u0019\x85\\u0002!6\xb1\x8c\xe4l\xf0\xd0\xdf\xbb3@\x9b\\u0003\xbd\x94\xe4\\u001c\x94\xea\xa8\\u001f\\u0018\xa7_\xb2\xe2\xea\xc2B\\u000f\\u001e|c\x82\xc0\xae\xc6$\\u0001\xcf\xe7\&#39;\xffl\xa5n\xebzo\\u0018\xec\xff\xea\x81z\xbeP/h\\u0017\xab&lt;{\x8e\xff\\u0000\xb2Fp\\u0017i\xd5\xae\\u001az\xdd\xdd\xa3\xe4@\xfd%\xae\xfa&gt;\xcf\\u000f\xf7\&#39;\xb6V\\u001b\xd3\\u0003\x8e\xab~\xaf\xd8\xe1\&#39;Wm\x8c\xa5\xe3\xa7-U\xb0y\xcd\xdd\xc3\\u0017M\xb5\x96\\u0006\x91gM\x88\xcd\x94\xe5\xcc\\bQ\xef`\xa5\xd8\\r\xbc/\xf3dG\x92F&amp;\xa7--DX\\u0014\x8c\xd3\xd7\\u000f5\x80\xc8\\f\\u000f\xcd\xe9\\u001e\xf8\xc3{C\xac\xb0\xdcG\xa3\xe6\xad\xf6\xc3Z\xc1\xff\xb2w7/QEa\\u0000\xc6\\u000f\xb5i\xd1*Z\x95\x8b\xd9\\u0004Y\\u0004\xb5\x88\xfa\\u001bj#\\u0004-\xa2\x85P\xd0\xc2u\xb4*\\\\D_6\xe8,\\&quot;\\u0010\\u0005K\x84\\b7ERP\xd2,4\&#39;\xc2i\\u0014%L\xd4\xa9\\u0006?\\u0002s\x90\xb2\x9a\x8c\xb7\xf7\xbcre\\u0018\x90I\xc8a\xce\xf4\\b?\\u0010\x82\x8b\x9c\xe3&lt;\x9e\xdb\xb9\\u001f\\u001d\xe3\x9fe\xdf\xbd\\f\xf3B\xd8\xaah\xe7\xed\xd6\xa0}P\\u000et\x8f\xfa\xf7g\xdaKL\xaaa\\u000fn\xe9\xc7\xaa\xbfJ\xddVg\xbb\xdb\xd3\xb6\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xd0\xd5&amp;\xa77EtL\xcc!\x9d\xbbDf^\xe6\xbf\\u0015*9?\xf6\xb0\xcc\xc3=\xa3\xfeg`\x95F\xd8\xaaS\xb4\x8a\xdb\xa6\xdf\xef\xef\\u001e\x91\\u000bz\\u001dX\xef\xe4\xa2L,}\xafH\xe8t\xc5h\\u0017qv\x8c-\xd8\xa3|\xf6t\xa4\xa3\x9f\x89\x98\x95\\u0013\xb7\xe8\xdb\xd32\xce\xea]\\u0016Of\x96dv\\u000b\\&quot;\xb7\\\\X\x95dnY\x9a^\xceH]\xe7\xdb\xb5\xcd\x9a8A#l\xa1\xec\xa4\xc6\xed\xff\xe2l5\xb7\xf3\xee\\u001b9\xfa`L?0S\\u0012\xd7\x8d\x87g\xd9\xbc\xbf|\xc4\xfeb\xff\\\\\xdd|\xf2V~\xfd\xb6[\xbf\xde-\xaeh8\xbf\xc8\xe5\xa1\x9c4\xf4\xbd\x97z\x8di\xf4v\xae\xf5\xdb\x9f\\u0012\\u0004\xed\xaf%T\xab\xcd\x9b\xd9\xdb\x99\x96\x93\x8f\&#39;\xe4\xaa\xee\x86\xf7\xeb*|\xf6k\xc1N\\u001b7\xb3\xb3\xa9\xf3d\\u000f\\u000e\xb83\xb2 g4\x98\xf5\xf7G\xecw\xc3\x82f\xf3\xf3\x9aq\&#39;l\x81jME\x91\xf3\xbf\xd4\\u0016\xbe\xedzmR\x9d\xee\xb0\\u001e{8.\xa7\xfa&amp;\xe5|\xff\xb4\\\\\\u001c\xf8\xa8Om\xc8\xc9u}\xdbPKzNZ\x86\xe7\xec\xcdCW\x86rz\x91\xe9\\u0007i|&gt;%\&#39;\\u001eM\xc8\\u0011\xbdpxW\xfb\xb0\\u001e;\xb5v\xec\xdb\xd1\xb19\xcd\xfc\xd7+\xf0\xe2q\xdd\xa1\x9b-\\u0007{F-v\xe7^L\xcb\xa5A?_6W\xe6\x9a\x9f\xab\xd4\&#39;iJf\xe5\xf4\xd3I9\xaesk\xaf\xc3K\xa4\x8a\x8fE\xcc\\b[\x8dJ\\u0018\x8b\x92\x85.\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\xd3Muc\xa0\x94m\xfb\xdb\xbf\xb7D+1\x8b\xa3?\\u0006\\u001f\x92J\xce\x99\\u0005\xaa\xcc|\xad\xcf\xd5\xab\xe8\x8f\\u0018sD\xd8\\u0000\x80\xb0\\u0001 l\\u0000@\xd8\\u0000\x80\xb0\\u0001\\u0000a\\u0003\\u0000\xc2\\u0006\x80\xb0\\u0001\\u0000a\\u0003\\u0000\xc2\\u0006\\u0000\x84\\r\\u0000\\b\\u001b\\u0000\xc2\\u0006\\u0000\x84\\r\\u0000\\b\\u001b\\u0000\\u00106\\u0000 l\\u0000@\xd8\\u0000\\u00106\\u0000 l\\u0000@\xd8\\u0000\x80\xb0\\u0001\\u0000a\\u0003@\xd8\\u0000\x80\xb0\\u0001\\u0000a\\u0003\x80-\\b[\xe6\xbf\\u001f\\u0004\\u0000\xb5$\xe3\xc3\x96t\\f\\u0004\x80\xda\x91\xf4akv\\f\\u0004\x80\xda\xd1\xec\xc3\xd6\xe8\\u0018\\b\\u0000\xb5\xa3\xd1\x87-\xe6\\u0018\\b\\u0000\xb5#\xe6\xfc\x97~\x93u\\f\\u0006\x80\xf0e\x95\x8b\xc2\xd6\xe5\\u0018\\u0010\\u0000\xe1\xeb*\\u000e[\x83c@\\u0000\x84\xaf!\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;[\\u0014\xb7\xbccP\\u0000\x84+\xaf\\\\i\xd8\xda\\u001c\\u0003\\u0003 \\\\m\xa5acw\\u0014@\xe8b%ac\\u0013\\u0001@\xd0\xba|\xc2\x8a\xc2\xc6\xaa\\r@\xf0b%ac\xd5\\u0006 \xfc\xd5Z\xb9\xb0\xc5\xd8!\\u0005\\u0010\x88\xbc\x8a\x95\\u000f\x9bs\xdc\\u0018\\u000f \\u0014\xcd%\xed2\\u001b}\xf1\x9c6\\u0000\xd5.c\xad\xda8l\x9c\x92\\u0002\\b\xef\\u0014t\x93a\xe3V\xab?\xed\xddA\\r\x83@\\u0010@Q$TB\xa5TB% \\u0001\\tH@\\u0002R\x90\x80\\u0004$ \xa1\\u0013\x92=6\\u0013\xd2\xb2\x81\xf6m\xf2\x8e\x85\xa4\x87\\u001f\x96\x9d\\u0004\xe0\xd4\x9e%SI\xd8\xbco\\u0003\xae\xf3^mg\xd8\x8c\x80\\u0000\&#39;\\u001f\xed\xc8\xc3&amp;n\xc0\xc5\xa2\x96\x87M\xdc\x80kG-\\u000f[\xfe\xc3\xae\xf1\&#39;\\u0003\xf5tM\xacC\xc3VNK\x8d\x82\\u0000\\u0007[\xcb\xe9g\x95\xb0\x9597C\xbc\xc0A\xe62\xa7vP\xd8\xf2\xad\xa9\xa77\xe0K\xd6d\xebY%l\xe5b7\\u0007\\u000b\xc0\x87\xc6\xad%\xb1*\x87-\xdf\x9e\\n&quot;&#39;,
+ &#39;, &#39;,
+ &#39;&quot;\\u001c\xb0\xd3\x98l;+\x86-\\u000f\xdc\xe0{\xa5\xc0\\u001bK\\u0018\x92\xa0U\\f\xdb\xfe\\u001b=\xc2(r\xf0\xf7\x960nMH\xd6\xf9\xc2\x96?\xc9\xb5\xa1\\u000f\x93SU\xf8Ys\x98B\\u001f\xdap\xaf\xd4\x98\xcd\\u000b{\xad\xff\x98\\u0017\xb2\xe2C\\u0000\\u0000\\u0000\\u0000IEND\xaeB`\x82&quot;&#39;,
+ &#39;]&#39;,
+ &#39;}&#39;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;rest_framework.utils.encoders.JSONEncoder object at 0x7fca8bf94b90&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>o</td>
+                    <td class="code"><pre>&lt;MultiValueDict: {u&#39;icon&#39;: [&lt;InMemoryUploadedFile: default.png (image/png)&gt;]}&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+    </ul>
+  </div>
+  
+  <form action="http://dpaste.com/" name="pasteform" id="pasteform" method="post">
+
+  <div id="pastebinTraceback" class="pastebin">
+    <input type="hidden" name="language" value="PythonConsole">
+    <input type="hidden" name="title" value="UnicodeDecodeError at /clients/testapp1/icons">
+    <input type="hidden" name="source" value="Django Dpaste Agent">
+    <input type="hidden" name="poster" value="Django">
+    <textarea name="content" id="traceback_area" cols="140" rows="25">
+Environment:
+
+
+Request Method: POST
+Request URL: http://211.189.127.73:8000/clients/testapp1/icons
+
+Django Version: 1.6.5
+Python Version: 2.7.6
+Installed Applications:
+(&#39;django.contrib.admin&#39;,
+ &#39;django.contrib.auth&#39;,
+ &#39;django.contrib.contenttypes&#39;,
+ &#39;django.contrib.sessions&#39;,
+ &#39;django.contrib.messages&#39;,
+ &#39;django.contrib.staticfiles&#39;,
+ &#39;rest_framework&#39;,
+ &#39;rest_framework.authtoken&#39;,
+ &#39;rest_framework_swagger&#39;,
+ &#39;oauth2_provider&#39;,
+ &#39;users&#39;,
+ &#39;utils&#39;,
+ &#39;clients&#39;,
+ &#39;teams&#39;,
+ &#39;oauths&#39;)
+Installed Middleware:
+(&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+ &#39;django.middleware.common.CommonMiddleware&#39;,
+ &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+ &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+ &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+ &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;)
+
+
+Traceback:
+File "/home/sungjin/webp/oauth2toolkit/local/lib/python2.7/site-packages/django/core/handlers/base.py" in get_response
+  137.                 response = response.render()
+File "/home/sungjin/webp/oauth2toolkit/local/lib/python2.7/site-packages/django/template/response.py" in render
+  105.             self.content = self.rendered_content
+File "/home/sungjin/webp/oauth2toolkit/local/lib/python2.7/site-packages/rest_framework/response.py" in rendered_content
+  59.         ret = renderer.render(self.data, media_type, context)
+File "/home/sungjin/webp/oauth2toolkit/local/lib/python2.7/site-packages/rest_framework/renderers.py" in render
+  85.             indent=indent, ensure_ascii=self.ensure_ascii)
+File "/usr/lib/python2.7/json/__init__.py" in dumps
+  250.         sort_keys=sort_keys, **kw).encode(obj)
+File "/usr/lib/python2.7/json/encoder.py" in encode
+  210.         return &#39;&#39;.join(chunks)
+
+Exception Type: UnicodeDecodeError at /clients/testapp1/icons
+Exception Value: &#39;ascii&#39; codec can&#39;t decode byte 0x89 in position 1: ordinal not in range(128)
+</textarea>
+  <br><br>
+  <input type="submit" value="Share this traceback on a public Web site">
+  </div>
+</form>
+</div>
+
+
+
+<div id="requestinfo">
+  <h2>Request information</h2>
+
+
+  <h3 id="get-info">GET</h3>
+  
+    <p>No GET data</p>
+  
+
+  <h3 id="post-info">POST</h3>
+  
+    <p>No POST data</p>
+  
+  <h3 id="files-info">FILES</h3>
+  
+    <table class="req">
+        <thead>
+            <tr>
+                <th>Variable</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <td>icon</td>
+                    <td class="code"><pre>&lt;InMemoryUploadedFile: default.png (image/png)&gt;</pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+  
+
+
+  <h3 id="cookie-info">COOKIES</h3>
+  
+    <table class="req">
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr>
+            <td>csrftoken</td>
+            <td class="code"><pre>&#39;asuV0k1k6zlqVXecjb3HCiQ8W3F6rNih&#39;</pre></td>
+          </tr>
+        
+          <tr>
+            <td>sessionid</td>
+            <td class="code"><pre>&#39;awt2blqiq0popvwuje89syz9l865wo9e&#39;</pre></td>
+          </tr>
+        
+      </tbody>
+    </table>
+  
+
+  <h3 id="meta-info">META</h3>
+  <table class="req">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>HTTP_AUTHORIZATION</td>
+          <td class="code"><pre>&#39;Token 174fd85cfd7e23e2dca1445a2c4f471b84e92411&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>RUN_MAIN</td>
+          <td class="code"><pre>&#39;true&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_GREETER_DATA_DIR</td>
+          <td class="code"><pre>&#39;/var/lib/lightdm-data/sungjin&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>QT4_IM_MODULE</td>
+          <td class="code"><pre>&#39;xim&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_SOFTWARE</td>
+          <td class="code"><pre>&#39;WSGIServer/0.1 Python/2.7.6&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SCRIPT_NAME</td>
+          <td class="code"><pre>u&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REQUEST_METHOD</td>
+          <td class="code"><pre>&#39;POST&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_ORIGIN</td>
+          <td class="code"><pre>&#39;chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_PROTOCOL</td>
+          <td class="code"><pre>&#39;HTTP/1.1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HOME</td>
+          <td class="code"><pre>&#39;/home/sungjin&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DISPLAY</td>
+          <td class="code"><pre>&#39;:0&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANG</td>
+          <td class="code"><pre>&#39;ko_KR.UTF-8&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SHELL</td>
+          <td class="code"><pre>&#39;/bin/bash&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_DATA_DIRS</td>
+          <td class="code"><pre>&#39;/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MANDATORY_PATH</td>
+          <td class="code"><pre>&#39;/usr/share/gconf/ubuntu.mandatory.path&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CLUTTER_IM_MODULE</td>
+          <td class="code"><pre>&#39;xim&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEXTDOMAIN</td>
+          <td class="code"><pre>&#39;im-config&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>JOB</td>
+          <td class="code"><pre>&#39;dbus&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION</td>
+          <td class="code"><pre>&#39;ubuntu&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_PORT</td>
+          <td class="code"><pre>&#39;8000&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XMODIFIERS</td>
+          <td class="code"><pre>&#39;@im=ibus&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>JAVA_HOME</td>
+          <td class="code"><pre>&#39;/usr/lib/jvm/java-7-oracle/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SELINUX_INIT</td>
+          <td class="code"><pre>&#39;YES&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PATH_INFO</td>
+          <td class="code"><pre>u&#39;/clients/testapp1/icons&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_RUNTIME_DIR</td>
+          <td class="code"><pre>&#39;/run/user/1000&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PYTHONPATH</td>
+          <td class="code"><pre>&#39;/home/sungjin/webp/forez/forez:/home/sungjin/PycharmProjects/python_sdk&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>COMPIZ_BIN_PATH</td>
+          <td class="code"><pre>&#39;/usr/bin/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_CACHE_CONTROL</td>
+          <td class="code"><pre>&#39;no-cache&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_CONNECTION</td>
+          <td class="code"><pre>&#39;keep-alive&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_HOST</td>
+          <td class="code"><pre>&#39;211.189.127.73:8000&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>NLSPATH</td>
+          <td class="code"><pre>&#39;/usr/dt/lib/nls/msg/%L/%N.cat&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_SESSION_ID</td>
+          <td class="code"><pre>&#39;c2&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DBUS_SESSION_BUS_ADDRESS</td>
+          <td class="code"><pre>&#39;unix:abstract=/tmp/dbus-ub71Trguu5&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULTS_PATH</td>
+          <td class="code"><pre>&#39;/usr/share/gconf/ubuntu.default.path&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_ACCEPT</td>
+          <td class="code"><pre>&#39;*/*&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DESKTOP_SESSION</td>
+          <td class="code"><pre>&#39;ubuntu&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.version</td>
+          <td class="code"><pre>(1, 0)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GNOME_KEYRING_PID</td>
+          <td class="code"><pre>&#39;3344&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.run_once</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.errors</td>
+          <td class="code"><pre>&lt;open file &#39;&lt;stderr&gt;&#39;, mode &#39;w&#39; at 0x7fca95f911e0&gt;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GATEWAY_INTERFACE</td>
+          <td class="code"><pre>&#39;CGI/1.1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_ACCEPT_LANGUAGE</td>
+          <td class="code"><pre>&#39;ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PYCHARM_HOSTED</td>
+          <td class="code"><pre>&#39;1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>INSTANCE</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_MENU_PREFIX</td>
+          <td class="code"><pre>&#39;gnome-&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_SEAT</td>
+          <td class="code"><pre>&#39;seat0&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PYTHONIOENCODING</td>
+          <td class="code"><pre>&#39;UTF-8&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.multiprocess</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_COOKIE</td>
+          <td class="code"><pre>&#39;sessionid=awt2blqiq0popvwuje89syz9l865wo9e; csrftoken=asuV0k1k6zlqVXecjb3HCiQ8W3F6rNih&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GNOME_DESKTOP_SESSION_ID</td>
+          <td class="code"><pre>&#39;this-is-deprecated&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_CURRENT_DESKTOP</td>
+          <td class="code"><pre>&#39;Unity&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>QUERY_STRING</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>QT_IM_MODULE</td>
+          <td class="code"><pre>&#39;ibus&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGNAME</td>
+          <td class="code"><pre>&#39;sungjin&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USER</td>
+          <td class="code"><pre>&#39;sungjin&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PATH</td>
+          <td class="code"><pre>&#39;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-7-oracle/bin:/home/sungjin/android-ndk-r9d:/home/sungjin/webp/oauth2toolkit/bin&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_VTNR</td>
+          <td class="code"><pre>&#39;7&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GNOME_KEYRING_CONTROL</td>
+          <td class="code"><pre>&#39;/run/user/1000/keyring-LzeBna&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PYTHONUNBUFFERED</td>
+          <td class="code"><pre>&#39;1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_USER_AGENT</td>
+          <td class="code"><pre>&#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_SESSION_PATH</td>
+          <td class="code"><pre>&#39;/org/freedesktop/DisplayManager/Session0&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XAUTHORITY</td>
+          <td class="code"><pre>&#39;/home/sungjin/.Xauthority&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE</td>
+          <td class="code"><pre>&#39;ko&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_MANAGER</td>
+          <td class="code"><pre>&#39;local/SWSSM:@/tmp/.ICE-unix/3481,unix/SWSSM:/tmp/.ICE-unix/3481&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>QT_QPA_PLATFORMTHEME</td>
+          <td class="code"><pre>&#39;appmenu-qt5&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LD_LIBRARY_PATH</td>
+          <td class="code"><pre>&#39;/home/sungjin/pycharm-2.7.3/bin:&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.url_scheme</td>
+          <td class="code"><pre>&#39;http&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>COMPIZ_CONFIG_PROFILE</td>
+          <td class="code"><pre>&#39;ubuntu&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSIONTYPE</td>
+          <td class="code"><pre>&#39;gnome-session&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>IM_CONFIG_PHASE</td>
+          <td class="code"><pre>&#39;1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GIO_LAUNCHED_DESKTOP_FILE_PID</td>
+          <td class="code"><pre>&#39;12518&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GPG_AGENT_INFO</td>
+          <td class="code"><pre>&#39;/run/user/1000/keyring-LzeBna/gpg:0:1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CONTENT_LENGTH</td>
+          <td class="code"><pre>&#39;10055&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GIO_LAUNCHED_DESKTOP_FILE</td>
+          <td class="code"><pre>&#39;/home/sungjin/.local/share/applications/jetbrains-pycharm.desktop&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SSH_AUTH_SOCK</td>
+          <td class="code"><pre>&#39;/run/user/1000/keyring-LzeBna/ssh&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CLASSPATH</td>
+          <td class="code"><pre>&#39;/home/sungjin/pycharm-2.7.3/bin/../lib/bootstrap.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/extensions.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/util.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/jdom.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/log4j.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/trove4j.jar:/home/sungjin/pycharm-2.7.3/bin/../lib/jna.jar&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GDMSESSION</td>
+          <td class="code"><pre>&#39;ubuntu&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.input</td>
+          <td class="code"><pre>&lt;socket._fileobject object at 0x7fca91aee5d0&gt;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEXTDOMAINDIR</td>
+          <td class="code"><pre>&#39;/usr/share/locale/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.multithread</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_SEAT_PATH</td>
+          <td class="code"><pre>&#39;/org/freedesktop/DisplayManager/Seat0&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TZ</td>
+          <td class="code"><pre>&#39;UTC&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DESKTOP_STARTUP_ID</td>
+          <td class="code"><pre>&#39;compiz-3698-SWSSM-&quot;/home/sungjin/pycharm-2.7.3/bin/pycharm.sh&quot;-4_TIME56194813&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GTK_IM_MODULE</td>
+          <td class="code"><pre>&#39;ibus&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>UPSTART_SESSION</td>
+          <td class="code"><pre>&#39;unix:abstract=/com/ubuntu/upstart-session/1000/3346&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XDG_CONFIG_DIRS</td>
+          <td class="code"><pre>&#39;/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_NAME</td>
+          <td class="code"><pre>&#39;SWSSM.local&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>UBUNTU_MENUPROXY</td>
+          <td class="code"><pre>&#39;1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE</td>
+          <td class="code"><pre>u&#39;asuV0k1k6zlqVXecjb3HCiQ8W3F6rNih&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REMOTE_ADDR</td>
+          <td class="code"><pre>&#39;211.189.127.73&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GDM_LANG</td>
+          <td class="code"><pre>&#39;ko&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GTK_MODULES</td>
+          <td class="code"><pre>&#39;overlay-scrollbar:unity-gtk-module&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PWD</td>
+          <td class="code"><pre>&#39;/home/sungjin&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DJANGO_SETTINGS_MODULE</td>
+          <td class="code"><pre>&#39;forez.settings&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CONTENT_TYPE</td>
+          <td class="code"><pre>&#39;multipart/form-data; boundary=----WebKitFormBoundaryYliPl7XSFIeHEya0&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>XFILESEARCHPATH</td>
+          <td class="code"><pre>&#39;/usr/dt/app-defaults/%L/Dt&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.file_wrapper</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REMOTE_HOST</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_ACCEPT_ENCODING</td>
+          <td class="code"><pre>&#39;gzip,deflate,sdch&#39;</pre></td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+  <h3 id="settings-info">Settings</h3>
+  <h4>Using settings module <code>forez.settings</code></h4>
+  <table class="req">
+    <thead>
+      <tr>
+        <th>Setting</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>USE_L10N</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_THOUSAND_SEPARATOR</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_SECURE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_CODE</td>
+          <td class="code"><pre>&#39;en-us&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ROOT_URLCONF</td>
+          <td class="code"><pre>&#39;forez.urls&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MANAGERS</td>
+          <td class="code"><pre>()</pre></td>
+        </tr>
+      
+        <tr>
+          <td>BASE_DIR</td>
+          <td class="code"><pre>&#39;/home/sungjin/webp/forez/forez&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_CHARSET</td>
+          <td class="code"><pre>&#39;utf-8&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_SERIALIZER</td>
+          <td class="code"><pre>&#39;django.contrib.sessions.serializers.JSONSerializer&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATIC_ROOT</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ALLOWED_HOSTS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MESSAGE_STORAGE</td>
+          <td class="code"><pre>&#39;django.contrib.messages.storage.fallback.FallbackStorage&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_SUBJECT_PREFIX</td>
+          <td class="code"><pre>&#39;[Django] &#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_PERMISSIONS</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATICFILES_FINDERS</td>
+          <td class="code"><pre>(&#39;django.contrib.staticfiles.finders.FileSystemFinder&#39;,
+ &#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_CACHE_ALIAS</td>
+          <td class="code"><pre>&#39;default&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_DOMAIN</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_NAME</td>
+          <td class="code"><pre>&#39;sessionid&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ADMIN_FOR</td>
+          <td class="code"><pre>()</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TIME_INPUT_FORMATS</td>
+          <td class="code"><pre>(&#39;%H:%M:%S&#39;, &#39;%H:%M:%S.%f&#39;, &#39;%H:%M&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATABASES</td>
+          <td class="code"><pre>{&#39;default&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+             &#39;AUTOCOMMIT&#39;: True,
+             &#39;CONN_MAX_AGE&#39;: 0,
+             &#39;ENGINE&#39;: &#39;django.db.backends.sqlite3&#39;,
+             &#39;HOST&#39;: &#39;&#39;,
+             &#39;NAME&#39;: &#39;/home/sungjin/webp/forez/forez/db.sqlite3&#39;,
+             &#39;OPTIONS&#39;: {},
+             &#39;PASSWORD&#39;: u&#39;********************&#39;,
+             &#39;PORT&#39;: &#39;&#39;,
+             &#39;TEST_CHARSET&#39;: None,
+             &#39;TEST_COLLATION&#39;: None,
+             &#39;TEST_MIRROR&#39;: None,
+             &#39;TEST_NAME&#39;: None,
+             &#39;TIME_ZONE&#39;: &#39;UTC&#39;,
+             &#39;USER&#39;: &#39;&#39;}}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_EMAIL</td>
+          <td class="code"><pre>&#39;root@localhost&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_HANDLERS</td>
+          <td class="code"><pre>(&#39;django.core.files.uploadhandler.MemoryFileUploadHandler&#39;,
+ &#39;django.core.files.uploadhandler.TemporaryFileUploadHandler&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_CONTENT_TYPE</td>
+          <td class="code"><pre>&#39;text/html&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>APPEND_SLASH</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FIRST_DAY_OF_WEEK</td>
+          <td class="code"><pre>0</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATABASE_ROUTERS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>YEAR_MONTH_FORMAT</td>
+          <td class="code"><pre>&#39;F Y&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATICFILES_STORAGE</td>
+          <td class="code"><pre>&#39;django.contrib.staticfiles.storage.StaticFilesStorage&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHES</td>
+          <td class="code"><pre>{&#39;default&#39;: {&#39;BACKEND&#39;: &#39;django.core.cache.backends.locmem.LocMemCache&#39;}}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_PATH</td>
+          <td class="code"><pre>&#39;/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MIDDLEWARE_CLASSES</td>
+          <td class="code"><pre>(&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+ &#39;django.middleware.common.CommonMiddleware&#39;,
+ &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+ &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+ &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+ &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_I18N</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>THOUSAND_SEPARATOR</td>
+          <td class="code"><pre>&#39;,&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECRET_KEY</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_NAME</td>
+          <td class="code"><pre>&#39;django_language&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_INDEX_TABLESPACE</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TRANSACTIONS_MANAGED</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGGING_CONFIG</td>
+          <td class="code"><pre>&#39;django.utils.log.dictConfig&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SEND_BROKEN_LINK_EMAILS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEMPLATE_LOADERS</td>
+          <td class="code"><pre>(&#39;django.template.loaders.filesystem.Loader&#39;,
+ &#39;django.template.loaders.app_directories.Loader&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>WSGI_APPLICATION</td>
+          <td class="code"><pre>&#39;forez.wsgi.application&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEMPLATE_DEBUG</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>X_FRAME_OPTIONS</td>
+          <td class="code"><pre>&#39;SAMEORIGIN&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_NAME</td>
+          <td class="code"><pre>&#39;csrftoken&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>OAUTH2_PROVIDER</td>
+          <td class="code"><pre>{&#39;SCOPES&#39;: {&#39;groups&#39;: &#39;Access to your groups&#39;,
+            &#39;read&#39;: &#39;Read scope&#39;,
+            &#39;write&#39;: &#39;Write scope&#39;}}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FORCE_SCRIPT_NAME</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_X_FORWARDED_HOST</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SIGNING_BACKEND</td>
+          <td class="code"><pre>&#39;django.core.signing.TimestampSigner&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_SECURE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_DOMAIN</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_CHARSET</td>
+          <td class="code"><pre>&#39;utf-8&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEBUG</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_FILE_PATH</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_FILE_STORAGE</td>
+          <td class="code"><pre>&#39;django.core.files.storage.FileSystemStorage&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>INSTALLED_APPS</td>
+          <td class="code"><pre>(&#39;django.contrib.admin&#39;,
+ &#39;django.contrib.auth&#39;,
+ &#39;django.contrib.contenttypes&#39;,
+ &#39;django.contrib.sessions&#39;,
+ &#39;django.contrib.messages&#39;,
+ &#39;django.contrib.staticfiles&#39;,
+ &#39;rest_framework&#39;,
+ &#39;rest_framework.authtoken&#39;,
+ &#39;rest_framework_swagger&#39;,
+ &#39;oauth2_provider&#39;,
+ &#39;users&#39;,
+ &#39;utils&#39;,
+ &#39;clients&#39;,
+ &#39;teams&#39;,
+ &#39;oauths&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGES</td>
+          <td class="code"><pre>((&#39;af&#39;, &#39;Afrikaans&#39;),
+ (&#39;ar&#39;, &#39;Arabic&#39;),
+ (&#39;az&#39;, &#39;Azerbaijani&#39;),
+ (&#39;bg&#39;, &#39;Bulgarian&#39;),
+ (&#39;be&#39;, &#39;Belarusian&#39;),
+ (&#39;bn&#39;, &#39;Bengali&#39;),
+ (&#39;br&#39;, &#39;Breton&#39;),
+ (&#39;bs&#39;, &#39;Bosnian&#39;),
+ (&#39;ca&#39;, &#39;Catalan&#39;),
+ (&#39;cs&#39;, &#39;Czech&#39;),
+ (&#39;cy&#39;, &#39;Welsh&#39;),
+ (&#39;da&#39;, &#39;Danish&#39;),
+ (&#39;de&#39;, &#39;German&#39;),
+ (&#39;el&#39;, &#39;Greek&#39;),
+ (&#39;en&#39;, &#39;English&#39;),
+ (&#39;en-gb&#39;, &#39;British English&#39;),
+ (&#39;eo&#39;, &#39;Esperanto&#39;),
+ (&#39;es&#39;, &#39;Spanish&#39;),
+ (&#39;es-ar&#39;, &#39;Argentinian Spanish&#39;),
+ (&#39;es-mx&#39;, &#39;Mexican Spanish&#39;),
+ (&#39;es-ni&#39;, &#39;Nicaraguan Spanish&#39;),
+ (&#39;es-ve&#39;, &#39;Venezuelan Spanish&#39;),
+ (&#39;et&#39;, &#39;Estonian&#39;),
+ (&#39;eu&#39;, &#39;Basque&#39;),
+ (&#39;fa&#39;, &#39;Persian&#39;),
+ (&#39;fi&#39;, &#39;Finnish&#39;),
+ (&#39;fr&#39;, &#39;French&#39;),
+ (&#39;fy-nl&#39;, &#39;Frisian&#39;),
+ (&#39;ga&#39;, &#39;Irish&#39;),
+ (&#39;gl&#39;, &#39;Galician&#39;),
+ (&#39;he&#39;, &#39;Hebrew&#39;),
+ (&#39;hi&#39;, &#39;Hindi&#39;),
+ (&#39;hr&#39;, &#39;Croatian&#39;),
+ (&#39;hu&#39;, &#39;Hungarian&#39;),
+ (&#39;ia&#39;, &#39;Interlingua&#39;),
+ (&#39;id&#39;, &#39;Indonesian&#39;),
+ (&#39;is&#39;, &#39;Icelandic&#39;),
+ (&#39;it&#39;, &#39;Italian&#39;),
+ (&#39;ja&#39;, &#39;Japanese&#39;),
+ (&#39;ka&#39;, &#39;Georgian&#39;),
+ (&#39;kk&#39;, &#39;Kazakh&#39;),
+ (&#39;km&#39;, &#39;Khmer&#39;),
+ (&#39;kn&#39;, &#39;Kannada&#39;),
+ (&#39;ko&#39;, &#39;Korean&#39;),
+ (&#39;lb&#39;, &#39;Luxembourgish&#39;),
+ (&#39;lt&#39;, &#39;Lithuanian&#39;),
+ (&#39;lv&#39;, &#39;Latvian&#39;),
+ (&#39;mk&#39;, &#39;Macedonian&#39;),
+ (&#39;ml&#39;, &#39;Malayalam&#39;),
+ (&#39;mn&#39;, &#39;Mongolian&#39;),
+ (&#39;my&#39;, &#39;Burmese&#39;),
+ (&#39;nb&#39;, &#39;Norwegian Bokmal&#39;),
+ (&#39;ne&#39;, &#39;Nepali&#39;),
+ (&#39;nl&#39;, &#39;Dutch&#39;),
+ (&#39;nn&#39;, &#39;Norwegian Nynorsk&#39;),
+ (&#39;os&#39;, &#39;Ossetic&#39;),
+ (&#39;pa&#39;, &#39;Punjabi&#39;),
+ (&#39;pl&#39;, &#39;Polish&#39;),
+ (&#39;pt&#39;, &#39;Portuguese&#39;),
+ (&#39;pt-br&#39;, &#39;Brazilian Portuguese&#39;),
+ (&#39;ro&#39;, &#39;Romanian&#39;),
+ (&#39;ru&#39;, &#39;Russian&#39;),
+ (&#39;sk&#39;, &#39;Slovak&#39;),
+ (&#39;sl&#39;, &#39;Slovenian&#39;),
+ (&#39;sq&#39;, &#39;Albanian&#39;),
+ (&#39;sr&#39;, &#39;Serbian&#39;),
+ (&#39;sr-latn&#39;, &#39;Serbian Latin&#39;),
+ (&#39;sv&#39;, &#39;Swedish&#39;),
+ (&#39;sw&#39;, &#39;Swahili&#39;),
+ (&#39;ta&#39;, &#39;Tamil&#39;),
+ (&#39;te&#39;, &#39;Telugu&#39;),
+ (&#39;th&#39;, &#39;Thai&#39;),
+ (&#39;tr&#39;, &#39;Turkish&#39;),
+ (&#39;tt&#39;, &#39;Tatar&#39;),
+ (&#39;udm&#39;, &#39;Udmurt&#39;),
+ (&#39;uk&#39;, &#39;Ukrainian&#39;),
+ (&#39;ur&#39;, &#39;Urdu&#39;),
+ (&#39;vi&#39;, &#39;Vietnamese&#39;),
+ (&#39;zh-cn&#39;, &#39;Simplified Chinese&#39;),
+ (&#39;zh-tw&#39;, &#39;Traditional Chinese&#39;))</pre></td>
+        </tr>
+      
+        <tr>
+          <td>COMMENTS_ALLOW_PROFANITIES</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATICFILES_DIRS</td>
+          <td class="code"><pre>(&#39;/home/sungjin/webp/forez/forez/static&#39;,
+ &#39;/home/sungjin/webp/forez/forez/web_content/resource&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PREPEND_WWW</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_PROXY_SSL_HEADER</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_HTTPONLY</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEBUG_PROPAGATE_EXCEPTIONS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SWAGGER_SETTINGS</td>
+          <td class="code"><pre>{&#39;api_key&#39;: &#39;&#39;,
+ &#39;api_path&#39;: &#39;/&#39;,
+ &#39;api_version&#39;: &#39;&#39;,
+ &#39;enabled_methods&#39;: [&#39;get&#39;, &#39;post&#39;, &#39;put&#39;, &#39;delete&#39;],
+ &#39;exclude_namespaces&#39;: [],
+ &#39;is_authenticated&#39;: False,
+ &#39;is_superuser&#39;: False}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MONTH_DAY_FORMAT</td>
+          <td class="code"><pre>&#39;F j&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGIN_URL</td>
+          <td class="code"><pre>&#39;/accounts/login/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_EXPIRE_AT_BROWSER_CLOSE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TIME_FORMAT</td>
+          <td class="code"><pre>&#39;P&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>AUTH_USER_MODEL</td>
+          <td class="code"><pre>&#39;users.GardenUser&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATE_INPUT_FORMATS</td>
+          <td class="code"><pre>(&#39;%Y-%m-%d&#39;,
+ &#39;%m/%d/%Y&#39;,
+ &#39;%m/%d/%y&#39;,
+ &#39;%b %d %Y&#39;,
+ &#39;%b %d, %Y&#39;,
+ &#39;%d %b %Y&#39;,
+ &#39;%d %b, %Y&#39;,
+ &#39;%B %d %Y&#39;,
+ &#39;%B %d, %Y&#39;,
+ &#39;%d %B %Y&#39;,
+ &#39;%d %B, %Y&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>AUTHENTICATION_BACKENDS</td>
+          <td class="code"><pre>(&#39;django.contrib.auth.backends.ModelBackend&#39;,)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_HOST_PASSWORD</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PASSWORD_RESET_TIMEOUT_DAYS</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHE_MIDDLEWARE_ALIAS</td>
+          <td class="code"><pre>&#39;default&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_SAVE_EVERY_REQUEST</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>NUMBER_GROUPING</td>
+          <td class="code"><pre>0</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_ENGINE</td>
+          <td class="code"><pre>&#39;django.contrib.sessions.backends.db&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_FAILURE_VIEW</td>
+          <td class="code"><pre>&#39;django.views.csrf.csrf_failure&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_PATH</td>
+          <td class="code"><pre>&#39;/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGIN_REDIRECT_URL</td>
+          <td class="code"><pre>&#39;/accounts/profile/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DECIMAL_SEPARATOR</td>
+          <td class="code"><pre>&#39;.&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>IGNORABLE_404_URLS</td>
+          <td class="code"><pre>()</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOCALE_PATHS</td>
+          <td class="code"><pre>()</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEMPLATE_STRING_IF_INVALID</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGOUT_URL</td>
+          <td class="code"><pre>&#39;/accounts/logout/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_USE_TLS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FIXTURE_DIRS</td>
+          <td class="code"><pre>()</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_HOST</td>
+          <td class="code"><pre>&#39;localhost&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATE_FORMAT</td>
+          <td class="code"><pre>&#39;N j, Y&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MEDIA_ROOT</td>
+          <td class="code"><pre>&#39;/home/sungjin/webp/forez/forez/web_content/resource/images&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_EXCEPTION_REPORTER_FILTER</td>
+          <td class="code"><pre>&#39;django.views.debug.SafeExceptionReporterFilter&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ADMINS</td>
+          <td class="code"><pre>()</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FORMAT_MODULE_PATH</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_FROM_EMAIL</td>
+          <td class="code"><pre>&#39;webmaster@localhost&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REST_FRAMEWORK</td>
+          <td class="code"><pre>{&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;: (&#39;oauth2_provider.ext.rest_framework.OAuth2Authentication&#39;,),
+ &#39;DEFAULT_PARSER_CLASSES&#39;: (&#39;rest_framework.parsers.FormParser&#39;,
+                            &#39;rest_framework.parsers.JSONParser&#39;),
+ &#39;DEFAULT_PERMISSION_CLASSES&#39;: (&#39;rest_framework.permissions.IsAuthenticated&#39;,)}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MEDIA_URL</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATETIME_FORMAT</td>
+          <td class="code"><pre>&#39;N j, Y, P&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEMPLATE_DIRS</td>
+          <td class="code"><pre>(&#39;/home/sungjin/webp/forez/forez/web_content/templates&#39;,)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DISALLOWED_USER_AGENTS</td>
+          <td class="code"><pre>()</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ALLOWED_INCLUDE_ROOTS</td>
+          <td class="code"><pre>()</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGGING</td>
+          <td class="code"><pre>{}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SHORT_DATE_FORMAT</td>
+          <td class="code"><pre>&#39;m/d/Y&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEST_RUNNER</td>
+          <td class="code"><pre>&#39;django.test.runner.DiscoverRunner&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHE_MIDDLEWARE_KEY_PREFIX</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TIME_ZONE</td>
+          <td class="code"><pre>&#39;UTC&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_MAX_MEMORY_SIZE</td>
+          <td class="code"><pre>2621440</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_BACKEND</td>
+          <td class="code"><pre>&#39;django.core.mail.backends.smtp.EmailBackend&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_TABLESPACE</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEMPLATE_CONTEXT_PROCESSORS</td>
+          <td class="code"><pre>(&#39;django.contrib.auth.context_processors.auth&#39;,
+ &#39;django.core.context_processors.debug&#39;,
+ &#39;django.core.context_processors.i18n&#39;,
+ &#39;django.core.context_processors.media&#39;,
+ &#39;django.core.context_processors.static&#39;,
+ &#39;django.core.context_processors.tz&#39;,
+ &#39;django.contrib.messages.context_processors.messages&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_AGE</td>
+          <td class="code"><pre>1209600</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SETTINGS_MODULE</td>
+          <td class="code"><pre>&#39;forez.settings&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_ETAGS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGES_BIDI</td>
+          <td class="code"><pre>(&#39;he&#39;, &#39;ar&#39;, &#39;fa&#39;, &#39;ur&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_TEMP_DIR</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>INTERNAL_IPS</td>
+          <td class="code"><pre>()</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATIC_URL</td>
+          <td class="code"><pre>&#39;/static/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_PORT</td>
+          <td class="code"><pre>25</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_TZ</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SHORT_DATETIME_FORMAT</td>
+          <td class="code"><pre>&#39;m/d/Y P&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PASSWORD_HASHERS</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ABSOLUTE_URL_OVERRIDES</td>
+          <td class="code"><pre>{}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHE_MIDDLEWARE_SECONDS</td>
+          <td class="code"><pre>600</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_HTTPONLY</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATETIME_INPUT_FORMATS</td>
+          <td class="code"><pre>(&#39;%Y-%m-%d %H:%M:%S&#39;,
+ &#39;%Y-%m-%d %H:%M:%S.%f&#39;,
+ &#39;%Y-%m-%d %H:%M&#39;,
+ &#39;%Y-%m-%d&#39;,
+ &#39;%m/%d/%Y %H:%M:%S&#39;,
+ &#39;%m/%d/%Y %H:%M:%S.%f&#39;,
+ &#39;%m/%d/%Y %H:%M&#39;,
+ &#39;%m/%d/%Y&#39;,
+ &#39;%m/%d/%y %H:%M:%S&#39;,
+ &#39;%m/%d/%y %H:%M:%S.%f&#39;,
+ &#39;%m/%d/%y %H:%M&#39;,
+ &#39;%m/%d/%y&#39;)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>OAUTH2_PROVIDER_APPLICATION_MODEL</td>
+          <td class="code"><pre>&#39;clients.GardenClient&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_HOST_USER</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PROFANITIES_LIST</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+</div>
+
+  <div id="explanation">
+    <p>
+      You're seeing this error because you have <code>DEBUG = True</code> in your
+      Django settings file. Change that to <code>False</code>, and Django will
+      display a standard 500 page.
+    </p>
+  </div>
+
+</body>
+</html>
+

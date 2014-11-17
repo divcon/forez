@@ -25,6 +25,9 @@ class ClientManager(models.Manager):
 #contains client details
 class GardenClient(AbstractApplication):
     client_name = models.CharField(max_length=255, blank=True, unique=True)
+    #       icon
+    app_icon = models.ImageField(upload_to='app_icon/',
+                                 default='app_icon/default.png')
     url = models.URLField()
     #app_detail
     #      for search
@@ -38,9 +41,6 @@ class GardenClient(AbstractApplication):
     permission_explanation = models.TextField(blank=True)
     #       publishing
     publish = models.BooleanField(default=False)
-    #       icon
-    # small_icon = models.ImageField()
-    # app_icon = models.ImageField(blank=True)
 
     # settings
     display_name = models.CharField(max_length=30, blank=True, unique=True)
@@ -52,3 +52,8 @@ class GardenClient(AbstractApplication):
     app_log = models.TextField(blank=True)
 
     objects = ClientManager()
+
+    # _icon_dir = str
+    #
+    # @property
+    # def icon_dir

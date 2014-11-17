@@ -7,7 +7,7 @@ import os
 #notebook : true
 #server   : False
 host = True
-#host = False
+host = False
 directory = "/home/sungjin/error/"
 extends = ".html"
 
@@ -225,7 +225,7 @@ def add_app(token_dict):
     pass
 
 init_test()
-join()
+# join()
 token_dict = login()
 registering_clients(token_dict)
 give_permission(token_dict)

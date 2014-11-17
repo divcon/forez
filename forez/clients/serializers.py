@@ -32,7 +32,8 @@ class DetailSerializer(serializers.HyperlinkedModelSerializer):
 class SettingSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = GardenClient
-        fields = ('display_name', 'contact_email', 'publish', 'created_at')
+        fields = ('display_name', 'contact_email', 'publish',
+                  'created_at')
         lookup_field = 'name'
 
 

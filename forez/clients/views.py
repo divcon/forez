@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
+from django.core.files.base import ContentFile
 from .serializers import ClientSerializer, ClientCreateSerializer
 from .serializers import SettingSerializer, StoreSerializer, DetailSerializer
 from rest_framework.permissions import IsAuthenticated
@@ -49,7 +50,6 @@ class ClientViewSet(viewsets.GenericViewSet,
         serializer = ClientCreateSerializer(data=request.DATA, context={'request': request})
 
         if serializer.is_valid():
-            print serializer.data['name']
             if GardenClient.objects.already_exist(serializer.data['name']):
                 return Response(data={'error': 'Application name is already exist'},
                                 status=status.HTTP_409_CONFLICT)
@@ -107,6 +107,7 @@ class ClientViewSet(viewsets.GenericViewSet,
         if not self.permission_checker.has_permission(request, client_name):
             return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
         client_obj = GardenClient.objects.get_client_obj(client_name)
+
         serializer = ClientSerializer(client_obj)
         return Response(serializer.data, status=status.HTTP_200_OK)
         # return super(ClientViewSet, self).retrieve(request, *args, **kwargs)
@@ -125,6 +126,7 @@ class ClientViewSet(viewsets.GenericViewSet,
         client_obj.url = url
         client_obj.redirect_uris = redirect_uri
         client_obj.save(update_fields=['url', 'redirect_uris'])
+
         return Response(data=request.DATA, status=status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
@@ -136,11 +138,26 @@ class ClientViewSet(viewsets.GenericViewSet,
         return super(ClientViewSet, self).destroy(request, *args, **kwargs)
 
     @action(['POST', 'GET'])
+    def icons(self, request, name=None):
+        if not self.permission_checker.has_permission(request, name):
+            return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
+        else:
+            client_obj = GardenClient.objects.get_client_obj(name)
+
+        if request.method == 'GET':
+            pass
+        
+        if request.method == 'POST':
+            self._save_icon(request, client_obj)
+            return Response(data=request.FILES, status=status.HTTP_200_OK)
+
+    @action(['POST', 'GET'])
     def details(self, request, name=None):
         if not self.permission_checker.has_permission(request, name):
             return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
+        else:
+            client_obj = GardenClient.objects.get_client_obj(name)
 
-        client_obj = GardenClient.objects.get_client_obj(name)
         if request.method == 'GET':
             serializer = DetailSerializer(client_obj)
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -173,6 +190,15 @@ class ClientViewSet(viewsets.GenericViewSet,
             client_obj.publish = self._is_publish_request(request.DATA['publish'])
             client_obj.save(update_fields=['display_name', 'contact_email', 'publish'])
             return Response(data=request.DATA, status=status.HTTP_200_OK)
+
+    def _save_icon(self, request, client_obj):
+        # self._delete_before_icon(client_obj)
+        self._set_icon(request, client_obj)
+
+    def _set_icon(self, request, client_obj):
+        # 지우는 작업 필요
+        file_content = ContentFile(request.FILES['icon'].read())
+        client_obj.app_icon.save(request.FILES['icon'].name, file_content)
 
     def _is_publish_request(self, publish):
         if (publish == 'true') or (publish == 'True'):
