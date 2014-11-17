@@ -16,10 +16,10 @@ method = 'POST'
 token3 = 'Token e04271b00743412b5e2373d976863aaee6b44f31'
 server_token3 = 'Token 8a0e3fa510aad716ac044de399f9f2545b0a2fbf'
 #test
-token1 = 'Token c1c98cc1faee9c20ccca8057817e2b60612c9b45'
+token1 = 'Token 8a888af24548dee3814bed1d1549e79323993f20'
 server_token1 = 'Token cfb665f106bd9f9da512592199afe032ed0723b2'
 #test2
-token2 = 'Token bcd234a5e6b6f2654a5df0df6e413287502d9643'
+token2 = 'Token 0d68c5792cb95c4e6b7aa9d73f46bc3a1daa0c0f'
 server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 
 # changing information
@@ -44,15 +44,15 @@ server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 #method = "GET"
 
 #modify url
-#url = "/clients/testapp1"
-#body = {"url": "http://123.123.123.12:8000", "redirect_uri": "http://123.123.123.12:8000"}
-#header = {'Authorization': token1}
-#method = "PUT"
+url = "/clients/testapp1"
+body = {"url": "http://123.123.123.12:8000", "redirect_uris": "http://123.123.123.12:8000"}
+header = {'Authorization': token2}
+method = "PUT"
 
 #app delete
-#url = "/clients/testuser1213"
-#header = {'Authorization': 'Token 3a327baddb77b0a0c86bb23c4dd321a3a547b987'}
-#method = "DELETE"
+url = "/clients/testapp1"
+header = {'Authorization': token1}
+method = "DELETE"
 
 #team list
 #url = "/teams"
@@ -100,12 +100,12 @@ server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 #method = "GET"
 
 #get access token
-url = "/o/token/"
-body = {"cleint_id": "TMcIpph@CU18e_@r07J0D_o??VToL.9GBJXt.!Wb", 
-        "client_secret": "vQ0.Z0Sfqo@C6u;D27xtSoLs:LeZNk6G-GRDWnkq_uf3Yywj0=bFmau?=HYpxO4U;PWf4WT_2;c9YyheV7Rb9i;n?sWz6B3zKEaA?E@ffKuEv5z6O:MIBvn!c=Z!Q7R4i",
-        "grant_type": 'athorization-code', 'authorization': ''}
-header = None
-method = "POST"
+# url = "/o/token/"
+# body = {"cleint_id": "TMcIpph@CU18e_@r07J0D_o??VToL.9GBJXt.!Wb",
+#         "client_secret": "vQ0.Z0Sfqo@C6u;D27xtSoLs:LeZNk6G-GRDWnkq_uf3Yywj0=bFmau?=HYpxO4U;PWf4WT_2;c9YyheV7Rb9i;n?sWz6B3zKEaA?E@ffKuEv5z6O:MIBvn!c=Z!Q7R4i",
+#         "grant_type": 'athorization-code', 'authorization': ''}
+# header = None
+# method = "POST"
 #"client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&grant_type=password&username=YOUR_USERNAME&password=YOUR_PASSWORD" http://localhost:8000/oauth2/access_token/
 #
 #get store list
@@ -121,10 +121,10 @@ method = "POST"
 #method = "GET"
 
 # get app info
-url = "/stores/testapp1"
-body = None
-header = {'Authorization': token3}
-method = "GET"
+# url = "/stores/testapp1"
+# body = None
+# header = {'Authorization': token3}
+# method = "GET"
 
 # get authorization
 #url = "/oauths/authorize?response_type=code&client_id=HuW!F1Ph_liu_!9IGakzEMbAP3.J9FKrWfFo4rPx&scope=read&state=xyz&approval_prompt=auto&redirect_uri=http://211.189.127.73:8000"
@@ -136,16 +136,16 @@ method = "GET"
 #curl -X POST -d "grant_type=password&username=<sungjin>&password=<rkems>" http://<VbM-z;VZ9BNTSnPfCArqNeKSKtz7uOgn?5YtFgtm>:<.dmop.;XZD;OznZU-p:JfSayX7R;n._gKCTUETuD?hQYK=e?:hoE8JuimIDOPkVFo4@hdm.0YXAN8WUU8L2bktPn?wdhpYy_vFy=pwrVterUUwaXIJKk!Pd1daL5f6nS>@localhost:8000/o/token/
 
 #add user app
-url = "/users/test3/apps"
-body = {"client_name": "testapp1"}
-header = {'Authorization': token3}
-method = "POST"
+# url = "/users/test2/apps"
+# body = {"client_name": "testapp2"}
+# header = {'Authorization': token2}
+# method = "POST"
 
 #get user's app
-url = "/users/test3/apps"
-body = None
-header = {'Authorization': token3}
-method = "GET"
+#url = "/users/test3/apps"
+#body = None
+#header = {'Authorization': token3}
+#method = "GET"
 
 
 test = api_request(host)

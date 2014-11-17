@@ -119,12 +119,12 @@ class ClientViewSet(viewsets.GenericViewSet,
         if not self.permission_checker.has_permission(request, client_name=client_name):
             return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
         url = request.DATA['url']
-        redirect_uri = request.DATA['redirect_uri']
+        redirect_uri = request.DATA['redirect_uris']
 
         client_obj = GardenClient.objects.get_client_obj(client_name)
         client_obj.url = url
-        client_obj.redirect_uri = redirect_uri
-        client_obj.save(update_fields=['url', 'redirect_uri'])
+        client_obj.redirect_uris = redirect_uri
+        client_obj.save(update_fields=['url', 'redirect_uris'])
         return Response(data=request.DATA, status=status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
