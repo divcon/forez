@@ -74,9 +74,8 @@ class UserViewSet(viewsets.GenericViewSet,
 
         if request.method == 'GET':
             app_list = UserApp.objects.get_app_list(request.user)
-            serializer_list = self._make_app_serializer_list(app_list)
-            data = self._make_app_dict(serializer_list)
-            return Response(data=serializer_list, status=status.HTTP_200_OK)
+            data_set = self._make_app_data(app_list)
+            return Response(data=data_set, status=status.HTTP_200_OK)
 
         if request.method == 'POST':
             client_name = request.DATA['client_name']
@@ -94,6 +93,13 @@ class UserViewSet(viewsets.GenericViewSet,
         for a in app_list:
             app_serializer_list.append(AppSerializer(a))
         return app_serializer_list
+
+    def _make_app_data(self, app_list):
+        serializer_list = self._make_app_serializer_list(app_list)
+        data = list()
+        for s in serializer_list:
+            data.append(s.data)
+        return data
 
 
 class UserCreateViewSet(viewsets.GenericViewSet,

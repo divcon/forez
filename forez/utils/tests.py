@@ -1,8 +1,9 @@
+#-*- coding: utf-8 -*-
 from request_form import api_request
 #notebook test : True
 #Server test : False
 host = True
-#host = False
+# host = False
 
 
 #login
@@ -16,8 +17,8 @@ method = 'POST'
 token3 = 'Token e04271b00743412b5e2373d976863aaee6b44f31'
 server_token3 = 'Token 8a0e3fa510aad716ac044de399f9f2545b0a2fbf'
 #test
-token1 = 'Token 8a888af24548dee3814bed1d1549e79323993f20'
-server_token1 = 'Token cfb665f106bd9f9da512592199afe032ed0723b2'
+token1 = 'Token 0657086b001f75ca6d5a7e961e94cc5f95418d38'
+server_token1 = 'Token 0657086b001f75ca6d5a7e961e94cc5f95418d38'
 #test2
 token2 = 'Token 0d68c5792cb95c4e6b7aa9d73f46bc3a1daa0c0f'
 server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
@@ -44,15 +45,15 @@ server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 #method = "GET"
 
 #modify url
-url = "/clients/testapp1"
-body = {"url": "http://123.123.123.12:8000", "redirect_uris": "http://123.123.123.12:8000"}
-header = {'Authorization': token2}
-method = "PUT"
+# url = "/clients/testapp1"
+# body = {"url": "http://123.123.123.12:8000", "redirect_uris": "http://123.123.123.12:8000"}
+# header = {'Authorization': server_token1}
+# method = "PUT"
 
 #app delete
-url = "/clients/testapp1"
-header = {'Authorization': token1}
-method = "DELETE"
+# url = "/clients/testapp1"
+# header = {'Authorization': server_token1}
+# method = "DELETE"
 
 #team list
 #url = "/teams"
@@ -136,16 +137,16 @@ method = "DELETE"
 #curl -X POST -d "grant_type=password&username=<sungjin>&password=<rkems>" http://<VbM-z;VZ9BNTSnPfCArqNeKSKtz7uOgn?5YtFgtm>:<.dmop.;XZD;OznZU-p:JfSayX7R;n._gKCTUETuD?hQYK=e?:hoE8JuimIDOPkVFo4@hdm.0YXAN8WUU8L2bktPn?wdhpYy_vFy=pwrVterUUwaXIJKk!Pd1daL5f6nS>@localhost:8000/o/token/
 
 #add user app
-# url = "/users/test2/apps"
-# body = {"client_name": "testapp2"}
-# header = {'Authorization': token2}
-# method = "POST"
+url = "/users/test5/apps"
+body = {"client_name": "ㅁㄴㅇㄻㄴㅇㄹ"}
+header = {'Authorization': token3}
+method = "POST"
 
 #get user's app
-#url = "/users/test3/apps"
-#body = None
-#header = {'Authorization': token3}
-#method = "GET"
+url = "/users/test2/apps"
+body = None
+header = {'Authorization': token2}
+method = "GET"
 
 
 test = api_request(host)
