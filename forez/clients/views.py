@@ -146,8 +146,9 @@ class ClientViewSet(viewsets.GenericViewSet,
 
         if request.method == 'GET':
             pass
-        
+
         if request.method == 'POST':
+            print request.FILES['icon'].name
             self._save_icon(request, client_obj)
             return Response(data=request.FILES, status=status.HTTP_200_OK)
 

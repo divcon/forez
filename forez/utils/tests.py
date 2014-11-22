@@ -3,7 +3,7 @@ from request_form import api_request
 #notebook test : True
 #Server test : False
 host = True
-# host = False
+host = False
 
 
 #login
@@ -22,6 +22,13 @@ server_token1 = 'Token 0657086b001f75ca6d5a7e961e94cc5f95418d38'
 #test2
 token2 = 'Token 0d68c5792cb95c4e6b7aa9d73f46bc3a1daa0c0f'
 server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
+
+# join
+url = "/users"
+body = {'username': 'testqwer', 'password': 'test', 'phone': '0000', 'email': 'test@naver.com',
+        'real_name': 'testuser', 'class_num': '23', 'gender': 'male'}
+header = None
+method = "POST"
 
 # changing information
 #url = "/users/test3"
@@ -137,16 +144,16 @@ server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 #curl -X POST -d "grant_type=password&username=<sungjin>&password=<rkems>" http://<VbM-z;VZ9BNTSnPfCArqNeKSKtz7uOgn?5YtFgtm>:<.dmop.;XZD;OznZU-p:JfSayX7R;n._gKCTUETuD?hQYK=e?:hoE8JuimIDOPkVFo4@hdm.0YXAN8WUU8L2bktPn?wdhpYy_vFy=pwrVterUUwaXIJKk!Pd1daL5f6nS>@localhost:8000/o/token/
 
 #add user app
-url = "/users/test5/apps"
-body = {"client_name": "ㅁㄴㅇㄻㄴㅇㄹ"}
-header = {'Authorization': token3}
-method = "POST"
+#url = "/users/test5/apps"
+#body = {"client_name": "ㅁㄴㅇㄻㄴㅇㄹ"}
+#header = {'Authorization': token3}
+#method = "POST"
 
 #get user's app
-url = "/users/test2/apps"
-body = None
-header = {'Authorization': token2}
-method = "GET"
+#url = "/users/test2/apps"
+#body = None
+#header = {'Authorization': token2}
+#method = "GET"
 
 
 test = api_request(host)
