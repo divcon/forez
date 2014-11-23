@@ -2,6 +2,7 @@
 
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from forez.settings import MEDIA_ROOT
 # from django.contrib.auth.views import login
 admin.autodiscover()
 
@@ -20,3 +21,6 @@ urlpatterns = patterns('',
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^', include('redirects.urls')),
 )
+urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': MEDIA_ROOT}))

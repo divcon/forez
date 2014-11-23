@@ -34,9 +34,8 @@ class UserViewSet(viewsets.GenericViewSet,
         """
             Inquiring my Information
         """
-        if request.user != self.get_object():
-            return Response(status=status.HTTP_403_FORBIDDEN)
-
+        # if request.user != self.get_object():
+        #     return Response(status=status.HTTP_403_FORBIDDEN)
         return super(UserViewSet, self).retrieve(request, *args, **kwargs)
 
     def update(self, request, *args, **kwargs):
@@ -91,7 +90,9 @@ class UserViewSet(viewsets.GenericViewSet,
     def _make_app_serializer_list(self, app_list):
         app_serializer_list = list()
         for a in app_list:
-            app_serializer_list.append(AppSerializer(a))
+            app_serializer = AppSerializer(a)
+            app_serializer.data['app_icon'] = a.app_icon.url
+            app_serializer_list.append(app_serializer)
         return app_serializer_list
 
     def _make_app_data(self, app_list):

@@ -26,8 +26,8 @@ class ClientManager(models.Manager):
 class GardenClient(AbstractApplication):
     client_name = models.CharField(max_length=255, blank=True, unique=True)
     #       icon
-    app_icon = models.ImageField(upload_to='app_icon/',
-                                 default='app_icon/default.png')
+    app_icon = models.ImageField(upload_to='app_icon/custom',
+                                 default='app_icon/GardenPlatformDefault.png')
     url = models.URLField()
     #app_detail
     #      for search

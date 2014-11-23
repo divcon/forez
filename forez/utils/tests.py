@@ -14,7 +14,7 @@ method = 'POST'
 
 
 #test3
-token3 = 'Token e04271b00743412b5e2373d976863aaee6b44f31'
+token3 = 'Token 68a57cea4c8268c7552f603744692e781ea8ee6a'
 server_token3 = 'Token 8a0e3fa510aad716ac044de399f9f2545b0a2fbf'
 #test
 token1 = 'Token 0657086b001f75ca6d5a7e961e94cc5f95418d38'
@@ -46,10 +46,16 @@ method = "POST"
 #method = "POST"
 
 #app list 
-#url = "/clients"
-#body = None
-#header = {'Authorization': token3}
-#method = "GET"
+url = "/clients"
+body = None
+header = {'Authorization': token3}
+method = "GET"
+
+#app info
+url = "/clients/testapp2"
+body = None
+header = {'Authorization': token3}
+method = "GET"
 
 #modify url
 # url = "/clients/testapp1"
@@ -123,10 +129,18 @@ method = "POST"
 #method = "GET"
 
 # get app list by category
-#url = "/stores?category=business"
+#url = "/stores?category=Webapp"
 #body = None
 #header = {'Authorization': token3}
 #method = "GET"
+
+
+# search apps
+#url = "/stores?search=t&tag=True"
+#body = None
+#header = {'Authorization': token3}
+#method = "GET"
+
 
 # get app info
 # url = "/stores/testapp1"
@@ -141,7 +155,6 @@ method = "POST"
 #header = {'Authorization': token2}
 #method = "GET"
 
-#curl -X POST -d "grant_type=password&username=<sungjin>&password=<rkems>" http://<VbM-z;VZ9BNTSnPfCArqNeKSKtz7uOgn?5YtFgtm>:<.dmop.;XZD;OznZU-p:JfSayX7R;n._gKCTUETuD?hQYK=e?:hoE8JuimIDOPkVFo4@hdm.0YXAN8WUU8L2bktPn?wdhpYy_vFy=pwrVterUUwaXIJKk!Pd1daL5f6nS>@localhost:8000/o/token/
 
 #add user app
 #url = "/users/test5/apps"

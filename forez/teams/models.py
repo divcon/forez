@@ -32,6 +32,7 @@ class TeamManager(models.Manager):
             tmp_dict = dict()
             tmp_dict['member'] = q.member.username
             tmp_dict['is_owner'] = q.is_owner
+            tmp_dict['real_name'] = q.member.real_name
             team_members.append(tmp_dict)
         return team_members
 

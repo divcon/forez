@@ -82,7 +82,7 @@ SWAGGER_SETTINGS = {
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'web_content/resource/images')
 MEDIA_ROOT = '/home/sungjin/webp/forez/forez/web_content/resource/images'
-# MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = (
     #'E:/Django/Projects/solutoire/templates'
