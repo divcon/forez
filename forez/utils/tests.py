@@ -3,7 +3,7 @@ from request_form import api_request
 #notebook test : True
 #Server test : False
 host = True
-host = False
+# host = False
 
 
 #login
@@ -14,10 +14,10 @@ method = 'POST'
 
 
 #test3
-token3 = 'Token 68a57cea4c8268c7552f603744692e781ea8ee6a'
+token3 = 'Token 559d073a1554c40f862bea38796e59f1e081156e'
 server_token3 = 'Token 8a0e3fa510aad716ac044de399f9f2545b0a2fbf'
 #test
-token1 = 'Token 0657086b001f75ca6d5a7e961e94cc5f95418d38'
+token1 = 'Token 81d8dd90e6462d05b000ba8ebab0659a9deca7f2'
 server_token1 = 'Token 0657086b001f75ca6d5a7e961e94cc5f95418d38'
 #test2
 token2 = 'Token 0d68c5792cb95c4e6b7aa9d73f46bc3a1daa0c0f'
@@ -46,16 +46,16 @@ method = "POST"
 #method = "POST"
 
 #app list 
-url = "/clients"
-body = None
-header = {'Authorization': token3}
-method = "GET"
+# url = "/clients"
+# body = None
+# header = {'Authorization': token3}
+# method = "GET"
 
 #app info
-url = "/clients/testapp2"
-body = None
-header = {'Authorization': token3}
-method = "GET"
+# url = "/clients/testapp2"
+# body = None
+# header = {'Authorization': token3}
+# method = "GET"
 
 #modify url
 # url = "/clients/testapp1"
@@ -81,6 +81,12 @@ method = "GET"
 #body = {'member': 'test3'}
 #method = "POST"
 
+#delete member
+url = "/teams/testapp1/members?username=test2"
+header = {'Authorization': token1}
+body = None
+method = "DELETE"
+
 #team info
 #url = "/teams/test3/members"
 #header = {'Authorization': token}
@@ -102,10 +108,10 @@ method = "GET"
 #method = "GET"
 
 #post client setting
-#url = "/clients/testapp2/setting"
-#header = {'Authorization': token3}
-#body = {'display_name': 'setting_test', 'contact_email': 'test4@naver.com', 'publish': 'True'}
-#method = "POST"
+url = "/clients/testapp2/setting"
+header = {'Authorization': token3}
+body = {'display_name': 'setting_test', 'contact_email': 'test4@naver.com', 'publish': 'True'}
+method = "POST"
 
 #get client setting
 #url = "/clients/testapp2/setting"
@@ -157,16 +163,23 @@ method = "GET"
 
 
 #add user app
-#url = "/users/test5/apps"
-#body = {"client_name": "ㅁㄴㅇㄻㄴㅇㄹ"}
-#header = {'Authorization': token3}
-#method = "POST"
+url = "/users/test1/apps"
+body = {"client_name": "testapp2"}
+header = {'Authorization': token1}
+method = "POST"
+
+#delete user app
+# url = "/users/test1/apps?name=testapp2"
+# body = None
+# header = {'Authorization': token1}
+# method = "DELETE"
+
 
 #get user's app
-#url = "/users/test2/apps"
-#body = None
-#header = {'Authorization': token2}
-#method = "GET"
+url = "/users/test1/apps"
+body = None
+header = {'Authorization': token1}
+method = "GET"
 
 
 test = api_request(host)

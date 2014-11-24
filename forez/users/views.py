@@ -64,7 +64,7 @@ class UserViewSet(viewsets.GenericViewSet,
             return Response(status=status.HTTP_403_FORBIDDEN)
         return super(UserViewSet, self).destroy(request, *args, **kwargs)
 
-    @action(['POST', 'GET'])
+    @action(['POST', 'GET', 'DELETE'])
     def apps(self, request, username=None):
         if request.user != self.get_object():
             return Response(status=status.HTTP_403_FORBIDDEN)
@@ -86,6 +86,15 @@ class UserViewSet(viewsets.GenericViewSet,
             else:
                 UserApp.objects.create(user=request.user, client=client_obj)
                 return Response(data=request.DATA, status=status.HTTP_201_CREATED)
+
+        if request.method == 'DELETE':
+            delete_app_name = request.QUERY_PARAMS.get('name')
+            client_obj = GardenClient.objects.get_client_obj(delete_app_name)
+            if UserApp.objects.is_already_registering(user_obj=request.user, client_obj=client_obj):
+                UserApp.objects.get(client=client_obj).delete()
+                return Response(data={"ok": "Delete ok"}, status=status.HTTP_204_NO_CONTENT)
+            else:
+                return Response(data={"error": "No app."}, status=status.HTTP_400_BAD_REQUEST)
 
     def _make_app_serializer_list(self, app_list):
         app_serializer_list = list()

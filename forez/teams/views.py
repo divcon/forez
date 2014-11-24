@@ -41,7 +41,7 @@ class TeamViewSet(viewsets.GenericViewSet,
 
         return Response(data=result_list, status=status.HTTP_200_OK)
 
-    @action(['POST', 'GET'])
+    @action(['POST', 'GET', 'DELETE'])
     def members(self, request, client=None):
         client_obj = GardenClient.objects.get_client_obj(client)
 
@@ -68,3 +68,12 @@ class TeamViewSet(viewsets.GenericViewSet,
         if request.method == 'GET':
             member_list = Team.objects.get_team_members(client_obj)
             return Response(data=member_list, status=status.HTTP_200_OK)
+
+        if request.method == 'DELETE':
+            username = request.QUERY_PARAMS.get('username')
+            user_obj = GardenUser.objects.get_user_obj(username=username)
+            if Team.objects.is_member(user_obj=user_obj, client_obj=client_obj):
+                Team.objects.get(member=user_obj, client=client_obj).delete()
+                return Response(data={"ok": "delete ok"}, status=status.HTTP_204_NO_CONTENT)
+            else:
+                return Response(data={"error": "No team member."}, status=status.HTTP_400_BAD_REQUEST)
