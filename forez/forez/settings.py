@@ -48,6 +48,13 @@ INSTALLED_APPS = (
     'oauths',
 )
 
+# AUTHENTICATION_BACKENDS = (
+#     'oauth2_provider.backends.OAuth2Backend',
+#     # Uncomment following if you want to access the admin
+#     #'django.contrib.auth.backends.ModelBackend'
+#     # '...',
+# )
+
 REST_FRAMEWORK = {
     # 'DEFAULT_AUTHENTICATION_CLASSES': (
     #     'rest_framework.authentication.BasicAuthentication',
@@ -68,7 +75,7 @@ REST_FRAMEWORK = {
 
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
-    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope'}
 }
 
 SWAGGER_SETTINGS = {
@@ -80,7 +87,6 @@ SWAGGER_SETTINGS = {
     ],
 }
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'web_content/resource/images')
 MEDIA_ROOT = '/home/sungjin/webp/forez/forez/web_content/resource/images'
 MEDIA_URL = '/media/'
 
@@ -102,6 +108,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
 )
 
 ROOT_URLCONF = 'forez.urls'

@@ -85,8 +85,6 @@ class TeamViewSet(viewsets.GenericViewSet,
             if Team.objects.is_member(user_obj=user_obj, client_obj=client_obj):
                 team_obj = Team.objects.get(member=user_obj, client=client_obj)
                 team_owner_obj = Team.objects.get_team_owner(client_obj)
-                print "sssssssssssssssssssssS"+str(team_owner_obj)
-                print "ssssssssssssssssssssss"+str(request.user)
                 if not (team_owner_obj.username == request.user.username):
                     return Response(data={"error": "Permission denied"},
                                     status=status.HTTP_406_NOT_ACCEPTABLE)

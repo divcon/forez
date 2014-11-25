@@ -98,8 +98,6 @@ class UserApp(models.Model):
     id = models.AutoField(primary_key=True, null=False, blank=False)
     client = models.ForeignKey(GardenClient, related_name='application', null=False, to_field='client_name')
     user = models.ForeignKey(GardenUser, related_name='user', null=False, to_field='username')
-    # client = models.ManyToManyField(GardenClient, related_name='application', null=False)
-    # user = models.ManyToManyField(GardenUser, related_name='user', null=False)
     objects = UserAppManager()
 
     class Meta:

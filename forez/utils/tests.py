@@ -182,6 +182,14 @@ method = "GET"
 # method = "GET"
 
 
+# api test
+
+url = '/api/v1/users/sungjin'
+body = None
+header = {'Bearer PiVjkteBWxSiXRxVV8P8oNk8oxxydX'}
+method = "GET"
+
+
 test = api_request(host)
 resp, content = test.http_request(method=method, url=url, headers=header, body=body)
 print resp
