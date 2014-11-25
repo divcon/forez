@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
+from django.core.files.base import ContentFile
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins, status
@@ -10,6 +11,9 @@ from .serializers import UserSerializer, UserCreateSerializer, AppSerializer
 from rest_framework.renderers import UnicodeJSONRenderer, JSONRenderer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
+from forez.settings import MEDIA_ROOT
+from os import path
+import os
 
 
 class UserViewSet(viewsets.GenericViewSet,
@@ -34,9 +38,10 @@ class UserViewSet(viewsets.GenericViewSet,
         """
             Inquiring my Information
         """
-        # if request.user != self.get_object():
-        #     return Response(status=status.HTTP_403_FORBIDDEN)
-        return super(UserViewSet, self).retrieve(request, *args, **kwargs)
+        user_obj = GardenUser.objects.get_user_obj(kwargs['username'])
+        serializer = UserSerializer(user_obj)
+        serializer.data['profile_img'] = request.user.profile_img.url
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request, *args, **kwargs):
         """
@@ -63,6 +68,19 @@ class UserViewSet(viewsets.GenericViewSet,
         if request.user != self.get_object():
             return Response(status=status.HTTP_403_FORBIDDEN)
         return super(UserViewSet, self).destroy(request, *args, **kwargs)
+
+    @action(['POST'])
+    def icons(self, request, username=None):
+        if request.user != self.get_object():
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        else:
+            user_obj = request.user
+
+        if request.method == 'POST':
+            url = self._save_icon(request, user_obj)
+            data = dict()
+            data['url'] = url
+            return Response(data=data, status=status.HTTP_200_OK)
 
     @action(['POST', 'GET', 'DELETE'])
     def apps(self, request, username=None):
@@ -91,7 +109,7 @@ class UserViewSet(viewsets.GenericViewSet,
             delete_app_name = request.QUERY_PARAMS.get('name')
             client_obj = GardenClient.objects.get_client_obj(delete_app_name)
             if UserApp.objects.is_already_registering(user_obj=request.user, client_obj=client_obj):
-                UserApp.objects.get(client=client_obj).delete()
+                UserApp.objects.get(user=request.user, client=client_obj).delete()
                 return Response(data={"ok": "Delete ok"}, status=status.HTTP_204_NO_CONTENT)
             else:
                 return Response(data={"error": "No app."}, status=status.HTTP_400_BAD_REQUEST)
@@ -110,6 +128,29 @@ class UserViewSet(viewsets.GenericViewSet,
         for s in serializer_list:
             data.append(s.data)
         return data
+
+    def _save_icon(self, request, user_obj):
+        extends = self._get_file_extends(request)
+        self._delete_before_icon(user_obj, extends=extends)
+        return self._set_icon(request, user_obj, extends=extends)
+
+    def _delete_before_icon(self, user_obj, extends):
+        file_path = MEDIA_ROOT+'/profile/custom/'+user_obj.username+'.'+extends
+        if path.exists(file_path):
+            print "icon is already registered. delete before icon"
+            os.remove(file_path)
+        else:
+            print user_obj.username + " 's image is changed."
+
+    def _get_file_extends(self, request):
+        extends = (request.FILES['icon'].name.split('.')[1]).upper()
+
+        return extends
+
+    def _set_icon(self, request, user_obj, extends):
+        file_content = ContentFile(request.FILES['icon'].read())
+        user_obj.profile_img.save(user_obj.username+'.'+extends, file_content)
+        return user_obj.profile_img.url
 
 
 class UserCreateViewSet(viewsets.GenericViewSet,

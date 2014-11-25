@@ -48,14 +48,18 @@ class TeamViewSet(viewsets.GenericViewSet,
         #chage to function
         #check member
         if not Team.objects.is_member(request.user, client_obj):
-            return Response(data={'error': 'No Authentication'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response(data={'error': 'No Authentication'},
+                            status=status.HTTP_401_UNAUTHORIZED)
 
         #_post_member
         if request.method == 'POST':
             if not GardenUser.objects.is_exist(username=request.DATA['member']):
-                return Response(data={'error': 'Check user name'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response(data={'error': 'Check user name'},
+                                status=status.HTTP_400_BAD_REQUEST)
+
             elif Team.objects.is_member(user_obj=request.DATA['member'], client_obj=client_obj):
-                return Response(data={'error': 'User is member of client'}, status=status.HTTP_409_CONFLICT)
+                return Response(data={'error': 'User is member of client'},
+                                status=status.HTTP_409_CONFLICT)
 
             member_obj = GardenUser.objects.get_user_obj(request.DATA['member'])
             tmp_dict = dict()
@@ -71,9 +75,25 @@ class TeamViewSet(viewsets.GenericViewSet,
 
         if request.method == 'DELETE':
             username = request.QUERY_PARAMS.get('username')
+
+            if username is None:
+                return Response(data={"error": "Username parameter is needed."},
+                                status=status.HTTP_400_BAD_REQUEST)
+
             user_obj = GardenUser.objects.get_user_obj(username=username)
+
             if Team.objects.is_member(user_obj=user_obj, client_obj=client_obj):
-                Team.objects.get(member=user_obj, client=client_obj).delete()
-                return Response(data={"ok": "delete ok"}, status=status.HTTP_204_NO_CONTENT)
+                team_obj = Team.objects.get(member=user_obj, client=client_obj)
+                team_owner_obj = Team.objects.get_team_owner(client_obj)
+                print "sssssssssssssssssssssS"+str(team_owner_obj)
+                print "ssssssssssssssssssssss"+str(request.user)
+                if not (team_owner_obj.username == request.user.username):
+                    return Response(data={"error": "Permission denied"},
+                                    status=status.HTTP_406_NOT_ACCEPTABLE)
+                else:
+                    team_obj.delete()
+                    return Response(data={"ok": "delete ok"}, status=status.HTTP_204_NO_CONTENT)
             else:
-                return Response(data={"error": "No team member."}, status=status.HTTP_400_BAD_REQUEST)
+                return Response(data={"error": "No team member."},
+                                status=status.HTTP_400_BAD_REQUEST)
+

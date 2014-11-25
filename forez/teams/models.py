@@ -15,8 +15,8 @@ class TeamManager(models.Manager):
         return team
 
     def get_team_owner(self, client):
-        leader = self.get(client=client, is_owner=True)
-        return leader
+        owner = self.get(client=client, is_owner=True).member
+        return owner
 
     def add_team_member(self, member_info):
         client = member_info['client']
@@ -33,6 +33,7 @@ class TeamManager(models.Manager):
             tmp_dict['member'] = q.member.username
             tmp_dict['is_owner'] = q.is_owner
             tmp_dict['real_name'] = q.member.real_name
+            tmp_dict['profile_img'] = q.member.profile_img.url
             team_members.append(tmp_dict)
         return team_members
 
@@ -47,8 +48,11 @@ class Team(models.Model):
     id = models.AutoField(primary_key=True, null=False, blank=False)
     client = models.ForeignKey(GardenClient, related_name='client', null=False, to_field='client_name')
     member = models.ForeignKey(GardenUser, related_name='member', null=False, to_field='username')
+    # client = models.ManyToManyField(GardenClient, related_name='client', null=False)
+    # member = models.ManyToManyField(GardenUser, related_name='member', null=False)
     is_owner = models.BooleanField(null=False, blank=False, default=False)
     objects = TeamManager()
 
     class Meta:
-        unique_together = ('client', 'member')
+        # unique_together = ('client', 'member')
+        pass

@@ -40,7 +40,7 @@ class GardenUserChangeForm(forms.ModelForm):
     class Meta:
         model = GardenUser
         fields = ('email', 'username', 'phone', 'is_activate',
-                  'is_admin', 'real_name', 'class_num', 'gender', 'profile_pic')
+                  'is_admin', 'real_name', 'class_num', 'gender', 'profile_img')
 
     def clean_password(self):
         return self.initial["password"]
@@ -52,7 +52,7 @@ class GardenUserAdmin(UserAdmin):
 
     #can see query
     list_display = ("username", "email", "is_staff", "phone",
-                    'real_name', 'class_num', 'gender', 'profile_pic')
+                    'real_name', 'class_num', 'gender', 'profile_img')
     list_filter = ("is_staff", "is_superuser", "is_activate", "groups")
     search_fields = ("username",)
     ordering = ("username",)
@@ -60,7 +60,7 @@ class GardenUserAdmin(UserAdmin):
     fieldsets = (
         (None, {"fields": ("username", "password")}),
         ("Personal info", {"fields": ("email", "phone", 'real_name', 'class_num',
-                                      'gender', 'profile_pic')}),
+                                      'gender', 'profile_img')}),
         ("Permissions", {"fields": ("is_activate",
                                     "is_staff",
                                     "is_superuser",
@@ -72,7 +72,7 @@ class GardenUserAdmin(UserAdmin):
         (None, {
             "classes": ("wide",),
             "fields": ("username", "phone", "email", "real_name", "class_num",
-                       "gender", 'profile_pic', "password1", "password2")
+                       "gender", 'profile_img', "password1", "password2")
         }),
     )
 

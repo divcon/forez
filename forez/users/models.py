@@ -55,8 +55,8 @@ class GardenUser(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True)
     #need add
     # birth = models.DateField(blank=True, null=True)
-    profile_pic = models.CharField(max_length=255,
-                                   default="../web_content/resource/images/personal_profile")
+    profile_img = models.ImageField(upload_to='profile/custom',
+                                    default='profile/GardenUserDefault.png')
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email", "phone", "real_name", "class_num", "gender"]
@@ -98,7 +98,10 @@ class UserApp(models.Model):
     id = models.AutoField(primary_key=True, null=False, blank=False)
     client = models.ForeignKey(GardenClient, related_name='application', null=False, to_field='client_name')
     user = models.ForeignKey(GardenUser, related_name='user', null=False, to_field='username')
+    # client = models.ManyToManyField(GardenClient, related_name='application', null=False)
+    # user = models.ManyToManyField(GardenUser, related_name='user', null=False)
     objects = UserAppManager()
 
     class Meta:
-        unique_together = ('client', 'user')
+        # unique_together = ('client', 'user')
+        pass

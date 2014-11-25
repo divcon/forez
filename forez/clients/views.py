@@ -17,6 +17,7 @@ from forez.settings import MEDIA_ROOT
 from os import path
 import os
 from django.db.models import Q
+import urllib
 
 
 class ClientViewSet(viewsets.GenericViewSet,
@@ -96,9 +97,9 @@ class ClientViewSet(viewsets.GenericViewSet,
         for c in clients_list:
             tmp_dict = dict()
             tmp_dict['name'] = c.client.name
-            tmp_dict['owner'] = Team.objects.get_team_owner(c.client).member.username
+            tmp_dict['owner'] = Team.objects.get_team_owner(c.client).username
             result_list.append(tmp_dict)
-        # return super(ClientViewSet, self).list(request, *args, **kwargs)
+
         return Response(data=result_list, status=status.HTTP_200_OK)
 
     def retrieve(self, request, *args, **kwargs):
