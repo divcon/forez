@@ -45,6 +45,8 @@ class GardenUser(AbstractBaseUser, PermissionsMixin):
         verbose_name="email address",
         max_length=255,
         db_index=True,
+        null=True,
+        default='your@email.com'
     )
     #user_id
     username = models.CharField(max_length=255, blank=False, unique=True)

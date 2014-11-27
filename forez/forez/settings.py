@@ -76,7 +76,7 @@ REST_FRAMEWORK = {
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
     'SCOPES': {'read': 'Read scope', 'write': 'Write scope'},
-    'ACCESS_TOKEN_EXPIRE_SECONDS': 36000*36000,
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
     'REQUEST_APPROVAL_PROMPT': 'auto',
 }
 
@@ -116,11 +116,22 @@ WSGI_APPLICATION = 'forez.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':  'gardenplatform',
+        'USER': 'sungjin',
+        'PASSWORD': 'rkems',
+        'HOST': '211.189.127.121',
+        'PORT': '3306',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME':  'GardenPlatform',
+    #     'USER': 'root',
+    #     'PASSWORD': '',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '3306',
+    # }
 }
 
 # Internationalization

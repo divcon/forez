@@ -9,10 +9,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticate
 from oauth2_provider.ext.rest_framework import TokenHasReadWriteScope, TokenHasScope
 from rest_framework.response import Response
 from oauth2_provider.ext.rest_framework import OAuth2Authentication
-from oauth2_provider.backends import OAuth2Backend
-from oauth2_provider.oauth2_validators import OAuth2Validator
-from oauth2_provider.decorators import protected_resource, rw_protected_resource
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.decorators import action
 
 
 class AuthorizationViewSet(AuthorizationView):
@@ -35,7 +32,7 @@ class AuthorizationViewSet(AuthorizationView):
 
 
 # as_view로 구현해보자
-class UserOauthViewSet(viewsets.ModelViewSet):
+class UserOauthViewSet(viewsets.GenericViewSet):
     authentication_classes = [OAuth2Authentication]
     permission_classes = [IsAuthenticated, TokenHasReadWriteScope]
     model = GardenUser
@@ -50,11 +47,12 @@ class UserOauthViewSet(viewsets.ModelViewSet):
                 if type(request.DATA[key]) is list:
                     request.DATA[key] = request.DATA[key][0]
 
-    def retrieve(self, request, *args, **kwargs):
-        print self.get_object()
-        if request.user != self.get_object():
-            return Response(data={"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
-        return super(UserOauthViewSet, self).retrieve(request, *args, **kwargs)
+
+# def me(self, request, *args, **kwargs):
+#     print self.get_object()
+#     if request.user != self.get_object():
+#         return Response(data={"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+#     return Response(data={"전상우": "꺼져"}, status=status.HTTP_200_OK)
 
 # class UserOauthViewSet(viewsets.GenericViewSet,
 #                        mixins.RetrieveModelMixin):

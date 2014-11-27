@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from rest_framework import routers
-from .views import AuthorizationViewSet, UserOauthViewSet
+from .views import UserOauthViewSet
 # from .views import UserOauthViewSet
 from django.conf.urls import patterns, url, include
 
@@ -13,6 +13,7 @@ from django.conf.urls import patterns, url, include
 router = routers.SimpleRouter(trailing_slash=False)
 
 router.register(r'api/v1/users', UserOauthViewSet)
+# router.register(r'api/v1/me', MeOauthViewSet.as_view())
 
 urlpatterns = router.urls
 
