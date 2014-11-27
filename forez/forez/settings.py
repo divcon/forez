@@ -75,7 +75,9 @@ REST_FRAMEWORK = {
 
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
-    'SCOPES': {'read': 'Read scope', 'write': 'Write scope'}
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope'},
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 36000*36000,
+    'REQUEST_APPROVAL_PROMPT': 'auto',
 }
 
 SWAGGER_SETTINGS = {
@@ -95,12 +97,6 @@ TEMPLATE_DIRS = (
     '/home/sungjin/webp/forez/forez/web_content/templates'
 )
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-    '/home/sungjin/webp/forez/forez/web_content/resource',
-)
-# STATIC_ROOT = "/home/sungjin/webp/forez/forez/web_content/resource"
-
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -115,7 +111,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'forez.urls'
 
 WSGI_APPLICATION = 'forez.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -146,3 +141,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "/home/sungjin/webp/forez/forez/web_content/templates/registration"
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    '/home/sungjin/webp/forez/forez/web_content/templates',
+)

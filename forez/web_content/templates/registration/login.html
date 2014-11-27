@@ -1,63 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Sample App for Garden</title>
-    <meta name="description" content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version."/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="{% static "registration/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+    {% load staticfiles %}
+    <script src="{% static "registration/js/jquery-1.8.3.min.js" %}"></script>
+    {% load staticfiles %}
+    <script src="{% static "registration/js/bootstrap.min.js" %}"></script>
 
-    <!-- Loading Bootstrap -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Loading Flat UI -->
-    <link href="css/flat-ui.css" rel="stylesheet">
-    <link href="css/demo.css" rel="stylesheet">
-
-    <link rel="shortcut icon" href="images/favicon.ico">
+      <script type="text/javascript">
+        $(document).ready(function(){
+            $("input").addClass("form-control");
+        })
+      </script>
 
   </head>
   <body>
-    <div class="container">
-      <div class="demo-headline">
-      <div class="login">
-        <div class="login-screen">
-          <div class="login-icon">
-            <img src="images/login/icon.png" alt="Welcome to Mail App" />
-            <h4>Welcome to <small>Garden App</small></h4>
-          </div>
+    {%  block content %}
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+        <div class="modal-body">
+             <div class="modal-header">
+		                <h4 class="modal-title">Sign in with Garden</h4>
+		     </div>
+		     <div class="modal-body">
+                <form action="{% url 'django.contrib.auth.views.login' %}" method="post" class="form-join form-horizontal text-center" role="form">
+                {% csrf_token %}
+                <div class="form-group">
+						        <div class="input-group">
+						          <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+						          {{ form.username }}
+						        </div>
+						      </div>
+						      <div class="form-group">
+						        <div class="input-group">
+						          <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+						          {{ form.password }}
+						        </div>
+						      </div>
+                <input class="btn btn-mint btn-block" type="submit" value="login" />
+                <input type="hidden" name="next" value="{{ next }}" />
+                <a href= "http://211.189.127.121:8080/GardenPlatformWeb/main.do">
+                    <input class="btn btn-primary btn-block" type="button" value="Join" style="margin-top:5px"/> </a>
 
-          <div class="login-form">
-            <div class="form-group">
-              <input type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name" />
-              <label class="login-field-icon fui-user" for="login-name"></label>
+            </form>
             </div>
-
-            <div class="form-group">
-              <input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
-              <label class="login-field-icon fui-lock" for="login-pass"></label>
-            </div>
-
-            <a class="btn btn-primary btn-lg btn-block" href="#">Login</a>
-            <a class="login-link" href="#">Lost your password?</a>
-          </div>
         </div>
-      </div>
-      </div>
-    </div> <!-- /container -->
-    
-    <!-- Load JS here for greater good =============================-->
-    <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="js/jquery.ui.touch-punch.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-select.js"></script>
-    <script src="js/bootstrap-switch.js"></script>
-    <script src="js/flatui-checkbox.js"></script>
-    <script src="js/flatui-radio.js"></script>
-    <script src="js/jquery.tagsinput.js"></script>
-    <script src="js/jquery.placeholder.js"></script>
-    <script src="js/jquery.stacktable.js"></script>
-    <script src="http://vjs.zencdn.net/4.3/video.js"></script>
-    <script src="js/application.js"></script>
+
+
+    {% endblock %}
+
   </body>
 </html>

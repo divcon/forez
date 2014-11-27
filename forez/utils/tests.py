@@ -184,9 +184,9 @@ method = "GET"
 
 # api test
 
-url = '/api/v1/users/sungjin'
+url = '/api/v1/users/test128'
 body = None
-header = {'Bearer PiVjkteBWxSiXRxVV8P8oNk8oxxydX'}
+header = {'Authorization': 'Bearer RQknFn6WMgjE7JXhuComZij6XUu9hX'}
 method = "GET"
 
 
