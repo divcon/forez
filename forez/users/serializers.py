@@ -29,6 +29,13 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         pass
 
 
+class UserFindSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = GardenUser
+        fields = ('username', 'real_name', 'profile_img', 'class_num')
+
+
 class AppSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = GardenClient

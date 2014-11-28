@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
+import datetime
 from django.core.files.base import ContentFile
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -8,6 +9,7 @@ from rest_framework import viewsets, mixins, status
 from clients.models import GardenClient
 from .models import GardenUser, UserApp
 from .serializers import UserSerializer, UserCreateSerializer, AppSerializer
+from .serializers import UserFindSerializer
 from rest_framework.renderers import UnicodeJSONRenderer, JSONRenderer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
@@ -203,6 +205,7 @@ class UserCreateViewSet(viewsets.GenericViewSet,
             # if serializer.data['birth'] is not None:
             #     join_form.update('birth', serializer.data['birth'])
             GardenUser.objects.create_user(join_form)
+            print "add new user" + request.DATA
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -228,3 +231,53 @@ class UserCreateViewSet(viewsets.GenericViewSet,
             return Response(data, status=status.HTTP_409_CONFLICT)
         data = {"OK": "Can use ID"}
         return Response(data, status=status.HTTP_200_OK)
+
+
+class UserFindViewSet(viewsets.GenericViewSet,
+                      mixins.ListModelMixin):
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
+    model = GardenUser
+
+    def initial(self, request, *args, **kwargs):
+        super(UserFindViewSet, self).initial(request, *args, **kwargs)
+
+        if isinstance(request.DATA, dict):
+            for key in request.DATA.keys():
+                if type(request.DATA[key]) is list:
+                    request.DATA[key] = request.DATA[key][0]
+
+    def list(self, request, *args, **kwargs):
+        query_result = GardenUser.objects.all()
+        username = self.request.QUERY_PARAMS.get('username', None)
+        real_name = self.request.QUERY_PARAMS.get('real_name', None)
+        queryset = list()
+        user_list = list()
+
+        if username is not None:
+            queryset = query_result.filter(username=username)
+        elif real_name is not None:
+            queryset = query_result.filter(real_name=real_name)
+        else:
+            Response(data={"error": "Bad request : need username or real_name"}, status=status.HTTP_400_BAD_REQUEST)
+
+        for q in queryset:
+            user_list.append(UserFindSerializer(q).data)
+        return Response(data={"user_list": user_list}, status=status.HTTP_200_OK)
+
+
+# class PasswordViewSet(viewsets.GenericViewSet,
+#                       mixins.CreateModelMixin):
+#     permission_classes = (AllowAny, )
+#     model = GardenUser
+#
+#     def create(self, request, *args, **kwargs):
+#         username = request.DATA['username']
+#         password = request.DATA['password']
+#         user_obj = GardenUser.objects.get_user_obj(username=username)
+#         user_obj.set_password(password)
+#         user_obj.last_login = datetime.date.today()
+#         print "username :" + username
+#         print "password : " + password
+#         user_obj.save()
+#         return Response(data={'OK': 'User password is changed'}, status=status.HTTP_200_OK)

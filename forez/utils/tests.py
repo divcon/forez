@@ -20,13 +20,13 @@ server_token3 = 'Token 8a0e3fa510aad716ac044de399f9f2545b0a2fbf'
 token1 = 'Token 17eaae811ea352c0852eef42ee9e1328eac71340'
 server_token1 = 'Token 0657086b001f75ca6d5a7e961e94cc5f95418d38'
 #test2
-token2 = 'Token d7e5636f0c9118abd3d734cdc6f329a3d4f6b458'
+token2 = 'Token 51adf56341d096f4bad6ccc89b4831288e2918b4'
 server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 
 # join
 url = "/users"
-body = {'username': 'testqwer', 'password': 'test', 'phone': '0000', 'email': 'test@naver.com',
-        'real_name': 'testuser', 'class_num': '23', 'gender': 'male'}
+body = {'username': 'anjrkanswpdla', 'password': 'test', 'phone': '010-6619-3238', 'email': 'test@naver.com',
+        'real_name': '밥줘', 'class_num': '23-1', 'gender': '여'}
 header = None
 method = "POST"
 
@@ -46,10 +46,10 @@ method = "POST"
 #method = "POST"
 
 #app list 
-url = "/clients"
-body = None
-header = {'Authorization': token1}
-method = "GET"
+# url = "/clients"
+# body = None
+# header = {'Authorization': token1}
+# method = "GET"
 
 #app info
 # url = "/clients/testapp2"
@@ -184,11 +184,16 @@ method = "GET"
 
 # api test
 
-url = '/api/v1/users/test128'
-body = None
-header = {'Authorization': 'Bearer RQknFn6WMgjE7JXhuComZij6XUu9hX'}
-method = "GET"
+# url = '/api/v1/users/test128'
+# body = None
+# header = {'Authorization': 'Bearer RQknFn6WMgjE7JXhuComZij6XUu9hX'}
+# method = "GET"
 
+# setting password at first use
+url = '/search?username=pooingx2'
+header = {'Authorization': token2}
+# header = None
+method = "GET"
 
 test = api_request(host)
 resp, content = test.http_request(method=method, url=url, headers=header, body=body)
