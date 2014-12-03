@@ -1,55 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     {% load static %}
     <link href="{% static "registration/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
     {% load staticfiles %}
     <script src="{% static "registration/js/jquery-1.8.3.min.js" %}"></script>
     {% load staticfiles %}
     <script src="{% static "registration/js/bootstrap.min.js" %}"></script>
-
-      <script type="text/javascript">
-        $(document).ready(function(){
-            $("input").addClass("form-control");
-        })
-      </script>
-
-  </head>
-  <body>
-    {%  block content %}
+    {% load staticfiles %}
+    <script src="{% static "registration/js/sha256.js" %}"></script>
+</head>
+<body>
+{%  block content %}
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
+    <div class="modal-body">
+        <div class="modal-header">
+            <h4 class="modal-title">Sign in with Garden</h4>
+        </div>
         <div class="modal-body">
-             <div class="modal-header">
-		                <h4 class="modal-title">Sign in with Garden</h4>
-		     </div>
-		     <div class="modal-body">
-                <form action="{% url 'django.contrib.auth.views.login' %}" method="post" class="form-join form-horizontal text-center" role="form">
+            <form action="{% url 'django.contrib.auth.views.login' %}" method="post" class="form-join form-horizontal text-center" role="form" id="form">
                 {% csrf_token %}
                 <div class="form-group">
-						        <div class="input-group">
-						          <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-						          {{ form.username }}
-						        </div>
-						      </div>
-						      <div class="form-group">
-						        <div class="input-group">
-						          <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-						          {{ form.password }}
-						        </div>
-						      </div>
-                <input class="btn btn-mint btn-block" type="submit" value="login" />
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                        {#                        <input type="text" class="form-control" id="username"/>#}
+                        {{ form.username }}
+                    </div>
+                </div>
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                        {#                    <input type="password" class="form-control" id="pwd"/>#}
+                        {{ form.password }}
+                    </div>
+                </div>
+                <input class="btn btn-mint btn-block" id="login" type="submit" value="login" />
                 <input type="hidden" name="next" value="{{ next }}" />
                 <a href= "http://211.189.127.121:8080/GardenPlatformWeb/main.do">
-                    <input class="btn btn-primary btn-block" type="button" value="Join" style="margin-top:5px"/> </a>
+                <input class="btn btn-primary btn-block" type="button" value="Join" style="margin-top:5px"/> </a>
 
             </form>
-            </div>
         </div>
+    </div>
+    <script>
 
+        $(document).ready(function(){
+            $("#id_username").addClass("form-control");
+            $("#id_password").addClass("form-control");
+        })
 
-    {% endblock %}
+        $('#form').submit(function(){
+            var id = $('#id_username').val();
+            var pwd = $('#id_password').val();
 
-  </body>
+            if(id=="") {
+                alert("Empty ID");
+                return false;
+            }
+            else if(pwd==""){
+                alert("Empty password");
+                return false;
+            }
+            else {
+                $('#id_password').val(sha256_digest(pwd));
+                return true;
+            }
+        });
+
+    </script>
+
+{% endblock %}
+
+</body>
 </html>

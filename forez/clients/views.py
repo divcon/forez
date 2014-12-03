@@ -52,8 +52,12 @@ class ClientViewSet(viewsets.GenericViewSet,
         """
             Registering client(app)
         """
-        serializer = ClientCreateSerializer(data=request.DATA, context={'request': request})
 
+        if GardenClient.objects.already_exist(request.DATA['name']):
+            return Response(data={'error': 'Application name is already exist'},
+                            status=status.HTTP_409_CONFLICT)
+
+        serializer = ClientCreateSerializer(data=request.DATA, context={'request': request})
         if serializer.is_valid():
             if GardenClient.objects.already_exist(serializer.data['name']):
                 return Response(data={'error': 'Application name is already exist'},
@@ -98,6 +102,8 @@ class ClientViewSet(viewsets.GenericViewSet,
             tmp_dict = dict()
             tmp_dict['name'] = c.client.name
             tmp_dict['owner'] = Team.objects.get_team_owner(c.client).username
+            tmp_dict['publish'] = c.client.publish
+            tmp_dict['short_description'] = c.client.short_description
             result_list.append(tmp_dict)
 
         return Response(data=result_list, status=status.HTTP_200_OK)
@@ -110,7 +116,6 @@ class ClientViewSet(viewsets.GenericViewSet,
         if not self.permission_checker.has_permission(request, client_name):
             return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
         client_obj = GardenClient.objects.get_client_obj(client_name)
-
         serializer = ClientSerializer(client_obj)
         serializer.data['app_icon'] = client_obj.app_icon.url
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -136,14 +141,17 @@ class ClientViewSet(viewsets.GenericViewSet,
         """
             Unregistering client(app)
         """
-        if request.user != self.get_object().user:
-            return Response(status=status.HTTP_403_FORBIDDEN)
-        return super(ClientViewSet, self).destroy(request, *args, **kwargs)
+        client_obj = GardenClient.objects.get_client_obj(kwargs['name'])
+        owner = Team.objects.get_team_owner(client_obj)
+        if not (request.user.username == owner.username):
+            return Response(data={"error": "Unauthorized"}, status=status.HTTP_403_FORBIDDEN)
+        else:
+            return super(ClientViewSet, self).destroy(request, *args, **kwargs)
 
     @action(['POST', 'GET'])
     def icons(self, request, name=None):
         if not self.permission_checker.has_permission(request, name):
-            return Response(data={"error": "no authenticate"}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response(data={"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
         else:
             client_obj = GardenClient.objects.get_client_obj(name)
 

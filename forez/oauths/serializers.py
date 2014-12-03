@@ -1,26 +1,24 @@
+#-*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from rest_framework import serializers
-from oauth2_provider.models import Grant
+from users.models import GardenUser, UserApp
+from clients.models import GardenClient
 
 
-class GrantSerializer(serializers.HyperlinkedModelSerializer):
+class UserAccountSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        model = Grant
-        fields = ('user', 'code', 'application', 'redirect_uri')
-        lookup_field = 'client'
+        model = GardenUser
+        fields = ('username', 'email', 'phone', 'real_name',
+                  'class_num', 'gender', 'profile_img')
 
 
-
-
-
-
-
-
-
-
-
-
+class UserClientSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = GardenClient
+        fields = ('client_name', 'display_name', 'url',
+                  'category', 'short_description', 'app_icon')
 
 
 

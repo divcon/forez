@@ -6,44 +6,64 @@ host = True
 host = False
 
 
-#login
-url = "/tokens"
-body = {'username': 'test3', 'password': 'test'}
-header = None
-method = 'POST'
+
 
 
 #test3
-token3 = 'Token 559d073a1554c40f862bea38796e59f1e081156e'
+token3 = 'Token 2e8db1aaaa4d9f7798d9739ace085b6301a70537'
 server_token3 = 'Token 8a0e3fa510aad716ac044de399f9f2545b0a2fbf'
 #test
-token1 = 'Token 17eaae811ea352c0852eef42ee9e1328eac71340'
+token1 = 'Token 0a1b58fa99959df21ca2220ec18bab48f939b5e1'
 server_token1 = 'Token 0657086b001f75ca6d5a7e961e94cc5f95418d38'
 #test2
-token2 = 'Token 51adf56341d096f4bad6ccc89b4831288e2918b4'
+token2 = 'Token 9161c6f52c5cb473a125a3a5517a67d37ed6f402'
 server_token2 = 'Token 7ecb11dddef8b6a97897e4498e677b9d9aa76d45'
 
 # join
-url = "/users"
-body = {'username': 'anjrkanswpdla', 'password': 'test', 'phone': '010-6619-3238', 'email': 'test@naver.com',
-        'real_name': '밥줘', 'class_num': '23-1', 'gender': '여'}
+# url = "/users"
+# body = {'username': 'testuser1', 'password': 'test', 'phone': '010-6619-3238', 'email': 'test@naver.com',
+#         'real_name': '밥줘', 'class_num': '23-1', 'gender': '여'}
+# header = None
+# method = "POST"
+
+# search user
+# url = "/search?username=p_ops"
+# body = None
+# header = {'Authorization': token1}
+# method = "GET"
+
+#login
+url = "/tokens"
+body = {'username': 'p_ops', 'password': '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225'}
 header = None
-method = "POST"
+method = 'POST'
+
+#get user
+url = "/user?username=test5"
+body = None
+header = None
+method = 'GET'
+
+#logout
+url = "/tokens/pooingx2"
+body = {'token': '0a1b58fa99959df21ca2220ec18bab48f939b5e1'}
+header = None
+method = "DELETE"
 
 # changing information
-#url = "/users/test3"
-#header = {'Authorization': token3}
-#body = {'email': 'hello@naver.com', 'phone': '01001001', 'password': 'rkems'}
-#method = "PUT"
+# url = "/users/testuser"
+# header = {'Authorization': token3}
+# body = {'email': 'hello@naver.com', 'phone': '01001001', 'password': None}
+# method = "PUT"
 
 #app registering
-#url = "/clients"
-#header = {'Authorization': token3}
-#body = {'name': 'test4867w698', 'url': 'http://211.189.127.73:8000',
-#        'redirect_uris': 'http://211.189.127.73:8000',
-#        'client_type': 'confidential',
-#        'authorization_grant_type': 'authorization-code'}
-#method = "POST"
+url = "/clients"
+header = {'Authorization': token1}
+body = {'name': 'test4867w698', 'url': 'http://211.189.127.73:8000',
+       'redirect_uris': 'http://211.189.127.73:8000',
+       'client_type': 'confidential',
+       'authorization_grant_type': 'authorization-code'}
+method = "POST"
 
 #app list 
 # url = "/clients"
@@ -155,11 +175,11 @@ method = "POST"
 # method = "GET"
 
 # get authorization
-#url = "/oauths/authorize?response_type=code&client_id=HuW!F1Ph_liu_!9IGakzEMbAP3.J9FKrWfFo4rPx&scope=read&state=xyz&approval_prompt=auto&redirect_uri=http://211.189.127.73:8000"
-#GET /authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
-#body = None
-#header = {'Authorization': token2}
-#method = "GET"
+# url = "/o/authorize?response_type=code&client_id=Tr952;dZ7iiX=J94B2ST9w;r7cgOqJ0BlBGASa-C&scope=read&state=xyz&approval_prompt=auto&redirect_uri=http://211.189.127.121:8080/JSper/loginGardenCallBack"
+# # GET /authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
+# body = None
+# header = {'Authorization': token2}
+# method = "GET"
 
 
 #add user app
@@ -169,31 +189,35 @@ method = "POST"
 # method = "POST"
 
 #delete user app
-# url = "/users/test5/apps?name=zxcv"
+# url = "/users/p_ops/apps?name=zxcv"
 # body = None
 # header = {'Authorization': token1}
 # method = "DELETE"
 
 
 #get user's app
-# url = "/users/test1/apps"
+# url = "/users/p_ops/apps"
 # body = None
 # header = {'Authorization': token1}
 # method = "GET"
 
+# token test
+url = '/o/token/'
+body = {"code": "qgsziecddIPFkAmsZBFjjRcitlXmxt", "client_secret": "zMvWRZf6Z9E5JHXj0eaNJv8e86DXEJUn4bBXzRASiQPHvPaXLciULrM3oAhkkdgyMGoee2UhiKplH7SFHnziAFjhx25LfYOtsxCw6k1F2t6uhFAXDGuGK1SzsGIEySFj", "redirect_uri": "http://127.0.0.1:9000/oauth", "client_id": "N4DejrNGy7JBacEjJv3KtK20rKTfLvs9tgNlTsPG", "grant_type": "authorization_code"}
+header = None
+method = "POST"
 
 # api test
-
-# url = '/api/v1/users/test128'
+# url = '/api/v1/me'
 # body = None
-# header = {'Authorization': 'Bearer RQknFn6WMgjE7JXhuComZij6XUu9hX'}
+# header = {'Authorization': 'Bearer WQF7oABoIuTPdR3MGsYZ5UyjB8F5IA'}
 # method = "GET"
 
 # setting password at first use
-url = '/search?username=pooingx2'
-header = {'Authorization': token2}
-# header = None
-method = "GET"
+# url = '/api/v1/users/p_ops/projects'
+# header = {'Authorization': 'Bearer MvTlvcwEuYu2erBlQq2j1NXcyDrrLh'}
+# # header = None
+# method = "GET"
 
 test = api_request(host)
 resp, content = test.http_request(method=method, url=url, headers=header, body=body)

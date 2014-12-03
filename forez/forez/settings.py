@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from __future__ import unicode_literals
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -48,21 +49,10 @@ INSTALLED_APPS = (
     'oauths',
 )
 
-# AUTHENTICATION_BACKENDS = (
-#     'oauth2_provider.backends.OAuth2Backend',
-#     # Uncomment following if you want to access the admin
-#     #'django.contrib.auth.backends.ModelBackend'
-#     # '...',
-# )
-
 REST_FRAMEWORK = {
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework.authentication.BasicAuthentication',
-    #     'rest_framework.authentication.SessionAuthentication',
-    # )
-
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -76,8 +66,10 @@ REST_FRAMEWORK = {
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
     'SCOPES': {'read': 'Read scope', 'write': 'Write scope'},
-    'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 360000,
     'REQUEST_APPROVAL_PROMPT': 'auto',
+    # 'CLIENT_ID_GENERATOR_CLASS': 'clients.generators.GardenClientIdGenerator',
+    # 'CLIENT_SECRET_GENERATOR_CLASS': 'clients.generators.GardenClientSecretGenerator',
 }
 
 SWAGGER_SETTINGS = {
@@ -124,14 +116,12 @@ DATABASES = {
         'HOST': '211.189.127.121',
         'PORT': '3306',
     }
+
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME':  'GardenPlatform',
-    #     'USER': 'root',
-    #     'PASSWORD': '',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3306',
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': '/home/sungjin/webp/forez/forez/sqlite3.db'
     # }
+
 }
 
 # Internationalization

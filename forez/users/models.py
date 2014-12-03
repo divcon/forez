@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from clients.models import GardenClient
 
+from django.contrib.sessions.models import Session
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin
 )
@@ -21,6 +22,7 @@ class GardenUserManager(BaseUserManager):
         )
         user.set_password(form['password'])
         user.save(using=self._db)
+
         return user
 
     def create_superuser(self, **kwargs):
@@ -105,3 +107,16 @@ class UserApp(models.Model):
     class Meta:
         # unique_together = ('client', 'user')
         pass
+
+
+class MapperManager(models.Manager):
+    def get_session_obj(self, user_obj):
+        return self.all().filter(user=user_obj)
+
+
+class UserSessionMapper(models.Model):
+    id = models.AutoField(primary_key=True, null=False, blank=False)
+    user = models.ForeignKey(GardenUser, related_name='GardenUser', null=False, to_field='username')
+    session = models.ForeignKey(Session, related_name='session',
+                                null=False, to_field='session_key')
+    objects = MapperManager()

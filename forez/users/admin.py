@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import GardenUser, UserApp
+from .models import GardenUser, UserApp, UserSessionMapper
 
 
 class GardenUserCreationForm(forms.ModelForm):
@@ -83,5 +83,12 @@ class UserAppAdmin(admin.ModelAdmin):
     ordering = ('client',)
 
 
+class UserSessionAdmin(admin.ModelAdmin):
+    list_display = ('user', 'session')
+    raw_id_fields = ('user',)
+    ordering = ('user',)
+
+
 admin.site.register(UserApp, UserAppAdmin)
 admin.site.register(GardenUser, GardenUserAdmin)
+admin.site.register(UserSessionMapper, UserSessionAdmin)

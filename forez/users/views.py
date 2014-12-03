@@ -42,6 +42,7 @@ class UserViewSet(viewsets.GenericViewSet,
         """
         user_obj = GardenUser.objects.get_user_obj(kwargs['username'])
         serializer = UserSerializer(user_obj)
+        print request.user.profile_img.url
         serializer.data['profile_img'] = request.user.profile_img.url
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
@@ -55,7 +56,7 @@ class UserViewSet(viewsets.GenericViewSet,
         request_user = GardenUser.objects.get(username=request.user)
         request_user.email = request.DATA['email']
         request_user.phone = request.DATA['phone']
-        if not request.DATA['password'] == "":
+        if not request.DATA['password'] is None:
             request_user.set_password(request.DATA['password'])
             data['password'] = 'changed'
         request_user.save()
@@ -112,6 +113,7 @@ class UserViewSet(viewsets.GenericViewSet,
             client_obj = GardenClient.objects.get_client_obj(delete_app_name)
             if UserApp.objects.is_already_registering(user_obj=request.user, client_obj=client_obj):
                 UserApp.objects.get(user=request.user, client=client_obj).delete()
+                # self._delete_access_token()
                 return Response(data={"ok": "Delete ok"}, status=status.HTTP_204_NO_CONTENT)
             else:
                 return Response(data={"error": "No app."}, status=status.HTTP_400_BAD_REQUEST)
@@ -121,6 +123,7 @@ class UserViewSet(viewsets.GenericViewSet,
         for a in app_list:
             app_serializer = AppSerializer(a)
             app_serializer.data['app_icon'] = a.app_icon.url
+            app_serializer.data['publish'] = a.publish
             app_serializer_list.append(app_serializer)
         return app_serializer_list
 
@@ -205,7 +208,6 @@ class UserCreateViewSet(viewsets.GenericViewSet,
             # if serializer.data['birth'] is not None:
             #     join_form.update('birth', serializer.data['birth'])
             GardenUser.objects.create_user(join_form)
-            print "add new user" + request.DATA
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -262,22 +264,24 @@ class UserFindViewSet(viewsets.GenericViewSet,
             Response(data={"error": "Bad request : need username or real_name"}, status=status.HTTP_400_BAD_REQUEST)
 
         for q in queryset:
-            user_list.append(UserFindSerializer(q).data)
+            user_serializer = UserFindSerializer(q)
+            user_serializer.data['profile_img'] = q.profile_img.url
+            user_list.append(user_serializer.data)
         return Response(data={"user_list": user_list}, status=status.HTTP_200_OK)
 
 
-# class PasswordViewSet(viewsets.GenericViewSet,
-#                       mixins.CreateModelMixin):
-#     permission_classes = (AllowAny, )
-#     model = GardenUser
-#
-#     def create(self, request, *args, **kwargs):
-#         username = request.DATA['username']
-#         password = request.DATA['password']
-#         user_obj = GardenUser.objects.get_user_obj(username=username)
-#         user_obj.set_password(password)
-#         user_obj.last_login = datetime.date.today()
-#         print "username :" + username
-#         print "password : " + password
-#         user_obj.save()
-#         return Response(data={'OK': 'User password is changed'}, status=status.HTTP_200_OK)
+class PasswordViewSet(viewsets.GenericViewSet,
+                      mixins.CreateModelMixin):
+    permission_classes = (AllowAny, )
+    model = GardenUser
+
+    def create(self, request, *args, **kwargs):
+        username = request.DATA['username']
+        password = request.DATA['password']
+        user_obj = GardenUser.objects.get_user_obj(username=username)
+        user_obj.set_password(password)
+        user_obj.last_login = datetime.date.today()
+        print "username :" + username
+        print "password : " + password
+        user_obj.save()
+        return Response(data={'OK': 'User password is changed'}, status=status.HTTP_200_OK)

@@ -28,7 +28,7 @@ class GardenClient(AbstractApplication):
     #       icon
     app_icon = models.ImageField(upload_to='app_icon/custom',
                                  default='app_icon/GardenPlatformDefault.png')
-    url = models.URLField()
+    url = models.URLField(max_length=255)
     #app_detail
     #      for search
     tag1 = models.CharField(max_length=50, blank=True)
@@ -43,7 +43,7 @@ class GardenClient(AbstractApplication):
     publish = models.BooleanField(default=False)
 
     # settings
-    display_name = models.CharField(max_length=30, blank=True, unique=True)
+    display_name = models.CharField(max_length=30, blank=True)
     contact_email = models.EmailField(blank=True)
     created_at = models.DateField(auto_now=True)
 
