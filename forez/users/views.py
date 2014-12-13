@@ -83,7 +83,8 @@ class UserViewSet(viewsets.GenericViewSet,
             url = self._save_icon(request, user_obj)
             data = dict()
             data['url'] = url
-            return Response(data=data, status=status.HTTP_200_OK)
+            print url
+            return Response(data={'url': url}, status=status.HTTP_200_OK)
 
     @action(['POST', 'GET', 'DELETE'])
     def apps(self, request, username=None):
